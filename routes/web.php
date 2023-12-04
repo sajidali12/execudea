@@ -1,9 +1,12 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\PostController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +28,13 @@ Route::get('/', function () {
     ]);
 });
 
+Route::get('/contact', function () {
+    return Inertia::render('Contact');
+});
+Route::get('/blog', function () {
+    return Inertia::render('Blog');
+});
+
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -36,3 +46,19 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+// Admin Routes
+
+
+
+Route::get('/admin/projects', function () {
+    return Inertia::render('Admin/AdminProjects');
+})->middleware(['auth', 'verified'])->name('admin-projects');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/admin/dashboard', [AdminController::class, 'show'])->name('admin-dashboard');
+    Route::get('/admin/settings', [AdminController::class, 'edit'])->name('admin-settings');
+            });
+
+            // Blog Routes
+Route::resource('/admin/posts', PostController::class);
