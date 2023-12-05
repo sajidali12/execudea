@@ -4,7 +4,7 @@ import { Link, Head } from "@inertiajs/react";
 export default function Welcome({ auth, laravelVersion, phpVersion }) {
     return (
         <>
-            <Head title="Welcome" />
+            <Head title="Best Website Development Company In Pakistan" />
             <Guest>
             <section class="py-44 relative bg-amber-500/5">
                 <div class=" hero-with-shapes">
