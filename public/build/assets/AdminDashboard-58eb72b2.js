@@ -1,1 +1,0 @@
-import{j as s}from"./app-a97ebf39.js";import{A as i}from"./AdminLayout-d53f55ed.js";import"./ApplicationLogo-9c7fc70f.js";function m({auth:r}){const e=r.user;return s.jsx(i,{user:r.user,children:s.jsxs("div",{children:["Hi ",e.name," ! "]})})}export{m as default};
