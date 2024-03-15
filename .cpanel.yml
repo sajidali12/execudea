@@ -1,0 +1,5 @@
+---
+deployment:
+      tasks:
+        - export DEPLOYPATH=/home/askaaspi/public_html 
+        - /bin/cp -r /home/askaaspi/public_html/* $DEPLOYPATH
