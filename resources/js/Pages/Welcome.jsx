@@ -249,10 +249,10 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                                 Latest
                             </span>
                             <h1 className="text-3xl font-medium my-3">
-                                Featured Work
+                                Featured Products
                             </h1>
                             <p className="font-medium text-slate-400 mt-5 mb-4">
-                                Explore some of our latest website projects
+                                Explore some of our latest products
                             </p>
                         </div>
 
@@ -265,21 +265,20 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                                 <div className="pt-12 ps-12 group-hover:bg-white/10 rounded-md group-hover:shadow-lg transition-all duration-300">
                                     <div>
                                         <div className="flex items-center justify-between mb-7">
-                                            <h3 className="text-xl">Project</h3>
+                                            <h3 className="text-2xl font-bold">hms360</h3>
                                             <p className="font-medium text-slate-500 pe-8">
-                                                Branding, Interaction, Web
-                                                Design
+                                                Hotel management system
                                             </p>
                                         </div>
                                         <div>
                                             <img
-                                                src="img/features/agency1.jpg"
+                                                src="img/products/hms.png"
                                                 className="rounded-md"
                                             />
                                         </div>
                                         <div className="absolute inset-0 group-hover:flex items-center justify-center hidden transition-all duration-300">
                                             <a
-                                                href="#"
+                                                href="https://hms360.pk"
                                                 className="inline-block"
                                             >
                                                 <div className="flex items-center gap-3 py-[6px] px-3 bg-black rounded-md">
@@ -299,12 +298,11 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                                 <div className="pt-12 ps-12 group-hover:bg-white/10 rounded-md group-hover:shadow-lg transition-all duration-300">
                                     <div>
                                         <div className="flex items-center justify-between mb-7">
-                                            <h3 className="text-xl">
-                                                Project 2
+                                            <h3 className="text-2xl font-bold">
+                                                HRM
                                             </h3>
                                             <p className="font-medium text-slate-500 pe-8">
-                                                Branding, Web Design &
-                                                Development
+                                                Human resource management system
                                             </p>
                                         </div>
                                         <div>
