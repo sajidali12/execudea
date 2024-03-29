@@ -45,7 +45,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                                 </p>
                                 <div className="flex flex-wrap items-center gap-5">
                                     <a
-                                        href="#"
+                                        href="#work"
                                         className="py-3 px-6 rounded border border-primary text-white bg-primary hover:shadow-lg hover:shadow-black/50 focus:outline focus:outline-black/50 transition-all duration-500"
                                     >
                                         <i className="fa-solid fa-arrow-down me-2"></i>{" "}
@@ -242,7 +242,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                 </section>
                 {/* services Section End */}
                 {/* portfolio Section Start */}
-                <section className="py-20">
+                <section className="py-20" id="work">
                     <div className="container m-auto md:px-10 px-0">
                         <div className="text-center">
                             <span className="text-sm font-medium py-1 px-3 rounded-full text-primary bg-primary/10">

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\Post;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
    
@@ -43,9 +44,11 @@ class PostController extends Controller
         Validator::make($request->all(), [
             'title' => ['required'],
             'body' => ['required'],
+            'image' => ['required'],
         ])->validate();
-   
-        Post::create($request->all());
+        $imageName = Str::random().'.'.$request->image->getClientOriginalExtension();
+        Storage::disk('public')->putFileAs('product/image', $request->image,$imageName);
+        Post::create($request->all()+['image'=>$imageName]);
     
         return redirect()->route('posts.index');
     }

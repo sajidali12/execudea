@@ -24,7 +24,7 @@ export default function Dashboard(props) {
                             <div className="flex items-center justify-between mb-6">
                                 <Link className="px-6 py-2 text-white bg-blue-500 rounded-md focus:outline-none" href={ route("posts.index") }>Back</Link>
                             </div>
-                            <form name="createForm" onSubmit={handleSubmit}>
+                            <form name="createForm" onSubmit={handleSubmit} enctype='multipart/form-data'>
                                 <div className="flex flex-col">
                                     <div className="mb-4">
                                         <label className="">Title</label>
@@ -38,6 +38,13 @@ export default function Dashboard(props) {
                                         <textarea type="text" className="w-full rounded" label="body" name="body" errors={errors.body} value={data.body} onChange={(e) => setData("body", e.target.value) }/>
                                         <span className="text-red-600">
                                             {errors.body}
+                                        </span>
+                                    </div>
+                                    <div className="mb-0">
+                                        <label className="">Image</label>
+                                        <input type="file" className="w-full rounded" label="image" name="image" errors={errors.image} value={data.image} onChange={(e) => setData("image", e.target.value) }/>
+                                        <span className="text-red-600">
+                                            {errors.image}
                                         </span>
                                     </div>
                                 </div>
