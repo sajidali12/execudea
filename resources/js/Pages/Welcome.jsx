@@ -32,7 +32,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                                     </a>
                                 </div>
                                 <h1 className="md:text-5xl text-3xl text-gray-700 font-medium my-5">
-                                    We develop softwares that{" "}
+                                    We develop software that{" "}
                                     <span className="relative after:bg-secondary-400 md:after:h-6 after:h-4 after:w-full after:inset-x-0 after:bottom-0 after:absolute after:-z-10">
                                         works
                                     </span>
