@@ -31,13 +31,13 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                                         </div>
                                     </a>
                                 </div>
-                                <h1 className="md:text-5xl text-3xl text-gray-700 font-medium my-5">
+                                <h1 className="md:text-5xl text-3xl text-gray-700 font-medium my-5 font-futura-bold">
                                     We develop software that{" "}
                                     <span className="relative after:bg-secondary-400 md:after:h-6 after:h-4 after:w-full after:inset-x-0 after:bottom-0 after:absolute after:-z-10">
                                         works
                                     </span>
                                 </h1>
-                                <p className="w-3/4 text-lg font-medium mt-6 mb-20 text-slate-600">
+                                <p className="w-3/4 text-2xl font-medium mt-6 mb-20 text-slate-600 font-futura-light">
                                     We're a top-notch web design and development
                                     team helping business to craft the
                                     meaningful and interactive product
@@ -91,8 +91,8 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                 <section className="py-20">
                     <div className="container m-auto md:px-10 px-0">
                         <div className="text-center">
-                            <h1 className="text-3xl font-medium">What We Do</h1>
-                            <p className="font-medium text-slate-500 mt-5 mb-4">
+                            <h1 className="text-4xl font-medium font-futura-bold">What We Do</h1>
+                            <p className="text-2xl font-medium text-slate-500 mt-5 mb-4 font-futura-light">
                                 We are helping businesses to develop their web
                                 applications
                             </p>
@@ -141,7 +141,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                                         </g>
                                     </svg>
                                 </div>
-                                <h4 className="text-base font-medium my-5">
+                                <h4 className="text-xl font-medium my-5 font-futura-bold">
                                     User Experience Design
                                 </h4>
                                 <p className="text-slate-400">
@@ -183,7 +183,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                                         </g>
                                     </svg>
                                 </div>
-                                <h4 className="text-base font-medium my-5">
+                                <h4 className="text-xl font-medium my-5 font-futura-bold">
                                     Front End Development
                                 </h4>
                                 <p className="text-slate-400">
@@ -227,7 +227,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                                         </g>
                                     </svg>
                                 </div>
-                                <h4 className="text-base font-medium my-5">
+                                <h4 className="text-xl font-medium my-5 font-futura-bold">
                                     Search Engine Optimisation (SEO)
                                 </h4>
                                 <p className="text-slate-400">
@@ -248,10 +248,10 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                             <span className="text-sm font-medium py-1 px-3 rounded-full text-primary bg-primary/10">
                                 Latest
                             </span>
-                            <h1 className="text-3xl font-medium my-3">
+                            <h1 className="text-4xl font-medium my-3 font-futura-bold">
                                 Featured Products
                             </h1>
-                            <p className="font-medium text-slate-400 mt-5 mb-4">
+                            <p className="text-2xl font-medium text-slate-400 mt-5 mb-4 font-futura-light">
                                 Explore some of our latest products
                             </p>
                         </div>

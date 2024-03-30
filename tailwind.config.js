@@ -14,6 +14,8 @@ export default {
         extend: {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                'futura-bold': ['futura-bold','Futura Bold'],
+                'futura-light': ['futura-light','Futura Light']
             },
         
                 colors: {
