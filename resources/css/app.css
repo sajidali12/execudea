@@ -5,16 +5,16 @@
 
 @font-face {
     font-family: 'futura-bold';
-    src:url('fonts/FuturaBT-BoldCondensed.woff2') format('woff2'),
-        url('fonts/FuturaBT-BoldCondensed.woff') format('woff');
+    src:url('/fonts/FuturaBT-BoldCondensed.woff2') format('woff2'),
+        url('/fonts/FuturaBT-BoldCondensed.woff') format('woff');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
 }
 @font-face {
     font-family: 'futura-light';
-    src:url('fonts/FuturaBT-LightCondensed.woff2') format('woff2'),
-        url('fonts/FuturaBT-LightCondensed.woff') format('woff');
+    src:url('/fonts/FuturaBT-LightCondensed.woff2') format('woff2'),
+        url('/fonts/FuturaBT-LightCondensed.woff') format('woff');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
