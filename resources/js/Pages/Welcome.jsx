@@ -338,12 +338,11 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                                 <div className="pt-12 ps-12 group-hover:bg-white/10 rounded-md group-hover:shadow-lg transition-all duration-300">
                                     <div>
                                         <div className="flex items-center justify-between mb-7">
-                                            <h3 className="text-xl">
-                                                Project 3
+                                            <h3 className="text-2xl font-bold">
+                                                Point Of Sale
                                             </h3>
                                             <p className="font-medium text-slate-500 pe-8">
-                                                Branding, Interaction, Web
-                                                Design
+                                                Sales & Inventory
                                             </p>
                                         </div>
                                         <div>
@@ -374,13 +373,12 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                                 <div className="pt-12 ps-12 group-hover:bg-white/10 rounded-md group-hover:shadow-lg transition-all duration-300">
                                     <div>
                                         <div className="flex items-center justify-between mb-7">
-                                            <h3 className="text-xl">
-                                                Project 4
+                                            <h3 className="text-2xl font-bold">
+                                                Accounting Software
                                             </h3>
                                             <p className="font-medium text-slate-500 pe-8">
                                                 {" "}
-                                                Branding, Web Design &
-                                                Development
+                                                Accounting & Finance
                                             </p>
                                         </div>
                                         <div>
@@ -450,15 +448,15 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                         </div>
 
                         <div className="flex flex-wrap items-center justify-around mt-12 gap-5">
-                            <img src="img/brands/amazon.svg" className="w-28" />
-                            <img src="img/brands/google.svg" className="w-28" />
-                            <img src="img/brands/paypal.svg" className="w-28" />
+                            <img src="img/brands/webdesigns.png" className="w-28" />
+                            <img src="img/brands/uexel.png" className="w-28" />
+                            <img src="img/brands/rfirst.png" className="w-28" />
                             <img
-                                src="img/brands/spotify.svg"
+                                src="img/brands/tibet.png"
                                 className="w-28"
                             />
                             <img
-                                src="img/brands/shopify.svg"
+                                src="img/brands/medit.png"
                                 className="w-28"
                             />
                         </div>
