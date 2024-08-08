@@ -35,6 +35,8 @@ Route::get('/blog', function () {
     return Inertia::render('Blog');
 });
 
+Route::get('/blog', [PostController::class, 'all'])->name('blog.all');
+
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -62,3 +64,4 @@ Route::middleware('auth')->group(function () {
 
             // Blog Routes
 Route::resource('/admin/posts', PostController::class);
+Route::get('/blog/{blogId}', [PostController::class, 'show'])->name('blog.detail');

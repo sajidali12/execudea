@@ -46,7 +46,7 @@ class PostController extends Controller
             'body' => ['required'],
             'image' => ['required'],
         ])->validate();
-        $imageName = Str::random().'.'.$request->image->getClientOriginalExtension();
+        $imageName = time() . '.' . $request['image']->extension();
         Storage::disk('public')->putFileAs('product/image', $request->image,$imageName);
         Post::create($request->all()+['image'=>$imageName]);
     
@@ -90,5 +90,27 @@ class PostController extends Controller
     {
         Post::find($id)->delete();
         return redirect()->route('posts.index');
+    }
+
+
+
+    public function all()
+    {
+        $posts = Post::all();
+        return Inertia::render('Blog', ['posts' => $posts]);
+    }
+
+      /**
+     * Display the specified resource.
+     *
+     * @param  Integer  $id
+     * @return \Inertia\Inertia
+     */
+    public function show($id)
+    {
+        $post = Post::find($id);
+        return Inertia::render('Posts/BlogDetail', [
+            'post' => $post
+        ]);
     }
 }    

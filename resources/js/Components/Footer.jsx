@@ -14,7 +14,7 @@ export default function Footer() {
                             <ApplicationLogo class="w-40"/>
                             </a>
                             <p class="text-gray-500/80 mt-5">
-                                Office # 01 Chaudry Arcade KRL Road, Islamabad
+                            Office #02, 2nd Floor, Building 140 I&T Center G9/1 Islamabad, Pakistan.
                             </p>
                         
                         </div>

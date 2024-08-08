@@ -1,7 +1,8 @@
 import Guest from "@/Layouts/GuestLayout";
-import { Head } from "@inertiajs/react";
+import { Head, usePage } from "@inertiajs/react";
 
 export default function Blog() {
+    const { posts } = usePage().props
     return (
         <>
             <Head title="Blog" />
@@ -53,6 +54,7 @@ export default function Blog() {
                             class="grid lg:grid-cols-3 grid-cols-1 gap-6 lg:py-10 py-14"
                             data-aos="fade-up"
                         >
+                             {posts.map(({ id, title, body }) => (
                             <div>
                                 <img
                                     src="img/blog/blog-1.png"
@@ -64,148 +66,22 @@ export default function Blog() {
                                 </span>
                                 <h1 class="text-lg my-3 transition-all hover:text-primary">
                                     <a href="#">
-                                        Introducing new blazzing fast user
-                                        interface
+                                     { title }
                                     </a>
                                 </h1>
                                 <p class="text-sm/relaxed tracking-wider text-gray-500">
                                     Introducing the blazzing fast user
                                     interface. The new UI is fast, secure and
                                     most user friendly...
-                                    <a href="#" class="text-primary">
+                                    <a href={'blog/'+ id } class="text-primary">
                                         read more
                                     </a>
                                 </p>
                             </div>
-
-                            <div>
-                                <img
-                                    src="img/blog/blog-2.png"
-                                    class="rounded-md mb-5"
-                                />
-
-                                <span class="bg-green-500/10 text-green-500 font-medium rounded-md text-xs py-1 px-2">
-                                    <a href="#">Tutorial</a>
-                                </span>
-                                <h1 class="text-lg my-3 transition-all hover:text-primary">
-                                    <a href="#">
-                                        What you should know before considering
-                                        the Prompt
-                                    </a>
-                                </h1>
-                                <p class="text-sm/relaxed tracking-wider text-gray-500">
-                                    We are giving a pretty extensive guideline
-                                    and context before you make your decision to
-                                    consider Prompt...
-                                    <a href="#" class="text-primary">
-                                        read more
-                                    </a>
-                                </p>
-                            </div>
-
-                            <div>
-                                <img
-                                    src="img/blog/blog-3.png"
-                                    class="rounded-md mb-5"
-                                />
-
-                                <span class="bg-teal-500/10 text-teal-500 font-medium rounded-md text-xs py-1 px-2">
-                                    <a href="#">Community</a>
-                                </span>
-                                <h1 class="text-lg my-3 transition-all hover:text-primary">
-                                    <a href="#">
-                                        Your Way to a Successful Sales Campaigns
-                                    </a>
-                                </h1>
-                                <p class="text-sm/relaxed tracking-wider text-gray-500">
-                                    Explore a latest guideline for creating a
-                                    successful online sales campaign using
-                                    google adwords or facebook ads ...
-                                    <a href="#" class="text-primary">
-                                        read more
-                                    </a>
-                                </p>
-                            </div>
+                             ))}
                         </div>
 
-                        <div
-                            class="grid lg:grid-cols-3 gap-6 lg:py-16 py-14"
-                            data-aos="fade-up"
-                        >
-                            <div>
-                                <img
-                                    src="img/blog/blog-1.png"
-                                    class="rounded-md mb-5"
-                                />
-
-                                <span class="bg-orange-500/10 text-orange-500 font-medium rounded-md text-xs py-1 px-2">
-                                    <a href="#">Announcement</a>
-                                </span>
-                                <h1 class="text-lg my-3 transition-all hover:text-primary">
-                                    <a href="#">
-                                        Introducing new blazzing fast user
-                                        interface
-                                    </a>
-                                </h1>
-                                <p class="text-sm/relaxed tracking-wider text-gray-500">
-                                    Introducing the blazzing fast user
-                                    interface. The new UI is fast, secure and
-                                    most user friendly...
-                                    <a href="#" class="text-primary">
-                                        read more
-                                    </a>
-                                </p>
-                            </div>
-
-                            <div>
-                                <img
-                                    src="img/blog/blog-2.png"
-                                    class="rounded-md mb-5"
-                                />
-
-                                <span class="bg-green-500/10 text-green-500 font-medium rounded-md text-xs py-1 px-2">
-                                    <a href="#">Tutorial</a>
-                                </span>
-                                <h1 class="text-lg my-3 transition-all hover:text-primary">
-                                    <a href="#">
-                                        What you should know before considering
-                                        the Prompt
-                                    </a>
-                                </h1>
-                                <p class="text-sm/relaxed tracking-wider text-gray-500">
-                                    We are giving a pretty extensive guideline
-                                    and context before you make your decision to
-                                    consider Prompt...
-                                    <a href="#" class="text-primary">
-                                        read more
-                                    </a>
-                                </p>
-                            </div>
-
-                            <div>
-                                <img
-                                    src="img/blog/blog-3.png"
-                                    class="rounded-md mb-5"
-                                />
-
-                                <span class="bg-teal-500/10 text-teal-500 font-medium rounded-md text-xs py-1 px-2">
-                                    <a href="#">Community</a>
-                                </span>
-                                <h1 class="text-lg my-3 transition-all hover:text-primary">
-                                    <a href="#">
-                                        Your Way to a Successful Sales Campaigns
-                                    </a>
-                                </h1>
-                                <p class="text-sm/relaxed tracking-wider text-gray-500">
-                                    Explore a latest guideline for creating a
-                                    successful online sales campaign using
-                                    google adwords or facebook ads ...
-                                    <a href="#" class="text-primary">
-                                        read more
-                                    </a>
-                                </p>
-                            </div>
-                        </div>
+                    
 
                         <div class="flex justify-center items-center gap-2">
                             <div class="flex items-center">
