@@ -46,7 +46,7 @@ export default function BlogDetail({ post }) {
                 <section class="py-12">
                   <div class="container m-auto md:px-10 px-0">
                   <div>
-                        {post.body}
+                        <div dangerouslySetInnerHTML={{__html:post.body}}></div>
                     </div>
                     </div>
                 </section>

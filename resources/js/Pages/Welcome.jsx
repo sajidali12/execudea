@@ -520,10 +520,10 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                                     </div>
                                 </div>
                                 <div className="p-6">
-                                    <p className="text-sm">11 March, 2020</p>
+                                    <p className="text-sm">11 April, 2024</p>
                                     <h4 className="text-lg hover:text-blue-700 font-semibold my-2">
-                                        <a href="#">
-                                            Top 10 design inspirations to follow
+                                        <a href="/blog/1">
+                                            Why Design Is Important? 
                                         </a>
                                     </h4>
                                     <p className="text-slate-400 my-2">
@@ -531,7 +531,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                                         world, and that's why I would like you
                                         to present the best ...
                                         <a
-                                            href="#"
+                                            href="/blog/1"
                                             className="text-slate-800 hover:text-blue-700"
                                         >
                                             Read More
@@ -540,61 +540,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                                 </div>
                             </div>
 
-                            <div
-                                className="shadow-md rounded-md"
-                                data-aos="fade-up"
-                                data-aos-duration="700"
-                            >
-                                <div className="relative">
-                                    <div className="absolute end-4 top-3">
-                                        <span className="px-3 py-1 text-sm font-medium text-white rounded-md bg-primary">
-                                            Development
-                                        </span>
-                                    </div>
-                                    <img src="img/hero/coworking2.png" />
-                                    <div className="absolute -bottom-5">
-                                        <svg
-                                            className="w-full h-14 text-white"
-                                            viewBox="0 0 528 40"
-                                            version="1.1"
-                                            xmlns:xlink="http://www.w3.org/1999/xlink"
-                                            xmlns="http://www.w3.org/2000/svg"
-                                        >
-                                            <g
-                                                id="shape"
-                                                transform="matrix(-1.138336E-07 -1 1 -1.138336E-07 0 39.92764)"
-                                            >
-                                                <path
-                                                    d="M0 0L40.5467 0C40.5467 0 -31.8215 230.87 38.7134 528.217C39.8794 533.133 31.7549 527.502 31.0925 528.75C28.7914 533.084 26.1543 528.191 24.4327 529.178C59.2372 539.206 14.0091 521.981 12.9329 530.001L1.02722 528.284L0 0Z"
-                                                    transform="translate(7.629395E-06 6.103516E-05)"
-                                                    fill="currentColor"
-                                                    stroke="none"
-                                                ></path>
-                                            </g>
-                                        </svg>
-                                    </div>
-                                </div>
-                                <div className="p-6">
-                                    <p className="text-sm">12 March, 2020</p>
-                                    <h4 className="text-lg hover:text-blue-700 font-semibold my-2">
-                                        <a href="#">
-                                            Top 10 design inspirations to follow
-                                        </a>
-                                    </h4>
-                                    <p className="text-slate-400 my-2">
-                                        We have shortlisted the best WordPress
-                                        themes for alcohol production,
-                                        distribution, and selling to...
-                                        <a
-                                            href="#"
-                                            className="text-slate-800 hover:text-blue-700"
-                                        >
-                                            Read More
-                                        </a>
-                                    </p>
-                                </div>
-                            </div>
-
+                           {/* Blog 2 */}
                             <div
                                 className="shadow-md rounded-md"
                                 data-aos="fade-up"
@@ -630,18 +576,69 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                                     </div>
                                 </div>
                                 <div className="p-6">
-                                    <p className="text-sm">13 March, 2020</p>
+                                    <p className="text-sm">13 March, 2024</p>
                                     <h4 className="text-lg hover:text-blue-700 font-semibold my-2">
-                                        <a href="#">
-                                            Top 10 design inspirations to follow
+                                        <a href="/blog/2">
+                                           Best Practices For Web Designing
                                         </a>
                                     </h4>
                                     <p className="text-slate-400 my-2">
-                                        The following Italian restaurant
-                                        WordPress themes come with the powerful
-                                        drag-n-drop...
+                                    Best practices for web design focus on creating user-centered, visually appealing, and functional ...
                                         <a
-                                            href="#"
+                                            href="/blog/2"
+                                            className="text-slate-800 hover:text-blue-700"
+                                        >
+                                            Read More
+                                        </a>
+                                    </p>
+                                </div>
+                            </div>
+                            {/* Blog 3 */}
+                            <div
+                                className="shadow-md rounded-md"
+                                data-aos="fade-up"
+                                data-aos-duration="700"
+                            >
+                                <div className="relative">
+                                    <div className="absolute end-4 top-3">
+                                        <span className="px-3 py-1 text-sm font-medium text-white rounded-md bg-primary">
+                                            Web Design
+                                        </span>
+                                    </div>
+                                    <img src="img/hero/coworking2.png" />
+                                    <div className="absolute -bottom-5">
+                                        <svg
+                                            className="w-full h-14 text-white"
+                                            viewBox="0 0 528 40"
+                                            version="1.1"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                        >
+                                            <g
+                                                id="shape"
+                                                transform="matrix(-1.138336E-07 -1 1 -1.138336E-07 0 39.92764)"
+                                            >
+                                                <path
+                                                    d="M0 0L40.5467 0C40.5467 0 -31.8215 230.87 38.7134 528.217C39.8794 533.133 31.7549 527.502 31.0925 528.75C28.7914 533.084 26.1543 528.191 24.4327 529.178C59.2372 539.206 14.0091 521.981 12.9329 530.001L1.02722 528.284L0 0Z"
+                                                    transform="translate(7.629395E-06 6.103516E-05)"
+                                                    fill="currentColor"
+                                                    stroke="none"
+                                                ></path>
+                                            </g>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div className="p-6">
+                                    <p className="text-sm">12 March, 2024</p>
+                                    <h4 className="text-lg hover:text-blue-700 font-semibold my-2">
+                                        <a href="/blog/3">
+                                           Why Responsive Web Design is Important?
+                                        </a>
+                                    </h4>
+                                    <p className="text-slate-400 my-2">
+                                    Responsive web design is crucial in today's digital landscape because it ensures that a website provides ...
+                                        <a
+                                            href="/blog/3"
                                             className="text-slate-800 hover:text-blue-700"
                                         >
                                             Read More
