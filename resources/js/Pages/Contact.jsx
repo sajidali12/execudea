@@ -324,8 +324,7 @@ export default function Contact() {
                                         Address
                                     </h5>
                                     <a href="#" class="text-gray-500 my-1">
-                                        Office # 01 Chaudry Arcade KRL Road,
-                                        Islamabad
+                                       Office #02, 2nd Floor, Building 140 I&T Center G9/1 Islamabad, Pakistan.
                                     </a>
                                 </div>
                             </div>

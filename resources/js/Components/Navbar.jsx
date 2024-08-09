@@ -42,11 +42,11 @@ export default function NavBar() {
 
                         <div class="hidden lg:flex items-center ms-3">
                             <a
-                                href="https://1.envato.market/prompt-tailwind"
+                                href="https://calendly.com/execudea-info/30min"
                                 target="_blank"
                                 class="bg-primary text-white px-4 py-2 rounded inline-flex items-center text-sm"
                             >
-                                Download
+                                Book a Meeting
                             </a>
                         </div>
 
