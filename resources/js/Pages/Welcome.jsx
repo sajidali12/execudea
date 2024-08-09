@@ -20,7 +20,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                                     data-aos="fade-right"
                                     data-aos-duration="1000"
                                 >
-                                    <a href="#">
+                                    <a href="/blog/1">
                                         <div className="flex items-center gap-2">
                                             <div className="inline-block px-2 text-sm text-white rounded-full bg-primary">
                                                 New!
