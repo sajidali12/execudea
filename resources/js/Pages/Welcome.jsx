@@ -53,10 +53,11 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                                         View Our Work
                                     </a>
                                     <a
-                                        href="#"
+                                        href="https://calendly.com/execudea-info/30min"
+                                        target="_blank"
                                         className="text-primary py-3 px-6 rounded border border-primary hover:border-black hover:bg-primary hover:text-white hover:shadow-lg hover:shadow-black/50 focus:outline focus:outline-black/50 transition-all duration-500"
                                     >
-                                        Learn More
+                                        Book a Meeting
                                     </a>
                                 </div>
                             </div>
@@ -654,7 +655,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
 
                 {/* openings Section Start */}
                 <section className="py-20">
-                    <div className="container">
+                    <div className="container m-auto">
                         <div className="text-center mb-16 md:px-10 px-0">
                             <h1 className="text-3xl font-medium my-3">
                                 Our Happy Customers
