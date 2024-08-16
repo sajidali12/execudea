@@ -7,7 +7,7 @@ export default function Footer() {
     return (
         <>
       <footer className="bg-gray-100 pt-14 pb-5">
-                <div className="container m-auto md:px-10 px-0">
+                <div className="container m-auto md:px-10 px-2">
                     <div className="grid grid-cols-4 gap-14">
                         <div className="xl:col-span-1 col-span-4">
                             <a href="index.html">

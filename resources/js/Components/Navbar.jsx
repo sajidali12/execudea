@@ -12,7 +12,7 @@ export default function NavBar() {
                 id="navbar"
                 className="@@link-color fixed top-0 inset-x-0 flex items-center z-40 w-full lg:bg-transparent bg-white transition-all py-5"
             >
-                <div className="container m-auto md:px-10 px-0">
+                <div className="container m-auto md:px-10 px-2">
                     <nav className="flex items-center">
                         <a href="/">
                             <ApplicationLogo className="w-40" />

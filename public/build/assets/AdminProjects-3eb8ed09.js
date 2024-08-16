@@ -1,0 +1,1 @@
+import{j as r}from"./app-47d3a156.js";import{A as o}from"./AdminLayout-fb36a65d.js";import"./ApplicationLogo-dbd00f9f.js";import"./AntdIcon-b084bc98.js";function n({auth:i}){return r.jsx(o,{user:i.user,children:r.jsx("div",{children:"This will Projects"})})}export{n as default};

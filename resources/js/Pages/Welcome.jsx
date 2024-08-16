@@ -13,7 +13,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                         <div className="shape2"></div>
                         <div className="shape3"></div>
 
-                        <div className="container m-auto md:px-10 px-0">
+                        <div className="container m-auto md:px-10 px-2">
                             <div>
                                 <div
                                     className="bg-amber-500/10 py-2 px-4 inline-block rounded-md mb-6"
@@ -245,7 +245,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                 {/* services Section End */}
                 {/* portfolio Section Start */}
                 <section className="py-20" id="work">
-                    <div className="container m-auto md:px-10 px-0">
+                    <div className="container m-auto md:px-10 px-2">
                         <div className="text-center">
                             <span className="text-sm font-medium py-1 px-3 rounded-full text-primary bg-primary/10">
                                 Latest
@@ -430,7 +430,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                             className="w-full -scale-x-100"
                         />
                     </div>
-                    <div className="container relative m-auto md:px-10 px-0">
+                    <div className="container relative m-auto md:px-10 px-2">
                         <span className="text-sm font-medium py-1 px-3 rounded-full text-primary bg-primary/10">
                             Our Customers
                         </span>
@@ -475,7 +475,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                 {/* clients Section End   */}
                 {/* blog Section Start */}
                 <section className="py-20">
-                    <div className="container m-auto md:px-10 px-0">
+                    <div className="container m-auto md:px-10 px-2">
                         <div className="text-center">
                             <span className="text-sm font-medium py-1 px-3 rounded-full text-primary bg-primary/10">
                                 Blog
@@ -655,7 +655,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
 
                 {/* openings Section Start */}
                 <section className="py-20">
-                    <div className="container m-auto md:px-10 px-0">
+                    <div className="container m-auto md:px-10 px-2">
                         <div className="text-center mb-16 md:px-10 px-0">
                             <h1 className="text-3xl font-medium my-3">
                                 Our Happy Customers

@@ -14,15 +14,26 @@ export default function GoogleReviews() {
     return (
         <>
             <Swiper
-                slidesPerView={3}
+                breakpoints={{
+                    0: {
+                      slidesPerView: 1,
+                    },
+                    768:{
+                      slidesPerView:2
+                    },
+                    1170:{
+                      slidesPerView:3
+                    }
+                  }}
                 spaceBetween={30}
                 autoplay={{
-                    delay: 5000,
+                    delay: 6000,
                     disableOnInteraction: false,
                 }}
                 pagination={{
                     clickable: true,
                 }}
+
                 modules={[Autoplay, Pagination]}
                 className="mySwiper"
             >
