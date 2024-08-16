@@ -26,3 +26,8 @@ header.nav-sticky{
   writing-mode: vertical-rl;
   text-orientation: mixed;
 }
+
+.swiper-wrapper
+{
+  padding-bottom: 50px;
+}

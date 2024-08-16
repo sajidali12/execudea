@@ -655,7 +655,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
 
                 {/* openings Section Start */}
                 <section className="py-20">
-                    <div className="container m-auto">
+                    <div className="container m-auto md:px-10 px-0">
                         <div className="text-center mb-16 md:px-10 px-0">
                             <h1 className="text-3xl font-medium my-3">
                                 Our Happy Customers

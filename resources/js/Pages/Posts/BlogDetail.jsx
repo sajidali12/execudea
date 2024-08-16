@@ -2,25 +2,24 @@ import Guest from '@/Layouts/GuestLayout';
 import { Head } from '@inertiajs/react';
 
 export default function BlogDetail({ post }) {
-    console.log(post.title);
     return (
         <>
-        <Head title="Blog Detail" />
+        <Head title={post.title} />
         <Guest>
-        <section class="bg-gray-100 lg:pt-28 sm:pb-36 pb-16 pt-36 relative">
-                    <div class="container m-auto">
-                        <div class="flex justify-center">
-                            <div class="lg:w-7/12 text-center">
-                                <h1 class="text-5xl/relaxed text-gray-700">
+        <section className="bg-gray-100 lg:pt-28 sm:pb-36 pb-16 pt-36 relative">
+                    <div className="container m-auto">
+                        <div className="flex justify-center">
+                            <div className="lg:w-7/12 text-center">
+                                <h1 className="text-5xl/relaxed text-gray-700">
                                     {post.title}
                                 </h1>
                                
                             </div>
                         </div>
                     </div>
-                    <div class="absolute -bottom-1 w-full">
+                    <div className="absolute -bottom-1 w-full">
                         <svg
-                            class="w-full h-full"
+                            className="w-full h-full"
                             viewBox="0 0 1440 40"
                             version="1.1"
                             xmlns="http://www.w3.org/2000/svg"
@@ -43,8 +42,8 @@ export default function BlogDetail({ post }) {
                         </svg>
                     </div>
                 </section>
-                <section class="py-12">
-                  <div class="container m-auto md:px-10 px-0">
+                <section className="py-12">
+                  <div className="container m-auto md:px-10 px-0">
                   <div>
                         <div dangerouslySetInnerHTML={{__html:post.body}}></div>
                     </div>

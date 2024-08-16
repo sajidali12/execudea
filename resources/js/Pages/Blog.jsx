@@ -7,14 +7,14 @@ export default function Blog() {
         <>
             <Head title="Blog" />
             <Guest>
-                <section class="bg-gray-100 lg:pt-28 sm:pb-36 pb-16 pt-36 relative">
-                    <div class="container m-auto">
-                        <div class="flex justify-center">
-                            <div class="lg:w-7/12 text-center">
-                                <h1 class="text-5xl/relaxed text-gray-700">
+                <section className="bg-gray-100 lg:pt-28 sm:pb-36 pb-16 pt-36 relative">
+                    <div className="container m-auto">
+                        <div className="flex justify-center">
+                            <div className="lg:w-7/12 text-center">
+                                <h1 className="text-5xl/relaxed text-gray-700">
                                     Blog
                                 </h1>
-                                <p class="mb-6 md:text-lg text-gray-500">
+                                <p className="mb-6 md:text-lg text-gray-500">
                                     Find useful resources about design,
                                     development and digital marketing
                                     techniques.
@@ -22,9 +22,9 @@ export default function Blog() {
                             </div>
                         </div>
                     </div>
-                    <div class="absolute -bottom-1 w-full">
+                    <div className="absolute -bottom-1 w-full">
                         <svg
-                            class="w-full h-full"
+                            className="w-full h-full"
                             viewBox="0 0 1440 40"
                             version="1.1"
                             xmlns="http://www.w3.org/2000/svg"
@@ -48,32 +48,32 @@ export default function Blog() {
                     </div>
                 </section>
 
-                <section class="py-12">
-                    <div class="container m-auto md:px-10 px-0">
+                <section className="py-12">
+                    <div className="container m-auto md:px-10 px-0">
                         <div
-                            class="grid lg:grid-cols-3 grid-cols-1 gap-6 lg:py-10 py-14"
+                            className="grid lg:grid-cols-3 grid-cols-1 gap-6 lg:py-10 py-14"
                             data-aos="fade-up"
                         >
                              {posts.map(({ id, title, body }) => (
                             <div>
                                 <img
                                     src="img/blog/blog-1.png"
-                                    class="rounded-md mb-5"
+                                    className="rounded-md mb-5"
                                 />
 
-                                <span class="bg-orange-500/10 text-orange-500 font-medium rounded-md text-xs py-1 px-2">
+                                <span className="bg-orange-500/10 text-orange-500 font-medium rounded-md text-xs py-1 px-2">
                                     <a href="#">Announcement</a>
                                 </span>
-                                <h1 class="text-lg my-3 transition-all hover:text-primary">
+                                <h1 className="text-lg my-3 transition-all hover:text-primary">
                                     <a href="#">
                                      { title }
                                     </a>
                                 </h1>
-                                <p class="text-sm/relaxed tracking-wider text-gray-500">
+                                <p className="text-sm/relaxed tracking-wider text-gray-500">
                                     Introducing the blazzing fast user
                                     interface. The new UI is fast, secure and
                                     most user friendly...
-                                    <a href={'blog/'+ id } class="text-primary">
+                                    <a href={'blog/'+ id } className="text-primary">
                                         read more
                                     </a>
                                 </p>
@@ -83,24 +83,24 @@ export default function Blog() {
 
                     
 
-                        <div class="flex justify-center items-center gap-2">
-                            <div class="flex items-center">
+                        <div className="flex justify-center items-center gap-2">
+                            <div className="flex items-center">
                                 <a
                                     href="javascript:void(0)"
-                                    class="border border-gray-300 rounded-md text-sm tracking-wider transition-all duration-150 hover:shadow-lg focus:shadow-lg py-2 px-3"
+                                    className="border border-gray-300 rounded-md text-sm tracking-wider transition-all duration-150 hover:shadow-lg focus:shadow-lg py-2 px-3"
                                 >
-                                    <i class="fa-solid fa-arrow-left me-2"></i>{" "}
+                                    <i className="fa-solid fa-arrow-left me-2"></i>{" "}
                                     Previous
                                 </a>
                             </div>
 
-                            <div class="flex items-center">
+                            <div className="flex items-center">
                                 <a
                                     href="javascript:void(0)"
-                                    class="border border-gray-300 rounded-md text-sm tracking-wider transition-all duration-150 hover:shadow-lg focus:shadow-lg py-2 px-3"
+                                    className="border border-gray-300 rounded-md text-sm tracking-wider transition-all duration-150 hover:shadow-lg focus:shadow-lg py-2 px-3"
                                 >
                                     Next{" "}
-                                    <i class="fa-solid fa-arrow-right ms-2"></i>
+                                    <i className="fa-solid fa-arrow-right ms-2"></i>
                                 </a>
                             </div>
                         </div>

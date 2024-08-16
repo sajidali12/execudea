@@ -10,12 +10,12 @@
 </style>
 <pattern  y="221.12" width="7" height="7" patternUnits="userSpaceOnUse" id="SVGID_2_" viewBox="0 -7 7 7" style="overflow:visible;">
 	<g>
-		<rect y="-7" class="st0" width="7" height="7"/>
+		<rect y="-7" className="st0" width="7" height="7"/>
 		<g>
-			<rect y="-7" class="st0" width="7" height="7"/>
+			<rect y="-7" className="st0" width="7" height="7"/>
 			<g>
-				<rect y="-7" class="st0" width="7" height="7"/>
-				<circle class="st1" cx="3.5" cy="-3.5" r="1.4"/>
+				<rect y="-7" className="st0" width="7" height="7"/>
+				<circle className="st1" cx="3.5" cy="-3.5" r="1.4"/>
 			</g>
 		</g>
 	</g>
@@ -23,9 +23,9 @@
 <g>
 	<pattern  id="SVGID_1_" xlink:href="#SVGID_2_" patternTransform="matrix(-1 0 0 -1 -42777.3789 -32095.3027)">
 	</pattern>
-	<path class="st2" d="M0.2,0c25.7,68.9,103.2,79.33,181.1,78.03c341.33-5.55,696.01-99.61,1045.45-63.02
+	<path className="st2" d="M0.2,0c25.7,68.9,103.2,79.33,181.1,78.03c341.33-5.55,696.01-99.61,1045.45-63.02
 		C1695.6,64.1,2155.02,127.11,2560.1,139.6c0-18.85,0-139.6,0-139.6H0.2z"/>
 </g>
-<path class="st3" d="M0.2,220c656.38,0,1120.7-277.98,2294.2-200.18c44.22,2.92,189.02,18.01,265.7,26.8c0-18.85,0-33.23,0-46.62
+<path className="st3" d="M0.2,220c656.38,0,1120.7-277.98,2294.2-200.18c44.22,2.92,189.02,18.01,265.7,26.8c0-18.85,0-33.23,0-46.62
 	H0.2C0.2,40.8,0,201.72,0.2,220z"/>
 </svg>

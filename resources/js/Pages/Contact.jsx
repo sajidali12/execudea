@@ -6,23 +6,23 @@ export default function Contact() {
         <>
             <Head title="Contact" />
             <Guest>
-                <section class="bg-gray-100 lg:pt-28 sm:pb-36 pb-16 pt-36 relative">
-                    <div class="container m-auto">
-                        <div class="flex justify-center">
-                            <div class="lg:w-7/12 text-center">
-                                <h1 class="text-5xl/relaxed text-gray-700">
+                <section className="bg-gray-100 lg:pt-28 sm:pb-36 pb-16 pt-36 relative">
+                    <div className="container m-auto">
+                        <div className="flex justify-center">
+                            <div className="lg:w-7/12 text-center">
+                                <h1 className="text-5xl/relaxed text-gray-700">
                                     Contact Us
                                 </h1>
-                                <p class="mb-6 md:text-lg text-gray-500">
+                                <p className="mb-6 md:text-lg text-gray-500">
                                     Please fill out the following form and we
                                     will get back to you shortly
                                 </p>
                             </div>
                         </div>
                     </div>
-                    <div class="absolute -bottom-1 w-full">
+                    <div className="absolute -bottom-1 w-full">
                         <svg
-                            class="w-full h-full"
+                            className="w-full h-full"
                             viewBox="0 0 1440 40"
                             version="1.1"
                             xmlns="http://www.w3.org/2000/svg"
@@ -47,91 +47,91 @@ export default function Contact() {
                 </section>
 
                 {/*  */}
-                <section class="lg:pb-24 py-6 relative">
-                    <div class="container m-auto md:px-10 px-0">
-                        <div class="lg:flex align-items-center">
-                            <div class="lg:w-1/2">
-                                <div class="mb-6 relative bg-clip-border rounded-[0.1875rem]">
-                                    <div class="py-12">
-                                        <h2 class="mb-4 text-2xl/6 mt-0 font-medium">
+                <section className="lg:pb-24 py-6 relative">
+                    <div className="container m-auto md:px-10 px-0">
+                        <div className="lg:flex align-items-center">
+                            <div className="lg:w-1/2">
+                                <div className="mb-6 relative bg-clip-border rounded-[0.1875rem]">
+                                    <div className="py-12">
+                                        <h2 className="mb-4 text-2xl/6 mt-0 font-medium">
                                             Let's Talk Further
                                         </h2>
-                                        <p class="mb-12 text-base/6">
+                                        <p className="mb-12 text-base/6">
                                             Please fill out the following form
                                             and we will get back to you shortly
                                         </p>
 
                                         <form>
-                                            <div class="flex gap-6">
-                                                <div class="md:w-1/2">
-                                                    <div class="mb-5">
+                                            <div className="flex gap-6">
+                                                <div className="md:w-1/2">
+                                                    <div className="mb-5">
                                                         <label
                                                             for="exampleInputName1"
-                                                            class="block text-sm font-medium mb-1 text-gray-600"
+                                                            className="block text-sm font-medium mb-1 text-gray-600"
                                                         >
                                                             Name{" "}
-                                                            <span class="text-red-500">
+                                                            <span className="text-red-500">
                                                                 *
                                                             </span>
                                                         </label>
                                                         <input
                                                             type="text"
-                                                            class="py-2 px-4 leading-6 block w-full border-gray-300 rounded text-sm focus:border-gray-300 focus:ring-0"
+                                                            className="py-2 px-4 leading-6 block w-full border-gray-300 rounded text-sm focus:border-gray-300 focus:ring-0"
                                                             id="exampleInputName1"
                                                             placeholder="Your Name"
                                                         />
                                                     </div>
                                                 </div>
-                                                <div class="md:w-1/2">
-                                                    <div class="mb-5">
+                                                <div className="md:w-1/2">
+                                                    <div className="mb-5">
                                                         <label
                                                             for="exampleInputName"
-                                                            class="block text-sm font-medium mb-1 text-gray-600"
+                                                            className="block text-sm font-medium mb-1 text-gray-600"
                                                         >
                                                             Name{" "}
-                                                            <span class="text-red-500">
+                                                            <span className="text-red-500">
                                                                 *
                                                             </span>
                                                         </label>
                                                         <input
                                                             type="text"
-                                                            class="py-2 px-4 leading-6 block w-full border-gray-300 rounded text-sm focus:border-gray-300 focus:ring-0"
+                                                            className="py-2 px-4 leading-6 block w-full border-gray-300 rounded text-sm focus:border-gray-300 focus:ring-0"
                                                             id="exampleInputName"
                                                             placeholder="Your Name"
                                                         />
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="w-full">
-                                                <div class="mb-5">
+                                            <div className="w-full">
+                                                <div className="mb-5">
                                                     <label
                                                         for="exampleInputEmail1"
-                                                        class="block text-sm font-medium mb-1 text-gray-600"
+                                                        className="block text-sm font-medium mb-1 text-gray-600"
                                                     >
                                                         Email{" "}
-                                                        <span class="text-red-500">
+                                                        <span className="text-red-500">
                                                             *
                                                         </span>
                                                     </label>
                                                     <input
                                                         type="email"
-                                                        class="py-2 px-4 leading-6 block w-full border-gray-300 rounded text-sm focus:border-gray-300 focus:ring-0"
+                                                        className="py-2 px-4 leading-6 block w-full border-gray-300 rounded text-sm focus:border-gray-300 focus:ring-0"
                                                         id="exampleInputEmail1"
                                                         placeholder="Your Email"
                                                     />
                                                 </div>
-                                                <div class="mb-5">
+                                                <div className="mb-5">
                                                     <label
                                                         for="exampleFormControlTextarea1"
-                                                        class="block text-sm font-medium mb-1 text-gray-600"
+                                                        className="block text-sm font-medium mb-1 text-gray-600"
                                                     >
                                                         Message{" "}
-                                                        <span class="text-red-500">
+                                                        <span className="text-red-500">
                                                             *
                                                         </span>
                                                     </label>
                                                     <textarea
-                                                        class="py-2 px-4 leading-6 block w-full border-gray-300 rounded text-sm focus:border-gray-300 focus:ring-0"
+                                                        className="py-2 px-4 leading-6 block w-full border-gray-300 rounded text-sm focus:border-gray-300 focus:ring-0"
                                                         id="exampleFormControlTextarea1"
                                                         rows="4"
                                                         placeholder="Type Your Massage..."
@@ -140,12 +140,12 @@ export default function Contact() {
                                             </div>
                                             <button
                                                 type="submit"
-                                                class="inline-flex items-center text-sm bg-primary text-white font-medium leading-6 text-center align-middle select-none py-2 px-4 rounded-md transition-all hover:shadow-lg hover:shadow-primary/80"
+                                                className="inline-flex items-center text-sm bg-primary text-white font-medium leading-6 text-center align-middle select-none py-2 px-4 rounded-md transition-all hover:shadow-lg hover:shadow-primary/80"
                                             >
                                                 Send
-                                                <span class="w-4 h-4 ms-1">
+                                                <span className="w-4 h-4 ms-1">
                                                     <svg
-                                                        class="w-full h-full text-white"
+                                                        className="w-full h-full text-white"
                                                         viewBox="0 0 24 24"
                                                         version="1.1"
                                                         xmlns="http://www.w3.org/2000/svg"
@@ -178,16 +178,16 @@ export default function Contact() {
                                 </div>
                             </div>
 
-                            <div class="lg:w-5/12 ms-auto overflow-x-hidden">
-                                <div class="h-[520px]">
+                            <div className="lg:w-5/12 ms-auto overflow-x-hidden">
+                                <div className="h-[520px]">
                                     <div
                                         id="marker-map5"
-                                        class="h-100"
+                                        className="h-100"
                                         data-toggle="map"
                                         data-map='{"mapCenter": [40.749179, -73.989276], "zoom": 12, "useTextIcon": false, "interactive": true, "geojson": "/assets/sample-listing-geojson.json" }'
                                     >
                                         <iframe
-                                            class="w-full h-[500px]"
+                                            className="w-full h-[500px]"
                                             src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13288.241468556029!2d73.13259808851316!3d33.62967672480005!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38dfedc5b6c9c517%3A0xd5e918fcdc2f4564!2sWeb%20Designs%20PK!5e0!3m2!1sen!2s!4v1701422938415!5m2!1sen!2s"
                                             frameborder="0"
                                         ></iframe>
@@ -196,11 +196,11 @@ export default function Contact() {
                             </div>
                         </div>
 
-                        <div class="grid md:grid-cols-3 gap-6">
-                            <div class="flex mb-3">
-                                <span class="flex items-center justify-center w-12 h-12 bg-primary/20 rounded-lg relative me-4 shrink-0">
+                        <div className="grid md:grid-cols-3 gap-6">
+                            <div className="flex mb-3">
+                                <span className="flex items-center justify-center w-12 h-12 bg-primary/20 rounded-lg relative me-4 shrink-0">
                                     <svg
-                                        class="w-7 h-7 text-primary"
+                                        className="w-7 h-7 text-primary"
                                         viewBox="0 0 24 24"
                                         version="1.1"
                                         xmlns="http://www.w3.org/2000/svg"
@@ -233,20 +233,20 @@ export default function Contact() {
                                         </g>
                                     </svg>
                                 </span>
-                                <div class="grow">
-                                    <h5 class="text-base text-gray-700">
+                                <div className="grow">
+                                    <h5 className="text-base text-gray-700">
                                         Email
                                     </h5>
-                                    <a href="#" class="text-gray-500 my-1">
+                                    <a href="#" className="text-gray-500 my-1">
                                         info@execudea.com
                                     </a>
                                 </div>
                             </div>
 
-                            <div class="flex mb-3">
-                                <span class="flex items-center justify-center w-12 h-12 bg-orange-500/20 rounded-lg relative me-4 shrink-0">
+                            <div className="flex mb-3">
+                                <span className="flex items-center justify-center w-12 h-12 bg-orange-500/20 rounded-lg relative me-4 shrink-0">
                                     <svg
-                                        class="w-7 h-7 text-orange-500"
+                                        className="w-7 h-7 text-orange-500"
                                         viewBox="0 0 24 24"
                                         version="1.1"
                                         xmlns="http://www.w3.org/2000/svg"
@@ -279,20 +279,20 @@ export default function Contact() {
                                         </g>
                                     </svg>
                                 </span>
-                                <div class="grow">
-                                    <h5 class="text-base text-gray-700">
+                                <div className="grow">
+                                    <h5 className="text-base text-gray-700">
                                         Phone
                                     </h5>
-                                    <a href="#" class="text-gray-500 my-1">
+                                    <a href="#" className="text-gray-500 my-1">
                                         +92 336 5707907
                                     </a>
                                 </div>
                             </div>
 
-                            <div class="flex mb-3">
-                                <span class="flex items-center justify-center w-12 h-12 bg-teal-500/20 rounded-lg relative me-4 shrink-0">
+                            <div className="flex mb-3">
+                                <span className="flex items-center justify-center w-12 h-12 bg-teal-500/20 rounded-lg relative me-4 shrink-0">
                                     <svg
-                                        class="w-7 h-7 text-teal-500"
+                                        className="w-7 h-7 text-teal-500"
                                         viewBox="0 0 24 24"
                                         version="1.1"
                                         xmlns="http://www.w3.org/2000/svg"
@@ -319,11 +319,11 @@ export default function Contact() {
                                         </g>
                                     </svg>
                                 </span>
-                                <div class="grow">
-                                    <h5 class="text-base text-gray-700">
+                                <div className="grow">
+                                    <h5 className="text-base text-gray-700">
                                         Address
                                     </h5>
-                                    <a href="#" class="text-gray-500 my-1">
+                                    <a href="#" className="text-gray-500 my-1">
                                        Office #02, 2nd Floor, Building 140 I&T Center G9/1 Islamabad, Pakistan.
                                     </a>
                                 </div>

@@ -29,7 +29,7 @@ export default function Register() {
     return (
         <GuestLayout>
             <Head title="Register" />
-            <div class="flex items-center justify-center pb-16 pt-36 min-w-full ">
+            <div className="flex items-center justify-center pb-16 pt-36 min-w-full ">
                 <form onSubmit={submit} className="w-2/5 shadow-xl p-5 pt-8">
                     <div>
                         <InputLabel htmlFor="name" value="Name" />

@@ -6,35 +6,35 @@ export default function Footer() {
   const year = today.getFullYear();
     return (
         <>
-      <footer class="bg-gray-100 pt-14 pb-5">
-                <div class="container m-auto md:px-10 px-0">
-                    <div class="grid grid-cols-4 gap-14">
-                        <div class="xl:col-span-1 col-span-4">
+      <footer className="bg-gray-100 pt-14 pb-5">
+                <div className="container m-auto md:px-10 px-0">
+                    <div className="grid grid-cols-4 gap-14">
+                        <div className="xl:col-span-1 col-span-4">
                             <a href="index.html">
-                            <ApplicationLogo class="w-40"/>
+                            <ApplicationLogo className="w-40"/>
                             </a>
-                            <p class="text-gray-500/80 mt-5">
+                            <p className="text-gray-500/80 mt-5">
                             Office #02, 2nd Floor, Building 140 I&T Center G9/1 Islamabad, Pakistan.
                             </p>
                         
                         </div>
-                        <div class="xl:col-span-3 col-span-4 xl:mx-20">
-                            <div class="flex flex-col sm:flex-row gap-14 flex-wrap justify-between">
+                        <div className="xl:col-span-3 col-span-4 xl:mx-20">
+                            <div className="flex flex-col sm:flex-row gap-14 flex-wrap justify-between">
                                 <div>
-                                    <div class="flex flex-col gap-3">
-                                        <h5 class="mb-3">About</h5>
-                                        <div class="text-gray-500/80">
+                                    <div className="flex flex-col gap-3">
+                                        <h5 className="mb-3">About</h5>
+                                        <div className="text-gray-500/80">
                                             <a href="/">
                                                 Home
                                             </a>
                                         </div>
-                                        <div class="text-gray-500/80">
+                                        <div className="text-gray-500/80">
                                             <a href="javascript:void(0);">
                                                 Portfolio
                                             </a>
                                         </div>
                                        
-                                        <div class="text-gray-500/80">
+                                        <div className="text-gray-500/80">
                                             <a href="blog">
                                                 Blog
                                             </a>
@@ -42,19 +42,19 @@ export default function Footer() {
                                     </div>
                                 </div>
                                 <div>
-                                    <div class="flex flex-col gap-3">
-                                        <h5 class="mb-3">Company</h5>
-                                        <div class="text-gray-500/80">
+                                    <div className="flex flex-col gap-3">
+                                        <h5 className="mb-3">Company</h5>
+                                        <div className="text-gray-500/80">
                                             <a href="javascript:void(0);">
                                                 About
                                             </a>
                                         </div>
-                                        <div class="text-gray-500/80">
+                                        <div className="text-gray-500/80">
                                             <a href="javascript:void(0);">
                                                 Career
                                             </a>
                                         </div>
-                                        <div class="text-gray-500/80">
+                                        <div className="text-gray-500/80">
                                             <a href="contact">
                                                 Contact Us
                                             </a>
@@ -62,18 +62,18 @@ export default function Footer() {
                                     </div>
                                 </div>
                                 <div>
-                                    <div class="flex flex-col gap-3">
-                                        <h5 class="mb-3">Get in touch</h5>
-                                        <div class="text-gray-500/80">
+                                    <div className="flex flex-col gap-3">
+                                        <h5 className="mb-3">Get in touch</h5>
+                                        <div className="text-gray-500/80">
                                             <a href="javascript:void(0);">
                                                 info@execudea.com
                                             </a>
                                         </div>
-                                        <div class="flex sm:justify-center gap-7">
+                                        <div className="flex sm:justify-center gap-7">
                                             <div>
                                                 <a href="https://www.facebook.com/execudea">
                                                     <svg
-                                                        class="w-5 h-5 text-slate-400 transition-all"
+                                                        className="w-5 h-5 text-slate-400 transition-all"
                                                         xmlns="http://www.w3.org/2000/svg"
                                                         viewBox="0 0 24 24"
                                                         fill="none"
@@ -89,7 +89,7 @@ export default function Footer() {
                                             <div>
                                                 <a href="https://www.linkedin.com/company/execudea">
                                                     <svg
-                                                        class="w-5 h-5 text-slate-400 transition-all"
+                                                        className="w-5 h-5 text-slate-400 transition-all"
                                                         xmlns="http://www.w3.org/2000/svg"
                                                         viewBox="0 0 24 24"
                                                         fill="none"
@@ -116,7 +116,7 @@ export default function Footer() {
                                             <div>
                                                 <a href="https://www.instagram.com/execudea/">
                                                     <svg
-                                                        class="w-5 h-5 text-slate-400 transition-all"
+                                                        className="w-5 h-5 text-slate-400 transition-all"
                                                         xmlns="http://www.w3.org/2000/svg"
                                                         viewBox="0 0 24 24"
                                                         fill="none"
@@ -147,14 +147,14 @@ export default function Footer() {
                                     </div>
                                 </div>
                                 <div>
-                                    <div class="flex flex-col gap-3">
-                                        <h5 class="mb-3">Contacts</h5>
-                                        <div class="text-gray-500/80">
+                                    <div className="flex flex-col gap-3">
+                                        <h5 className="mb-3">Contacts</h5>
+                                        <div className="text-gray-500/80">
                                             <a href="javascript:void(0);">
                                                 +92 336 5707907
                                             </a>
                                         </div>
-                                        <div class="text-gray-500/80">
+                                        <div className="text-gray-500/80">
                                             <a href="javascript:void(0);">
                                                 +92 314 5805849
                                             </a>
@@ -164,14 +164,14 @@ export default function Footer() {
                             </div>
                         </div>
                     </div>
-                    <div class="border-b my-5"></div>
-                    <div class="text-center">
-                        <p class="text-gray-500/80 text-sm">
+                    <div className="border-b my-5"></div>
+                    <div className="text-center">
+                        <p className="text-gray-500/80 text-sm">
                            { year }{' '}
                              © Prompt. All rights reserved. Crafted by{" "}
                             <a
                                 href="/"
-                                class="text-gray-800 hover:text-primary transition-all"
+                                className="text-gray-800 hover:text-primary transition-all"
                             >
                                 Execudea Team
                             </a>
