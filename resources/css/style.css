@@ -31,3 +31,6 @@ header.nav-sticky{
 {
   padding-bottom: 50px;
 }
+.swiper-pagination-bullet-active {
+  background-color: #4db8b3 !important;
+}

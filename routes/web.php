@@ -34,6 +34,9 @@ Route::get('/contact', function () {
 Route::get('/blog', function () {
     return Inertia::render('Blog');
 });
+Route::get('/about', function () {
+    return Inertia::render('About');
+});
 
 Route::get('/blog', [PostController::class, 'all'])->name('blog.all');
 

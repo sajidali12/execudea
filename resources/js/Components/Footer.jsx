@@ -45,7 +45,7 @@ export default function Footer() {
                                     <div className="flex flex-col gap-3">
                                         <h5 className="mb-3">Company</h5>
                                         <div className="text-gray-500/80">
-                                            <a href="javascript:void(0);">
+                                            <a href="/about">
                                                 About
                                             </a>
                                         </div>
