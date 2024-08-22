@@ -27,6 +27,12 @@ export default function NavBar() {
                                 </li>
 
                                 <li className="nav-item">
+                                    <a className="nav-link" href="about">
+                                        About
+                                    </a>
+                                </li>
+
+                                <li className="nav-item">
                                     <a className="nav-link" href="blog">
                                         Blog
                                     </a>
@@ -44,7 +50,7 @@ export default function NavBar() {
                             <a
                                 href="https://calendly.com/execudea-info/30min"
                                 target="_blank"
-                                className="bg-primary text-white px-4 py-2 rounded inline-flex items-center text-sm"
+                                className="bg-primary text-white px-4 py-2 rounded inline-flex items-center text-sm transition duration-300 hover:bg-secondary-400"
                             >
                                 Book a Meeting
                             </a>

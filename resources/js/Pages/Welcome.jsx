@@ -410,10 +410,11 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
 
                         <div className="flex justify-center mt-14">
                             <a
-                                href="#"
+                                href="https://calendly.com/execudea-info/30min"
+                                target="_blank"
                                 className="py-3 px-6 rounded border border-black hover:border-black hover:bg-black hover:text-white hover:shadow-lg hover:shadow-black/50 focus:outline focus:outline-black/50 transition-all duration-500"
                             >
-                                Explore All Work{" "}
+                                Discuss Your Idea !{" "}
                                 <i className="fa-solid fa-arrow-right ms-2"></i>
                             </a>
                         </div>
