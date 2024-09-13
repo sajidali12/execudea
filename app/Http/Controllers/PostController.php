@@ -2,12 +2,15 @@
    
 namespace App\Http\Controllers;
     
-use Illuminate\Http\Request;
-use Inertia\Inertia;
 use App\Models\Post;
+use Inertia\Inertia;
 use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Log;
+
    
 class PostController extends Controller
 {
@@ -16,11 +19,30 @@ class PostController extends Controller
      *
      * @return Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $user = Auth::user();
-        $posts = Post::all();
-        return Inertia::render('Posts/Index', ['posts' => $posts, 'user' => $user]);
+    
+        $perPage = $request->input('perPage', 10);
+        $perPage = $perPage === 'all' ? Post::count() : (int)$perPage;
+    
+        $posts = Post::paginate($perPage);
+    
+        return Inertia::render('Posts/Index', [
+            'posts' => $posts,
+            'user' => $user,
+            'perPage' => $perPage, 
+        ]);
+    }
+    public function blog()
+    {
+        $user = Auth::user();
+        $posts = Post::orderBy('created_at', 'desc')->paginate(6); 
+    
+        return Inertia::render('Blog', [
+            'posts' => $posts,
+            'user' => $user,
+        ]);
     }
   
     /**
@@ -33,35 +55,54 @@ class PostController extends Controller
         $user = Auth::user();
         return Inertia::render('Posts/Create', ['user' => $user]);
     }
+
     
     /**
      * Show the form for creating a new resource.
      *
      * @return Response
      */
+   
     public function store(Request $request)
-    {
-        Validator::make($request->all(), [
-            'title' => ['required'],
-            'body' => ['required'],
-            'image' => ['required'],
-        ])->validate();
-        $imageName = time() . '.' . $request['image']->extension();
-        Storage::disk('public')->putFileAs('product/image', $request->image,$imageName);
-        Post::create($request->all()+['image'=>$imageName]);
-    
+{
+
+    Validator::make($request->all(), [
+        'title' => ['required'],
+        'body' => ['required'],
+        'image' => ['nullable', 'image'],
+    ])->validate();
+
+    if ($request->hasFile('image')) {
+        $image = $request->file('image');
+        $imageName = time() . '.' . $image->getClientOriginalExtension();
+        $image->storeAs('public/product/image', $imageName);
+
+        Post::create([
+            'title' => $request->input('title'),
+            'body' => $request->input('body'),
+            'image' => $imageName,
+        ]);
+
+        // session()->flash('success', 'Post created successfully!');
+
         return redirect()->route('posts.index');
     }
+
+    return redirect()->back()->with('error', 'Image not uploaded');
+}
+
   
     /**
      * Write code on Method
      *
      * @return response()
      */
-    public function edit(Post $post)
+    public function edit($id)
     {
+        $post = Post::findOrFail($id);
+    
         return Inertia::render('Posts/Edit', [
-            'post' => $post
+            'post' => $post,
         ]);
     }
     
@@ -70,34 +111,70 @@ class PostController extends Controller
      *
      * @return Response
      */
-    public function update($id, Request $request)
-    {
-        Validator::make($request->all(), [
-            'title' => ['required'],
-            'body' => ['required'],
-        ])->validate();
+  
+   
+   
+public function update(Request $request, $id)
+{
     
-        Post::find($id)->update($request->all());
+    $request->validate([
+        'title' => 'required|string|max:255',
+        'body' => 'required|string',
+        'image' => 'nullable|image',
+        'oldImage' => 'nullable|string',
+    ]);
+
+    $post = Post::findOrFail($id);
+
+    $post->title = $request->input('title');
+    $post->body = $request->input('body');
+
+    try {
+        if ($request->hasFile('image')) {
+           
+            if ($post->image && Storage::exists('public/product/image/' . $post->image)) {
+                Storage::delete('public/product/image/' . $post->image);
+            }
+            $image = $request->file('image');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $image->storeAs('public/product/image', $imageName);
+            $post->image = $imageName;
+        } else {
+           
+            $post->image = $request->input('oldImage', $post->image);
+        }
+
+        
+        $post->save();
+
         return redirect()->route('posts.index');
+    } catch (\Exception $e) {
+        Log::error('Error updating post image: ' . $e->getMessage());
+        return redirect()->back()->withErrors(['error' => 'An error occurred while updating the post. Please try again.']);
     }
+}
+
     
     /**
      * Show the form for creating a new resource.
      *
      * @return Response
      */
-    public function destroy($id)
+    public function destroy(Post $post)
     {
-        Post::find($id)->delete();
+        $post->delete();
+
         return redirect()->route('posts.index');
     }
-
 
 
     public function all()
     {
         $posts = Post::all();
-        return Inertia::render('Blog', ['posts' => $posts]);
+        foreach ($posts as $post) {
+            $post->slug = Str::slug($post->title, '-') . '-' . $post->id;
+            $post->save();
+        }
     }
 
       /**

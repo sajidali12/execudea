@@ -1,6 +1,6 @@
 import TechLogos from "@/Components/TechLogos";
 import Guest from "@/Layouts/GuestLayout";
-import { Head } from "@inertiajs/react";
+import { Head, Link } from "@inertiajs/react";
 
 export default function About() {
     return (
@@ -70,7 +70,7 @@ export default function About() {
                     </p>
 
                     <div class="flex items-center mt-4">
-                        <a href="/contact" className="bg-primary text-white px-4 py-2 rounded inline-flex items-center text-sm md:m-0 m-auto transition duration-300 hover:bg-secondary-400">Contact Us <i class="fa-solid fa-arrow-right ms-2"></i></a>
+                        <Link href="/contact" className="bg-primary text-white px-4 py-2 rounded inline-flex items-center text-sm md:m-0 m-auto transition duration-300 hover:bg-secondary-400">Contact Us <i class="fa-solid fa-arrow-right ms-2"></i></Link>
                     </div>
                 </div>
 

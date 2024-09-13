@@ -10,9 +10,10 @@ import {
     DashboardOutlined,
     FileTextOutlined
 } from "@ant-design/icons";
-import { Layout, Menu, Button, theme, Dropdown, Avatar, Flex } from "antd";
+import { Layout, Menu, Button, theme, Dropdown, Avatar } from "antd";
 import ApplicationLogo from "@/Components/ApplicationLogo";
-import { Link } from "@inertiajs/react";
+import { Link, usePage } from "@inertiajs/react";
+
 const { Header, Sider, Content } = Layout;
 
 export default function AdminLayout({ user, children }) {
@@ -20,28 +21,40 @@ export default function AdminLayout({ user, children }) {
     const {
         token: { colorBgContainer },
     } = theme.useToken();
+
+    const { url } = usePage();
+
+    const getSelectedKey = () => {
+        if (url.startsWith(route('admin-dashboard'))) return "1";
+        if (url.startsWith(route('admin-projects'))) return "2";
+        if (url.startsWith('/admin/clients')) return "3";
+        if (url.startsWith('/admin/posts')) return "4";
+        return "1"; 
+    };
+
     const items = [
         {
-          key: '1',
-          label: (
-            <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com">
-              Settings
-            </a>
-          ),
-          icon: <SettingOutlined />
+            key: '1',
+            label: (
+                <Link target="_blank" rel="noopener noreferrer" href="/admin/profile">
+                    Edit  
+                </Link>
+            ),
+            icon: <SettingOutlined />
         },
         {
-          key: '2',
-          label: (
-            <Link href={route('logout')} method="post" as="button">
-              Logout
-            </Link>
-          ),
-          icon: <LogoutOutlined />
+            key: '2',
+            label: (
+                <Link href={route('logout')} method="post" as="button">
+                    Logout
+                </Link>
+            ),
+            icon: <LogoutOutlined />
         },
-       
-      ];
+    ];
+
     return (
+        
         <Layout className="h-screen">
             <Sider trigger={null} collapsible collapsed={collapsed}>
                 <Link href="/">
@@ -50,26 +63,26 @@ export default function AdminLayout({ user, children }) {
                 <Menu
                     theme="dark"
                     mode="inline"
-                    defaultSelectedKeys={["1"]}
+                    defaultSelectedKeys={[getSelectedKey()]}
+                    selectedKeys={[getSelectedKey()]} // Dynamically set selected key
                     items={[
                         {
                             key: "1",
                             icon: <DashboardOutlined />,
                             label: (
                                 <Link href={route('admin-dashboard')}>
-                                  Dashboard
+                                    Dashboard
                                 </Link>
-                              ),
+                            ),
                         },
                         {
                             key: "2",
                             icon: <ProjectOutlined />,
                             label: (
                                 <Link href={route('admin-projects')}>
-                                  Projects
+                                    Projects
                                 </Link>
-                              ),
-
+                            ),
                         },
                         {
                             key: "3",
@@ -81,9 +94,9 @@ export default function AdminLayout({ user, children }) {
                             icon: <FileTextOutlined />,
                             label: (
                                 <Link href="/admin/posts">
-                                  Posts
+                                    blogs
                                 </Link>
-                              ),
+                            ),
                         }
                     ]}
                 />
@@ -95,34 +108,24 @@ export default function AdminLayout({ user, children }) {
                         background: colorBgContainer,
                     }}
                 >
-                    <Flex justify="space-between" className="pr-4">
-                    <Button
-                        type="text"
-                        icon={
-                            collapsed ? (
-                                <MenuUnfoldOutlined />
-                            ) : (
-                                <MenuFoldOutlined />
-                            )
-                        }
-                        onClick={() => setCollapsed(!collapsed)}
-                        style={{
-                            fontSize: "16px",
-                            width: 64,
-                            height: 64,
-                        }}
-                    />
-                    <Dropdown
-                        menu={{ items }}
-                        trigger={["click"]}
-                        placement="bottomLeft"
-                    >
-                        <div onClick={(e) => e.preventDefault()} className="cursor-pointer">
-                        <span className="mr-2">{user.name}</span>
-                            <Avatar size="large" icon={<UserOutlined />} />
-                        </div>
-                    </Dropdown>
-                    </Flex>
+                    <div style={{ display: "flex", justifyContent: "space-between", paddingRight: "16px" }}>
+                        <Button
+                            type="text"
+                            icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+                            onClick={() => setCollapsed(!collapsed)}
+                            style={{
+                                fontSize: "16px",
+                                width: 64,
+                                height: 64,
+                            }}
+                        />
+                        <Dropdown menu={{ items }} trigger={["click"]} placement="bottomLeft">
+                            <div onClick={(e) => e.preventDefault()} className="cursor-pointer">
+                                {/* <span className="mr-2">{user.name}</span>            */}
+                                <Avatar size="large" icon={<UserOutlined />} />
+                            </div>
+                        </Dropdown>
+                    </div>
                 </Header>
                 <Content
                     style={{

@@ -1,3 +1,4 @@
+import { Link } from "@inertiajs/react";
 import ApplicationLogo from "./ApplicationLogo";
 
 
@@ -24,9 +25,9 @@ export default function Footer() {
                                     <div className="flex flex-col gap-3">
                                         <h5 className="mb-3">About</h5>
                                         <div className="text-gray-500/80">
-                                            <a href="/">
+                                            <Link href="/">
                                                 Home
-                                            </a>
+                                            </Link>
                                         </div>
                                         <div className="text-gray-500/80">
                                             <a href="javascript:void(0);">
@@ -35,9 +36,9 @@ export default function Footer() {
                                         </div>
                                        
                                         <div className="text-gray-500/80">
-                                            <a href="blog">
+                                            <Link href="blog">
                                                 Blog
-                                            </a>
+                                            </Link>
                                         </div>
                                     </div>
                                 </div>
@@ -45,9 +46,9 @@ export default function Footer() {
                                     <div className="flex flex-col gap-3">
                                         <h5 className="mb-3">Company</h5>
                                         <div className="text-gray-500/80">
-                                            <a href="/about">
+                                            <Link href="/about">
                                                 About
-                                            </a>
+                                            </Link>
                                         </div>
                                         <div className="text-gray-500/80">
                                             <a href="javascript:void(0);">
@@ -55,9 +56,9 @@ export default function Footer() {
                                             </a>
                                         </div>
                                         <div className="text-gray-500/80">
-                                            <a href="contact">
+                                            <Link href="contact">
                                                 Contact Us
-                                            </a>
+                                            </Link>
                                         </div>
                                     </div>
                                 </div>

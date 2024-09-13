@@ -2,6 +2,7 @@ import GoogleReviews from "@/Components/GoogleReviews";
 import Guest from "@/Layouts/GuestLayout";
 import { Link, Head } from "@inertiajs/react";
 
+
 export default function Welcome({ auth, laravelVersion, phpVersion }) {
     return (
         <>
@@ -20,7 +21,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                                     data-aos="fade-right"
                                     data-aos-duration="1000"
                                 >
-                                    <a href="/blog/1">
+                                    <a href="/blog">
                                         <div className="flex items-center gap-2">
                                             <div className="inline-block px-2 text-sm text-white rounded-full bg-primary">
                                                 New!
@@ -251,10 +252,11 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                                 Latest
                             </span>
                             <h1 className="text-4xl font-medium my-3 font-futura-bold">
-                                Featured Products
+                                {/* Featured Products */}
+                                Explore some of our latest projects!
                             </h1>
                             <p className="text-2xl font-medium text-slate-400 mt-5 mb-4 font-futura-light">
-                                Explore some of our latest products
+                                {/* Explore some of our latest products */}
                             </p>
                         </div>
 
@@ -263,39 +265,30 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                             data-aos="fade-up"
                             data-aos-duration="600"
                         >
-                            <div className="group relative mt-12 hover:opacity-80">
-                                <div className="pt-12 ps-12 group-hover:bg-white/10 rounded-md group-hover:shadow-lg transition-all duration-300">
-                                    <div>
-                                        <div className="flex items-center justify-between mb-7">
-                                            <h3 className="text-2xl font-bold">hms360</h3>
-                                            <p className="font-medium text-slate-500 pe-8">
-                                                Hotel management system
-                                            </p>
-                                        </div>
-                                        <div>
-                                            <img
-                                                src="img/products/hms.png"
-                                                className="rounded-md"
-                                            />
-                                        </div>
-                                        <div className="absolute inset-0 group-hover:flex items-center justify-center hidden transition-all duration-300">
-                                            <a
-                                                href="https://hms360.pk"
-                                                className="inline-block"
-                                            >
-                                                <div className="flex items-center gap-3 py-[6px] px-3 bg-black rounded-md">
-                                                    <p className="text-sm font-semibold text-white">
-                                                        View Project
-                                                    </p>
-                                                    <i className="fa-solid fa-arrow-right text-white"></i>
-                                                </div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="absolute inset-0 group-hover:bg-slate-300/20 transition-all duration-300"></div>
-                            </div>
-
+                                <Link to="#" className="group relative mt-12 block cursor-pointer ">
+                <div className="pt-12 ps-12 group-hover:bg-white/10 rounded-md group-hover:shadow-lg transition-all duration-300">
+                    <div>
+                        <div className="flex items-center justify-between mb-7">
+                            <h3 className="text-2xl font-bold">hms360</h3>
+                            <p className="font-medium text-slate-500 pe-8">
+                                Hotel management system
+                            </p>
+                        </div>
+                        <div>
+                            <img
+                                src="img/products/hms.png"
+                                className="rounded-md"
+                                alt="Project"
+                            />
+                        </div>
+                        <div className="absolute inset-0 group-hover:flex items-center justify-center hidden transition-all duration-300">
+                             
+                        </div>
+                    </div>
+                    <div className="absolute inset-0 group-hover:bg-slate-300/20 transition-all duration-300"></div>
+                </div>
+                <div className="absolute inset-0 group-hover:bg-slate-300/20 transition-all duration-300"></div>
+            </Link> 
                             <div className="group relative mt-12 hover:opacity-80">
                                 <div className="pt-12 ps-12 group-hover:bg-white/10 rounded-md group-hover:shadow-lg transition-all duration-300">
                                     <div>
@@ -307,6 +300,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                                                 Human resource management system
                                             </p>
                                         </div>
+                                        
                                         <div>
                                             <img
                                                 src="img/features/agency2.jpg"
@@ -315,15 +309,15 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                                         </div>
                                         <div className="absolute inset-0 group-hover:flex items-center justify-center hidden transition-all duration-300">
                                             <a
-                                                href="#"
+                                                href="/services/1"
                                                 className="inline-block"
                                             >
-                                                <div className="flex items-center gap-3 py-[6px] px-3 bg-black rounded-md">
+                                                {/* <div className="flex items-center gap-3 py-[6px] px-3 bg-black rounded-md">
                                                     <p className="text-sm font-semibold text-white">
                                                         View Project
                                                     </p>
                                                     <i className="fa-solid fa-arrow-right text-white"></i>
-                                                </div>
+                                                </div> */}
                                             </a>
                                         </div>
                                     </div>
@@ -331,11 +325,12 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                                 <div className="absolute inset-0 group-hover:bg-slate-300/20 transition-all duration-300"></div>
                             </div>
                         </div>
+                        
                         <div
-                            className="grid lg:grid-cols-2 grid-cols-1 gap-6"
+                            className="grid lg:grid-cols-2 grid-cols-1  gap-6 "
                             data-aos="fade-up"
                             data-aos-duration="800"
-                        >
+                         >
                             <div className="group relative mt-12 hover:opacity-80">
                                 <div className="pt-12 ps-12 group-hover:bg-white/10 rounded-md group-hover:shadow-lg transition-all duration-300">
                                     <div>
@@ -354,7 +349,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                                             />
                                         </div>
                                         <div className="absolute inset-0 group-hover:flex items-center justify-center hidden transition-all duration-300">
-                                            <a
+                                            {/* <a
                                                 href="#"
                                                 className="inline-block"
                                             >
@@ -364,14 +359,14 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                                                     </p>
                                                     <i className="fa-solid fa-arrow-right text-white"></i>
                                                 </div>
-                                            </a>
+                                            </a> */}
                                         </div>
                                     </div>
                                 </div>
                                 <div className="absolute inset-0 group-hover:bg-slate-300/20 transition-all duration-300"></div>
-                            </div>
+                              </div>
 
-                            <div className="group relative mt-12 hover:opacity-80">
+                             <div className="group relative mt-12 hover:opacity-80">
                                 <div className="pt-12 ps-12 group-hover:bg-white/10 rounded-md group-hover:shadow-lg transition-all duration-300">
                                     <div>
                                         <div className="flex items-center justify-between mb-7">
@@ -390,7 +385,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                                             />
                                         </div>
                                         <div className="absolute inset-0 group-hover:flex items-center justify-center hidden transition-all duration-300">
-                                            <a
+                                            {/* <a
                                                 href="#"
                                                 className="inline-block"
                                             >
@@ -400,7 +395,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                                                     </p>
                                                     <i className="fa-solid fa-arrow-right text-white"></i>
                                                 </div>
-                                            </a>
+                                            </a> */}
                                         </div>
                                     </div>
                                 </div>
@@ -409,14 +404,14 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                         </div>
 
                         <div className="flex justify-center mt-14">
-                            <a
-                                href="https://calendly.com/execudea-info/30min"
+                            {/* <Link
+                                href="#"
                                 target="_blank"
                                 className="py-3 px-6 rounded border border-black hover:border-black hover:bg-black hover:text-white hover:shadow-lg hover:shadow-black/50 focus:outline focus:outline-black/50 transition-all duration-500"
                             >
-                                Discuss Your Idea !{" "}
+                                Explore More !{" "}
                                 <i className="fa-solid fa-arrow-right ms-2"></i>
-                            </a>
+                            </Link> */}
                         </div>
                     </div>
                 </section>
@@ -524,20 +519,20 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                                 <div className="p-6">
                                     <p className="text-sm">11 April, 2024</p>
                                     <h4 className="text-lg hover:text-blue-700 font-semibold my-2">
-                                        <a href="/blog/1">
+                                        <Link href="/blog/1">
                                             Why Design Is Important? 
-                                        </a>
+                                        </Link>
                                     </h4>
                                     <p className="text-slate-400 my-2">
                                         Single page websites are taking over the
                                         world, and that's why I would like you
                                         to present the best ...
-                                        <a
+                                        <Link
                                             href="/blog/1"
                                             className="text-slate-800 hover:text-blue-700"
                                         >
                                             Read More
-                                        </a>
+                                        </Link>
                                     </p>
                                 </div>
                             </div>
@@ -580,18 +575,18 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                                 <div className="p-6">
                                     <p className="text-sm">13 March, 2024</p>
                                     <h4 className="text-lg hover:text-blue-700 font-semibold my-2">
-                                        <a href="/blog/2">
+                                        <Link href="/blog/2">
                                            Best Practices For Web Designing
-                                        </a>
+                                        </Link>
                                     </h4>
                                     <p className="text-slate-400 my-2">
                                     Best practices for web design focus on creating user-centered, visually appealing, and functional ...
-                                        <a
+                                        <Link
                                             href="/blog/2"
                                             className="text-slate-800 hover:text-blue-700"
                                         >
                                             Read More
-                                        </a>
+                                        </Link>
                                     </p>
                                 </div>
                             </div>
@@ -633,18 +628,18 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                                 <div className="p-6">
                                     <p className="text-sm">12 March, 2024</p>
                                     <h4 className="text-lg hover:text-blue-700 font-semibold my-2">
-                                        <a href="/blog/3">
+                                        <Link href="/blog/3">
                                            Why Responsive Web Design is Important?
-                                        </a>
+                                        </Link>
                                     </h4>
                                     <p className="text-slate-400 my-2">
                                     Responsive web design is crucial in today's digital landscape because it ensures that a website provides ...
-                                        <a
+                                        <Link
                                             href="/blog/3"
                                             className="text-slate-800 hover:text-blue-700"
                                         >
                                             Read More
-                                        </a>
+                                        </Link>
                                     </p>
                                 </div>
                             </div>

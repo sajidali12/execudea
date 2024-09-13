@@ -1,7 +1,39 @@
+import React, { useState } from "react";
 import Guest from "@/Layouts/GuestLayout";
-import { Head } from "@inertiajs/react";
+import { Head, usePage } from "@inertiajs/react";
+import { useForm } from "@inertiajs/react";
 
 export default function Contact() {
+    const { flash } = usePage().props;
+    const [successMessage, setSuccessMessage] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
+
+    const { data, setData, post, reset, errors } = useForm({
+        name: '',
+        subject: '',
+        email: '',
+        message: '',
+    });
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        post(route('msg'), {
+            onSuccess: () => {
+                setSuccessMessage('Your message has been sent successfully! We will get in touch soon.');
+                setErrorMessage('');
+                reset(); 
+
+                setTimeout(() => {
+                    setSuccessMessage('');
+                }, 10000);
+            },
+            onError: () => {
+                setSuccessMessage('');
+                setErrorMessage('Please fill all the required fields to send the message.');
+            },
+        });
+    };
+
     return (
         <>
             <Head title="Contact" />
@@ -26,14 +58,14 @@ export default function Contact() {
                             viewBox="0 0 1440 40"
                             version="1.1"
                             xmlns="http://www.w3.org/2000/svg"
-                            xmlns:xlink="http://www.w3.org/1999/xlink"
+                            xmlnsXlink="http://www.w3.org/1999/xlink"
                         >
                             <g
                                 id="shape-b"
                                 stroke="none"
-                                stroke-width="1"
+                                strokeWidth="1"
                                 fill="none"
-                                fill-rule="evenodd"
+                                fillRule="evenodd"
                             >
                                 <g id="curve" fill="#fff">
                                     <path
@@ -46,13 +78,20 @@ export default function Contact() {
                     </div>
                 </section>
 
-                {/*  */}
-                <section className="lg:pb-24 py-6 relative">
+                <section className="lg:pb-24 py-6  relative">
+                         
+                    {/* {errorMessage && (
+                        <div className="mt-4 text-red-500 text-sm  px-28 text-xl ">
+                            {errorMessage}
+                        </div>
+                    )} */}
+                
                     <div className="container m-auto md:px-10 px-0">
                         <div className="lg:flex align-items-center">
                             <div className="lg:w-1/2">
                                 <div className="mb-6 relative bg-clip-border rounded-[0.1875rem]">
                                     <div className="py-12">
+                                        
                                         <h2 className="mb-4 text-2xl/6 mt-0 font-medium">
                                             Let's Talk Further
                                         </h2>
@@ -61,122 +100,132 @@ export default function Contact() {
                                             and we will get back to you shortly
                                         </p>
 
-                                        <form>
-                                            <div className="flex gap-6">
-                                                <div className="md:w-1/2">
-                                                    <div className="mb-5">
-                                                        <label
-                                                            for="exampleInputName1"
-                                                            className="block text-sm font-medium mb-1 text-gray-600"
-                                                        >
-                                                            Name{" "}
-                                                            <span className="text-red-500">
-                                                                *
-                                                            </span>
-                                                        </label>
-                                                        <input
-                                                            type="text"
-                                                            className="py-2 px-4 leading-6 block w-full border-gray-300 rounded text-sm focus:border-gray-300 focus:ring-0"
-                                                            id="exampleInputName1"
-                                                            placeholder="Your Name"
-                                                        />
+
+                                        <form onSubmit={handleSubmit}>
+                                                <div className="flex gap-6">
+                                                    <div className="md:w-1/2">
+                                                        <div className="mb-5">
+                                                            <label
+                                                                htmlFor="name"
+                                                                className="block text-sm font-medium mb-1 text-gray-600"
+                                                            >
+                                                                Name <span className="text-red-500">*</span>
+                                                            </label>
+                                                            <input
+                                                                type="text"
+                                                                className="py-2 px-4 leading-6 block w-full border-gray-300 rounded text-sm focus:border-gray-300 focus:ring-0"
+                                                                id="name"
+                                                                placeholder="Your Name"
+                                                                value={data.name}
+                                                                onChange={(e) => setData('name', e.target.value)}
+                                                            />
+                                                            {errors.name && <span className="text-red-500">{errors.name}</span>}
+                                                        </div>
+                                                    </div>
+                                                    <div className="md:w-1/2">
+                                                        <div className="mb-5">
+                                                            <label
+                                                                htmlFor="subject"
+                                                                className="block text-sm font-medium mb-1 text-gray-600"
+                                                            >
+                                                                Subject <span className="text-red-500">*</span>
+                                                            </label>
+                                                            <input
+                                                                type="text"
+                                                                className="py-2 px-4 leading-6 block w-full border-gray-300 rounded text-sm focus:border-gray-300 focus:ring-0"
+                                                                id="subject"
+                                                                placeholder="Subject"
+                                                                value={data.subject}
+                                                                onChange={(e) => setData('subject', e.target.value)}
+                                                            />
+                                                            {errors.subject && <span className="text-red-500">{errors.subject}</span>}
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div className="md:w-1/2">
+                                                <div className="w-full">
                                                     <div className="mb-5">
                                                         <label
-                                                            for="exampleInputName"
+                                                            htmlFor="email"
                                                             className="block text-sm font-medium mb-1 text-gray-600"
                                                         >
-                                                            Name{" "}
-                                                            <span className="text-red-500">
-                                                                *
-                                                            </span>
+                                                            Email <span className="text-red-500">*</span>
                                                         </label>
                                                         <input
-                                                            type="text"
+                                                            type="email"
                                                             className="py-2 px-4 leading-6 block w-full border-gray-300 rounded text-sm focus:border-gray-300 focus:ring-0"
-                                                            id="exampleInputName"
-                                                            placeholder="Your Name"
+                                                            id="email"
+                                                            placeholder="Your Email"
+                                                            value={data.email}
+                                                            onChange={(e) => setData('email', e.target.value)}
                                                         />
+                                                        {errors.email && <span className="text-red-500">{errors.email}</span>}
+                                                    </div>
+                                                    <div className="mb-5">
+                                                        <label
+                                                            htmlFor="message"
+                                                            className="block text-sm font-medium mb-1 text-gray-600"
+                                                        >
+                                                            Message <span className="text-red-500">*</span>
+                                                        </label>
+                                                        <textarea
+                                                            className="py-2 px-4 leading-6 block w-full border-gray-300 rounded text-sm focus:border-gray-300 focus:ring-0"
+                                                            id="message"
+                                                            rows="4"
+                                                            placeholder="Type Your Message..."
+                                                            value={data.message}
+                                                            onChange={(e) => setData('message', e.target.value)}
+                                                        ></textarea>
+                                                        {errors.message && <span className="text-red-500">{errors.message}</span>}
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div className="w-full">
-                                                <div className="mb-5">
-                                                    <label
-                                                        for="exampleInputEmail1"
-                                                        className="block text-sm font-medium mb-1 text-gray-600"
-                                                    >
-                                                        Email{" "}
-                                                        <span className="text-red-500">
-                                                            *
-                                                        </span>
-                                                    </label>
-                                                    <input
-                                                        type="email"
-                                                        className="py-2 px-4 leading-6 block w-full border-gray-300 rounded text-sm focus:border-gray-300 focus:ring-0"
-                                                        id="exampleInputEmail1"
-                                                        placeholder="Your Email"
-                                                    />
-                                                </div>
-                                                <div className="mb-5">
-                                                    <label
-                                                        for="exampleFormControlTextarea1"
-                                                        className="block text-sm font-medium mb-1 text-gray-600"
-                                                    >
-                                                        Message{" "}
-                                                        <span className="text-red-500">
-                                                            *
-                                                        </span>
-                                                    </label>
-                                                    <textarea
-                                                        className="py-2 px-4 leading-6 block w-full border-gray-300 rounded text-sm focus:border-gray-300 focus:ring-0"
-                                                        id="exampleFormControlTextarea1"
-                                                        rows="4"
-                                                        placeholder="Type Your Massage..."
-                                                    ></textarea>
-                                                </div>
-                                            </div>
-                                            <button
-                                                type="submit"
-                                                className="inline-flex items-center text-sm bg-primary text-white font-medium leading-6 text-center align-middle select-none py-2 px-4 rounded-md transition-all hover:shadow-lg hover:shadow-primary/80"
-                                            >
-                                                Send
-                                                <span className="w-4 h-4 ms-1">
-                                                    <svg
-                                                        className="w-full h-full text-white"
-                                                        viewBox="0 0 24 24"
-                                                        version="1.1"
-                                                        xmlns="http://www.w3.org/2000/svg"
-                                                        xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                    >
-                                                        <g
-                                                            stroke="none"
-                                                            stroke-width="1"
-                                                            fill="none"
-                                                            fill-rule="evenodd"
+                                                <button
+                                                    type="submit"
+                                                    className="inline-flex items-center text-sm bg-primary text-white font-medium leading-6 text-center align-middle select-none py-2 px-4 rounded-md transition-all hover:shadow-lg hover:shadow-primary/80"
+                                                >
+                                                    Send
+                                                    <span className="w-4 h-4 ms-1">
+                                                        <svg
+                                                            className="w-full h-full text-white"
+                                                            viewBox="0 0 24 24"
+                                                            version="1.1"
+                                                            xmlns="http://www.w3.org/2000/svg"
+                                                            xmlnsXlink="http://www.w3.org/1999/xlink"
                                                         >
-                                                            <rect
-                                                                id="bound"
-                                                                x="0"
-                                                                y="0"
-                                                                width="24"
-                                                                height="24"
-                                                            ></rect>
-                                                            <path
-                                                                d="M3,13.5 L19,12 L3,10.5 L3,3.7732928 C3,3.70255344 3.01501031,3.63261921 3.04403925,3.56811047 C3.15735832,3.3162903 3.45336217,3.20401298 3.70518234,3.31733205 L21.9867539,11.5440392 C22.098181,11.5941815 22.1873901,11.6833905 22.2375323,11.7948177 C22.3508514,12.0466378 22.2385741,12.3426417 21.9867539,12.4559608 L3.70518234,20.6826679 C3.64067359,20.7116969 3.57073936,20.7267072 3.5,20.7267072 C3.22385763,20.7267072 3,20.5028496 3,20.2267072 L3,13.5 Z"
-                                                                id="Combined-Shape"
-                                                                fill="currentcolor"
-                                                            ></path>
-                                                        </g>
-                                                    </svg>
-                                                </span>
-                                            </button>
-                                        </form>
+                                                            <g
+                                                                stroke="none"
+                                                                strokeWidth="1"
+                                                                fill="none"
+                                                                fillRule="evenodd"
+                                                            >
+                                                                <rect
+                                                                    id="bound"
+                                                                    x="0"
+                                                                    y="0"
+                                                                    width="24"
+                                                                    height="24"
+                                                                ></rect>
+                                                                <path
+                                                                    d="M3,13.5 L19,12 L3,10.5 L3,3.7732928 C3,3.70255344 3.01501031,3.63261921 3.04403925,3.56811047 C3.15735832,3.3162903 3.45336217,3.20401298 3.70518234,3.31733205 L21.9867539,11.5440392 C22.098181,11.5941815 22.1873901,11.6833905 22.2375323,11.7948177 C22.3508514,12.0466378 22.2385741,12.3426417 21.9867539,12.4559608 L3.70518234,20.6826679 C3.64067359,20.7116969 3.57073936,20.7267072 3.5,20.7267072 C3.22385763,20.7267072 3,20.5028496 3,20.2267072 L3,13.5 Z"
+                                                                    id="Path"
+                                                                    fill="#FFFFFF"
+                                                                ></path>
+                                                            </g>
+                                                        </svg>
+                                                    </span>
+                                                </button>
+                                            </form>
+                                            {successMessage && (
+                        <div className="mt-4 text-green-500 text-sm  px-28 text-xl   ">
+                            {successMessage}
+                        </div>
+                    )}
+
                                     </div>
+                                      {/* Display success or error message at the end of the form */}
+                         
                                 </div>
                             </div>
+                     
 
                             <div className="lg:w-5/12 ms-auto overflow-x-hidden">
                                 <div className="h-[520px]">

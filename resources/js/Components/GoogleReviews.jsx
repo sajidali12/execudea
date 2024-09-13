@@ -136,6 +136,34 @@ export default function GoogleReviews() {
                 </SwiperSlide>
                 <SwiperSlide>
                     <div className="flex flex-col gap-3">
+                        <div className="flex flex-col gap-4 p-4 border border-gray-200 min-h-24">
+                            <div className="flex justify justify-between">
+                                <div className="flex gap-2">
+                                    <div className="flex justify-center items-center w-7 h-7 text-center rounded-full bg-pink-500">
+                                        UC
+                                    </div>
+                                    <span>Uconect</span>
+                                </div>
+                                <div className="flex p-1 gap-1 text-orange-300">
+                                    <StarFilled />
+                                    <StarFilled />
+                                    <StarFilled />
+                                    <StarFilled />
+                                    <StarFilled />
+                                </div>
+                            </div>
+
+                            <div className="h-36 overflow-y-scroll">
+                            We are very satisfied with the experience and service provided by Execudea. They helped us manage our many projects on time, and takes every single work seriously! 
+                            </div>
+                            <div className="flex justify-between">
+                                <span>Mar 02, 2023</span>
+                            </div>
+                        </div>
+                    </div>
+                </SwiperSlide>
+                <SwiperSlide>
+                    <div className="flex flex-col gap-3">
                         <div className="flex flex-col gap-4 p-4 border border-gray-200">
                             <div className="flex justify justify-between">
                                 <div className="flex gap-2">

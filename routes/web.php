@@ -1,59 +1,58 @@
 <?php
 
+use Inertia\Inertia;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Foundation\Application;
+use App\Http\Controllers\PostController;
+
+use App\Http\Controllers\YourController;
+use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\PostController;
-use Illuminate\Foundation\Application;
-use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+
+
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
+        'canLogin' => Route::has('admin/login'),
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
     ]);
 });
 
+
+
+Route::get ('/services/{id}', function(){
+  return Inertia::render ("services");
+});
+
+
 Route::get('/contact', function () {
     return Inertia::render('Contact');
 });
-Route::get('/blog', function () {
-    return Inertia::render('Blog');
-});
+Route::post('/message', [MessageController::class, 'msg'])->name('msg');
+
+
 Route::get('/about', function () {
     return Inertia::render('About');
 });
 
 Route::get('/blog', [PostController::class, 'all'])->name('blog.all');
+Route::get('/blog', [PostController::class, 'blog'])->name('blog');
+Route::get('/blog/{blogId}', [PostController::class, 'show'])->name('blog.detail');
+// Route::get('/blog/{slug}', [PostController::class, 'show'])->name('blog.detail');
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
+
+Route::get('/admin/dashboard', function () {
+    return Inertia::render('Admin/AdminProjects');    
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('admin/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::put('admin/profile', [ProfileController::class, 'passUpdate'])->name('passwordUpdate');
 });
-
-require __DIR__.'/auth.php';
-
-// Admin Routes
-
 
 
 Route::get('/admin/projects', function () {
@@ -63,8 +62,13 @@ Route::get('/admin/projects', function () {
 Route::middleware('auth')->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'show'])->name('admin-dashboard');
     Route::get('/admin/settings', [AdminController::class, 'edit'])->name('admin-settings');
+    Route::resource('/admin/posts', PostController::class);
+    Route::delete('/admin/posts/{id}', [PostController::class, 'destroy'])->name('posts.destroy');
+    Route::get('/admin/posts/{id}/edit', [PostController::class, 'edit'])->name('posts.edit');
+    Route::put('/admin/posts/{id}', [PostController::class, 'update'])->name('posts.update');
+
             });
 
-            // Blog Routes
-Route::resource('/admin/posts', PostController::class);
-Route::get('/blog/{blogId}', [PostController::class, 'show'])->name('blog.detail');
+
+Route::get('/{any}', [YourController::class, 'showNotFound'])->where('any', '.*');
+require __DIR__.'/auth.php';

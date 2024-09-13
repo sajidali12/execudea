@@ -3,7 +3,7 @@ import { Head } from "@inertiajs/react";
 import AdminLayout from "@/Layouts/AdminLayout";
 import { Button, Form, Input } from 'antd';
 
-export default function Edit({ auth }) {
+export default function EditPost({ auth }) {
     const user = auth.user;
     const onFinish = (values) => {
   console.log('Success:', values);
