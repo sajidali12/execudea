@@ -42,7 +42,7 @@ export default function Blog() {
                     <div className="container m-auto md:px-10 px-0">
                         <div className="grid lg:grid-cols-3 grid-cols-1 gap-6 lg:py-10 py-14">
                             {posts.data.map(({ id, title, body, image, created_at }, index) => (
-                                <div key={id}>
+                                <div className='relative' key={id}>
                                     <img
                                         src={image ? `/storage/product/image/${image}` : 'img/blog/default.png'}
                                         alt={title}
@@ -50,7 +50,7 @@ export default function Blog() {
                                     />
                                     {/* Render "New!" badge only on the latest post */}
                                     {posts.data.length > 0 && latestPost.id === id && (
-                                        <div className="inline-block px-2 text-sm text-white rounded-full bg-primary">
+                                        <div className="inline-block px-4 py-1 text-sm text-white rounded-full bg-primary absolute top-2 left-2">
                                             New!
                                         </div>
                                     )}
@@ -65,9 +65,12 @@ export default function Blog() {
                                         <a href={`blog/${id}`} className="text-primary">{title}</a>
                                     </h1>
                                     <div className="mb-2">
-                                        <p className="text-sm tracking-wider text-gray-500 line-clamp-2">
-                                            {body}
-                                        </p>
+                                        {/* <p className="text-sm tracking-wider text-gray-500 line-clamp-2">
+                                        dangerouslySetInnerHTML={{ __html: body}}
+                                        </p> */}
+                                        <div className="text-sm tracking-wider text-gray-500 line-clamp-2"
+                                dangerouslySetInnerHTML={{ __html: body }}
+                            />
                                     </div>
                                     <a href={`blog/${id}`} className="text-primary font-semibold">read more</a>
                                 </div>

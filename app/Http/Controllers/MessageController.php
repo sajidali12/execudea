@@ -30,7 +30,7 @@ class MessageController extends Controller
             'message' => $validated['message'],
         ]);
     
-        Mail::to('rashid.khan.maitla13@gmail.com')->send(new ContactMessage($emailContent));
+        Mail::to('rizvisajid4@gmail.com')->send(new ContactMessage($emailContent));
     
         return back()->with('status', 'Your message has been sent successfully!');
     }

@@ -70,5 +70,5 @@ Route::middleware('auth')->group(function () {
             });
 
 
-Route::get('/{any}', [YourController::class, 'showNotFound'])->where('any', '.*');
+//Route::get('/{any}', [YourController::class, 'showNotFound'])->where('any', '.*');
 require __DIR__.'/auth.php';
