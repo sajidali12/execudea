@@ -41,6 +41,7 @@ export default function Blog() {
                 <section className="py-12">
                     <div className="container m-auto md:px-10 px-0">
                         <div className="grid lg:grid-cols-3 grid-cols-1 gap-6 lg:py-10 py-14">
+<<<<<<< HEAD
                             {posts.data.map(({ id, title, body, image, created_at }) => (
                                 <div
                                     key={id}
@@ -82,6 +83,38 @@ export default function Blog() {
                                         >
                                             Read More
                                         </a>
+=======
+                            {posts.data.map(({ id, title, body, image, created_at }, index) => (
+                                <div className='relative' key={id}>
+                                    <img
+                                        src={image ? `/storage/product/image/${image}` : 'img/blog/default.png'}
+                                        alt={title}
+                                        className="rounded-md mb-5 aspect-square"
+                                    />
+                                    {/* Render "New!" badge only on the latest post */}
+                                    {posts.data.length > 0 && latestPost.id === id && (
+                                        <div className="inline-block px-4 py-1 text-sm text-white rounded-full bg-primary absolute top-2 left-2">
+                                            New!
+                                        </div>
+                                    )}
+                                    <p className="text-sm mb-0 mt-2 py-2">
+                                        {new Date(created_at).toLocaleDateString('en-US', {
+                                            day: '2-digit',
+                                            month: 'long',
+                                            year: 'numeric',
+                                        })}
+                                    </p>
+                                    <h1 className="text-lg transition-all hover:text-primary -py-2">
+                                        <a href={`blog/${id}`} className="text-primary">{title}</a>
+                                    </h1>
+                                    <div className="mb-2">
+                                        {/* <p className="text-sm tracking-wider text-gray-500 line-clamp-2">
+                                        dangerouslySetInnerHTML={{ __html: body}}
+                                        </p> */}
+                                        <div className="text-sm tracking-wider text-gray-500 line-clamp-2"
+                                dangerouslySetInnerHTML={{ __html: body }}
+                            />
+>>>>>>> e4d097a76a8144955678a2755960037d4bf29f57
                                     </div>
                                 </div>
                             ))}

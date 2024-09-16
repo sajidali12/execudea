@@ -77,5 +77,10 @@ Route::middleware(['web'])->group(function () {
             });
 
 
+<<<<<<< HEAD
 Route::get('/{any}', [YourController::class, 'showNotFound'])->where('any', '.*');
 
+=======
+//Route::get('/{any}', [YourController::class, 'showNotFound'])->where('any', '.*');
+require __DIR__.'/auth.php';
+>>>>>>> e4d097a76a8144955678a2755960037d4bf29f57
