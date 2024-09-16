@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Log;
 
    
 class PostController extends Controller
+
+
 {
     /**
      * Show the form for creating a new resource.
@@ -26,7 +28,7 @@ class PostController extends Controller
         $perPage = $request->input('perPage', 10);
         $perPage = $perPage === 'all' ? Post::count() : (int)$perPage;
     
-        $posts = Post::paginate($perPage);
+        $posts = Post::orderBy('created_at', 'desc')->paginate($perPage);
     
         return Inertia::render('Posts/Index', [
             'posts' => $posts,
@@ -34,16 +36,30 @@ class PostController extends Controller
             'perPage' => $perPage, 
         ]);
     }
+    
+    public function latestPosts()
+    {
+        // Fetch the latest 3 posts
+        $latestPosts = Post::latest()->take(3)->get();
+
+        return Inertia::render('Welcome', [
+            'latestPosts' => $latestPosts,
+        ]);
+    }
     public function blog()
     {
         $user = Auth::user();
-        $posts = Post::orderBy('created_at', 'desc')->paginate(6); 
+      
+        $posts = Post::orderBy('created_at', 'desc')->paginate(6);
+        // $latestPost = Post::latest()->take(3)->get();
     
         return Inertia::render('Blog', [
             'posts' => $posts,
             'user' => $user,
+            // 'latestPost' => $latestPost, 
         ]);
     }
+
   
     /**
      * Write code on Method
@@ -168,14 +184,14 @@ public function update(Request $request, $id)
     }
 
 
-    public function all()
-    {
-        $posts = Post::all();
-        foreach ($posts as $post) {
-            $post->slug = Str::slug($post->title, '-') . '-' . $post->id;
-            $post->save();
-        }
-    }
+    // public function all()
+    // {
+    //     $posts = Post::all();
+    //     foreach ($posts as $post) {
+    //         $post->slug = Str::slug($post->title, '-') . '-' . $post->id;
+    //         $post->save();
+    //     }
+    // }
 
       /**
      * Display the specified resource.

@@ -80,15 +80,15 @@ export default function AdminLayout({ user, children }) {
                             icon: <ProjectOutlined />,
                             label: (
                                 <Link href={route('admin-projects')}>
-                                    Projects
+                                    Messages 
                                 </Link>
                             ),
                         },
-                        {
-                            key: "3",
-                            icon: <UsergroupAddOutlined />,
-                            label: "Clients",
-                        },
+                        // {
+                        //     key: "3",
+                        //     icon: <UsergroupAddOutlined />,
+                        //     label: "Clients",
+                        // },
                         {
                             key: "4",
                             icon: <FileTextOutlined />,

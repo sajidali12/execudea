@@ -3,10 +3,10 @@ import { Head, Link, usePage } from '@inertiajs/react';
 import Guest from '@/Layouts/GuestLayout';
 
 export default function Blog() {
-    const { posts } = usePage().props;
+    const { posts, latestPost } = usePage().props;
 
-    // Determine the latest post
-    const latestPost = posts.data[0]; // Assuming posts are sorted with the latest first
+ 
+    const generateSlug = (title) => title.toLowerCase().replace(/\s+/g, '-').replace(/[^\w\-]+/g, '');
 
     return (
         <>
@@ -16,7 +16,7 @@ export default function Blog() {
                     <div className="container m-auto">
                         <div className="flex justify-center">
                             <div className="lg:w-7/12 text-center">
-                                <h1 className="text-5xl/relaxed text-gray-700">Blog</h1>
+                                <h1 className="text-5xl font-semibold text-gray-700">Blog</h1>
                                 <p className="mb-6 md:text-lg text-gray-500">
                                     Find useful resources about design, development, and digital marketing techniques.
                                 </p>
@@ -41,60 +41,69 @@ export default function Blog() {
                 <section className="py-12">
                     <div className="container m-auto md:px-10 px-0">
                         <div className="grid lg:grid-cols-3 grid-cols-1 gap-6 lg:py-10 py-14">
-                            {posts.data.map(({ id, title, body, image, created_at }, index) => (
-                                <div key={id}>
-                                    <img
-                                        src={image ? `/storage/product/image/${image}` : 'img/blog/default.png'}
-                                        alt={title}
-                                        className="rounded-md mb-5 aspect-square"
-                                    />
-                                    {/* Render "New!" badge only on the latest post */}
-                                    {posts.data.length > 0 && latestPost.id === id && (
-                                        <div className="inline-block px-2 text-sm text-white rounded-full bg-primary">
-                                            New!
-                                        </div>
-                                    )}
-                                    <p className="text-sm mb-0 mt-2 py-2">
-                                        {new Date(created_at).toLocaleDateString('en-US', {
-                                            day: '2-digit',
-                                            month: 'long',
-                                            year: 'numeric',
-                                        })}
-                                    </p>
-                                    <h1 className="text-lg transition-all hover:text-primary -py-2">
-                                        <a href={`blog/${id}`} className="text-primary">{title}</a>
-                                    </h1>
-                                    <div className="mb-2">
-                                        <p className="text-sm tracking-wider text-gray-500 line-clamp-2">
+                            {posts.data.map(({ id, title, body, image, created_at }) => (
+                                <div
+                                    key={id}
+                                    className="relative bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:scale-105 hover:shadow-2xl"
+                                    data-aos="fade-up"
+                                    data-aos-duration="500"
+                                >
+                                    <div className="relative">
+                                        <img
+                                            src={image ? `/storage/product/image/${image}` : 'img/blog/default.png'}
+                                            alt={title}
+                                            className="w-full h-60 object-cover rounded-t-lg"
+                                        />
+                                        {latestPost && latestPost.id === id && (
+                                            <div className="absolute top-3 right-3 bg-primary text-white text-xs px-3 py-1 rounded-full badge-animation">
+                                                New!
+                                            </div>
+                                        )}
+                                    </div>
+                                    <div className="p-6">
+                                        <p className="text-sm mb-0 mt-2 py-2">
+                                            {new Date(created_at).toLocaleDateString('en-US', {
+                                                day: '2-digit',
+                                                month: 'long',
+                                                year: 'numeric',
+                                            })}
+                                        </p>
+                                        <h1 className="text-lg font-semibold mb-3">
+                                            <a href={`/blog/${id}-${generateSlug(title)}`} className="text-primary">
+                                                {title}
+                                            </a>
+                                        </h1>
+                                        <p className="text-sm text-gray-500 mb-4 line-clamp-2">
                                             {body}
                                         </p>
+                                        <a 
+                                            href={`/blog/${id}-${generateSlug(title)}`}
+                                            className="text-primary font-semibold "
+                                        >
+                                            Read More
+                                        </a>
                                     </div>
-                                    <a href={`blog/${id}`} className="text-primary font-semibold">read more</a>
                                 </div>
                             ))}
                         </div>
 
-                        <div className="flex justify-center items-center gap-2">
+                        <div className="flex justify-center items-center gap-2 mt-8">
                             {posts.prev_page_url && (
-                                <div className="flex items-center">
-                                    <Link
-                                        href={posts.prev_page_url}
-                                        className="border border-gray-300 rounded-md text-sm tracking-wider transition-all duration-150 hover:shadow-lg focus:shadow-lg py-2 px-3"
-                                    >
-                                        <i className="fa-solid fa-arrow-left me-2"></i> Previous
-                                    </Link>
-                                </div>
+                                <Link
+                                    href={posts.prev_page_url}
+                                    className="border border-gray-300 rounded-md text-sm tracking-wider transition-all duration-150 hover:shadow-lg focus:shadow-lg py-2 px-3"
+                                >
+                                    <i className="fa-solid fa-arrow-left me-2"></i> Previous
+                                </Link>
                             )}
 
                             {posts.next_page_url && (
-                                <div className="flex items-center">
-                                    <Link
-                                        href={posts.next_page_url}
-                                        className="border border-gray-300 rounded-md text-sm tracking-wider transition-all duration-150 hover:shadow-lg focus:shadow-lg py-2 px-3"
-                                    >
-                                        Next <i className="fa-solid fa-arrow-right ms-2"></i>
-                                    </Link>
-                                </div>
+                                <Link
+                                    href={posts.next_page_url}
+                                    className="border border-gray-300 rounded-md text-sm tracking-wider transition-all duration-150 hover:shadow-lg focus:shadow-lg py-2 px-3"
+                                >
+                                    Next <i className="fa-solid fa-arrow-right ms-2"></i>
+                                </Link>
                             )}
                         </div>
                     </div>

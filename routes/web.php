@@ -9,9 +9,7 @@ use App\Http\Controllers\YourController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\AdminController;
-
-
-
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
 
 Route::get('/', function () {
@@ -41,10 +39,11 @@ Route::get('/about', function () {
 
 Route::get('/blog', [PostController::class, 'all'])->name('blog.all');
 Route::get('/blog', [PostController::class, 'blog'])->name('blog');
-Route::get('/blog/{blogId}', [PostController::class, 'show'])->name('blog.detail');
-// Route::get('/blog/{slug}', [PostController::class, 'show'])->name('blog.detail');
+Route::get('/blog/{id}-{title}', [PostController::class, 'show'])->name('blog.detail');
+Route::get('/', [PostController::class, 'latestPosts'])->name('posts.latest');
 
 
+require __DIR__.'/auth.php';
 Route::get('/admin/dashboard', function () {
     return Inertia::render('Admin/AdminProjects');    
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -66,9 +65,17 @@ Route::middleware('auth')->group(function () {
     Route::delete('/admin/posts/{id}', [PostController::class, 'destroy'])->name('posts.destroy');
     Route::get('/admin/posts/{id}/edit', [PostController::class, 'edit'])->name('posts.edit');
     Route::put('/admin/posts/{id}', [PostController::class, 'update'])->name('posts.update');
+    Route::get('/admin/messages', [MessageController::class, 'index'])->name('admin.messages.index');
+    Route::delete('/admin/messages/{id}', [MessageController::class, 'destroy'])->name('admin.messages.destroy');
 
+
+
+            });
+Route::middleware(['web'])->group(function () {
+    Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
+            ->name('logout');
             });
 
 
 Route::get('/{any}', [YourController::class, 'showNotFound'])->where('any', '.*');
-require __DIR__.'/auth.php';
+

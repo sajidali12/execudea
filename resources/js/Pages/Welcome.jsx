@@ -1,9 +1,12 @@
 import GoogleReviews from "@/Components/GoogleReviews";
 import Guest from "@/Layouts/GuestLayout";
-import { Link, Head } from "@inertiajs/react";
+import { Link, Head, usePage } from "@inertiajs/react";
+import React from 'react';
 
 
-export default function Welcome({ auth, laravelVersion, phpVersion }) {
+
+export default function Welcome({ auth, laravelVersion, phpVersion, latestPosts  }) {
+    const generateSlug = (title) => title.toLowerCase().replace(/\s+/g, '-').replace(/[^\w\-]+/g, '');
     return (
         <>
             <Head title="Best Website Development Company In Pakistan" />
@@ -21,7 +24,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                                     data-aos="fade-right"
                                     data-aos-duration="1000"
                                 >
-                                    <a href="/blog">
+                                    <Link href="/blog">
                                         <div className="flex items-center gap-2">
                                             <div className="inline-block px-2 text-sm text-white rounded-full bg-primary">
                                                 New!
@@ -31,7 +34,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                                                 design
                                             </div>
                                         </div>
-                                    </a>
+                                    </Link>
                                 </div>
                                 <h1 className="md:text-5xl text-3xl text-gray-700 font-medium my-5 font-futura-bold">
                                     We develop software that{" "}
@@ -469,183 +472,99 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                 </section>
 
                 {/* clients Section End   */}
-                {/* blog Section Start */}
-                <section className="py-20">
-                    <div className="container m-auto md:px-10 px-2">
-                        <div className="text-center">
-                            <span className="text-sm font-medium py-1 px-3 rounded-full text-primary bg-primary/10">
-                                Blog
-                            </span>
-                            <h1 className="text-3xl font-medium my-3">
-                                Interesting Articles
-                            </h1>
+                
+         {/* Blog Section Start */}
+<section className="py-20">
+    
+    <div className="container m-auto md:px-10 px-2">
+        <div className="text-center">
+            <span className="text-sm font-medium py-1 px-3 rounded-full text-primary bg-primary/10">
+                Blog
+            </span>
+            <h1 className="text-3xl font-medium my-3">
+                Latest Posts
+            </h1>
+        </div>
+
+        <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 mt-12 gap-6">
+            {latestPosts && latestPosts.length > 0 ? (
+                latestPosts.map(({ id, title, body, image, created_at }) => (
+                    <div
+                        key={id}
+                        className="shadow-md rounded-md relative flex flex-col bg-white overflow-hidden"
+                        data-aos="fade-up"
+                        data-aos-duration="500"
+                    >
+                        <div className="relative flex-shrink-0">
+                            <div
+                                className="absolute top-3 right-3 bg-primary text-white text-sm px-3 py-1 rounded-full badge-animation"
+                                aria-label="New post"
+                            >
+                                New!
+                            </div>
+                            <img
+                                src={image ? `/storage/product/image/${image}` : 'img/blog/default.png'}
+                                alt={title}
+                                className="w-full h-60 object-cover rounded-t-md"
+                            />
+                            <div className="absolute -bottom-5 w-full">
+                                <svg
+                                    className="w-full h-14 text-white"
+                                    viewBox="0 0 528 40"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <g
+                                        id="shape"
+                                        transform="matrix(-1.138336E-07 -1 1 -1.138336E-07 0 39.92764)"
+                                    >
+                                        <path
+                                            d="M0 0L40.5467 0C40.5467 0 -31.8215 230.87 38.7134 528.217C39.8794 533.133 31.7549 527.502 31.0925 528.75C28.7914 533.084 26.1543 528.191 24.4327 529.178C59.2372 539.206 14.0091 521.981 12.9329 530.001L1.02722 528.284L0 0Z"
+                                            transform="translate(7.629395E-06 6.103516E-05)"
+                                            fill="currentColor"
+                                            stroke="none"
+                                        ></path>
+                                    </g>
+                                </svg>
+                            </div>
                         </div>
-
-                        <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 mt-12 gap-6">
-                            <div
-                                className="shadow-md rounded-md"
-                                data-aos="fade-up"
-                                data-aos-duration="500"
-                            >
-                                <div className="relative">
-                                    <div className="absolute end-4 top-3">
-                                        <span className="px-3 py-1 text-sm font-medium text-white rounded-md bg-black">
-                                            Design
-                                        </span>
-                                    </div>
-                                    <img src="img/hero/coworking1.jpg" />
-                                    <div className="absolute -bottom-5">
-                                        <svg
-                                            className="w-full h-14 text-white"
-                                            viewBox="0 0 528 40"
-                                            version="1.1"
-                                            xmlns:xlink="http://www.w3.org/1999/xlink"
-                                            xmlns="http://www.w3.org/2000/svg"
-                                        >
-                                            <g
-                                                id="shape"
-                                                transform="matrix(-1.138336E-07 -1 1 -1.138336E-07 0 39.92764)"
-                                            >
-                                                <path
-                                                    d="M0 0L40.5467 0C40.5467 0 -31.8215 230.87 38.7134 528.217C39.8794 533.133 31.7549 527.502 31.0925 528.75C28.7914 533.084 26.1543 528.191 24.4327 529.178C59.2372 539.206 14.0091 521.981 12.9329 530.001L1.02722 528.284L0 0Z"
-                                                    transform="translate(7.629395E-06 6.103516E-05)"
-                                                    fill="currentColor"
-                                                    stroke="none"
-                                                ></path>
-                                            </g>
-                                        </svg>
-                                    </div>
-                                </div>
-                                <div className="p-6">
-                                    <p className="text-sm">11 April, 2024</p>
-                                    <h4 className="text-lg hover:text-blue-700 font-semibold my-2">
-                                        <Link href="/blog/1">
-                                            Why Design Is Important? 
-                                        </Link>
-                                    </h4>
-                                    <p className="text-slate-400 my-2">
-                                        Single page websites are taking over the
-                                        world, and that's why I would like you
-                                        to present the best ...
-                                        <Link
-                                            href="/blog/1"
-                                            className="text-slate-800 hover:text-blue-700"
-                                        >
-                                            Read More
-                                        </Link>
-                                    </p>
-                                </div>
+                        <div className="p-6 flex flex-col flex-grow">
+                            <p className="text-sm text-gray-600 mb-2">
+                                {new Date(created_at).toLocaleDateString('en-US', {
+                                    day: '2-digit',
+                                    month: 'long',
+                                    year: 'numeric',
+                                })}
+                            </p>
+                            <h4 className="text-lg font-semibold mb-2 hover:text-primary">
+                                <a href={`/blog/${id}-${generateSlug(title)}`} className="text-primary">
+                                    {title}
+                                </a>
+                            </h4>
+                            <div className="flex-grow mb-4">
+                                <p className="text-sm text-gray-500 line-clamp-2">
+                                    {body}
+                                </p>
                             </div>
-
-                           {/* Blog 2 */}
-                            <div
-                                className="shadow-md rounded-md"
-                                data-aos="fade-up"
-                                data-aos-duration="900"
+                            <a
+                                href={`/blog/${id}-${generateSlug(title)}`}
+                                className="text-primary font-semibold"
                             >
-                                <div className="relative">
-                                    <div className="absolute end-4 top-3">
-                                        <span className="px-3 py-1 text-sm font-medium text-white rounded-md bg-black">
-                                            Design
-                                        </span>
-                                    </div>
-                                    <img src="img/hero/coworking4.jpg" />
-                                    <div className="absolute -bottom-5">
-                                        <svg
-                                            className="w-full h-14 text-white"
-                                            viewBox="0 0 528 40"
-                                            version="1.1"
-                                            xmlns:xlink="http://www.w3.org/1999/xlink"
-                                            xmlns="http://www.w3.org/2000/svg"
-                                        >
-                                            <g
-                                                id="shape"
-                                                transform="matrix(-1.138336E-07 -1 1 -1.138336E-07 0 39.92764)"
-                                            >
-                                                <path
-                                                    d="M0 0L40.5467 0C40.5467 0 -31.8215 230.87 38.7134 528.217C39.8794 533.133 31.7549 527.502 31.0925 528.75C28.7914 533.084 26.1543 528.191 24.4327 529.178C59.2372 539.206 14.0091 521.981 12.9329 530.001L1.02722 528.284L0 0Z"
-                                                    transform="translate(7.629395E-06 6.103516E-05)"
-                                                    fill="currentColor"
-                                                    stroke="none"
-                                                ></path>
-                                            </g>
-                                        </svg>
-                                    </div>
-                                </div>
-                                <div className="p-6">
-                                    <p className="text-sm">13 March, 2024</p>
-                                    <h4 className="text-lg hover:text-blue-700 font-semibold my-2">
-                                        <Link href="/blog/2">
-                                           Best Practices For Web Designing
-                                        </Link>
-                                    </h4>
-                                    <p className="text-slate-400 my-2">
-                                    Best practices for web design focus on creating user-centered, visually appealing, and functional ...
-                                        <Link
-                                            href="/blog/2"
-                                            className="text-slate-800 hover:text-blue-700"
-                                        >
-                                            Read More
-                                        </Link>
-                                    </p>
-                                </div>
-                            </div>
-                            {/* Blog 3 */}
-                            <div
-                                className="shadow-md rounded-md"
-                                data-aos="fade-up"
-                                data-aos-duration="700"
-                            >
-                                <div className="relative">
-                                    <div className="absolute end-4 top-3">
-                                        <span className="px-3 py-1 text-sm font-medium text-white rounded-md bg-primary">
-                                            Web Design
-                                        </span>
-                                    </div>
-                                    <img src="img/hero/coworking2.png" />
-                                    <div className="absolute -bottom-5">
-                                        <svg
-                                            className="w-full h-14 text-white"
-                                            viewBox="0 0 528 40"
-                                            version="1.1"
-                                            xmlns:xlink="http://www.w3.org/1999/xlink"
-                                            xmlns="http://www.w3.org/2000/svg"
-                                        >
-                                            <g
-                                                id="shape"
-                                                transform="matrix(-1.138336E-07 -1 1 -1.138336E-07 0 39.92764)"
-                                            >
-                                                <path
-                                                    d="M0 0L40.5467 0C40.5467 0 -31.8215 230.87 38.7134 528.217C39.8794 533.133 31.7549 527.502 31.0925 528.75C28.7914 533.084 26.1543 528.191 24.4327 529.178C59.2372 539.206 14.0091 521.981 12.9329 530.001L1.02722 528.284L0 0Z"
-                                                    transform="translate(7.629395E-06 6.103516E-05)"
-                                                    fill="currentColor"
-                                                    stroke="none"
-                                                ></path>
-                                            </g>
-                                        </svg>
-                                    </div>
-                                </div>
-                                <div className="p-6">
-                                    <p className="text-sm">12 March, 2024</p>
-                                    <h4 className="text-lg hover:text-blue-700 font-semibold my-2">
-                                        <Link href="/blog/3">
-                                           Why Responsive Web Design is Important?
-                                        </Link>
-                                    </h4>
-                                    <p className="text-slate-400 my-2">
-                                    Responsive web design is crucial in today's digital landscape because it ensures that a website provides ...
-                                        <Link
-                                            href="/blog/3"
-                                            className="text-slate-800 hover:text-blue-700"
-                                        >
-                                            Read More
-                                        </Link>
-                                    </p>
-                                </div>
-                            </div>
+                                Read More
+                            </a>
                         </div>
                     </div>
-                </section>
+                ))
+            ) : (
+                <div className="col-span-3 text-center py-6">
+                    No posts available.
+                </div>
+            )}
+        </div>
+    </div>
+</section>
+
+
+
 
                 {/* blog Section End */}
 

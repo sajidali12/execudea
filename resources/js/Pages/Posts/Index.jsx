@@ -17,6 +17,10 @@ export default function Dashboard(props) {
         Inertia.get(route('posts.index'), { perPage: newPerPage, page: 1 }, { preserveState: true });
     }
 
+    function handlePageChange(page) {
+        Inertia.get(route('posts.index'), { perPage: itemsPerPage, page }, { preserveState: true });
+    }
+
     function destroy(e) {
         e.preventDefault();
         const postId = e.currentTarget.id;
@@ -26,15 +30,16 @@ export default function Dashboard(props) {
         }
     }
 
-    // Determine the range of posts being displayed
     const from = posts.from;
     const to = posts.to;
     const total = posts.total;
+    const currentPage = posts.current_page;
+    const lastPage = posts.last_page;
 
     return (
         <AdminLayout user={props.user}>
             <Head title="Posts" />
-            
+
             <div className="py-12 mt-0">
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div className="flex items-center justify-between mb-6">
@@ -73,10 +78,14 @@ export default function Dashboard(props) {
                                         <tr key={id}>
                                             <td className="border px-4 py-2">{id}</td>
                                             <td className="border px-4 py-2">{title}</td>
-                                            <td className="border px-4 py-2">{body}</td>
                                             <td className="border px-4 py-2">
-                                                <Link className="px-4 py-2 text-sm text-white bg-blue-500 rounded" href={route("posts.edit", id)}>Edit</Link>
-                                                <button onClick={destroy} id={id} tabIndex="-1" type="button" className="mx-1 px-4 py-2 text-sm text-white bg-red-500 rounded">Delete</button>
+                                                <div className="h-24 overflow-auto">
+                                                    <div className="whitespace-pre-wrap">{body}</div>
+                                                </div>
+                                            </td>
+                                            <td className="border px-4 py-2">
+                                                <Link className="px-6 py-2 ml-12 text-sm text-white bg-blue-500 rounded" href={route("posts.edit", id)}>Edit</Link>
+                                                <button onClick={destroy} id={id} tabIndex="-1" type="button" className="mx-1 px-4 py-2 ml-6 text-sm text-white bg-red-500 rounded">Delete</button>
                                             </td>
                                         </tr>
                                     ))}
@@ -87,8 +96,25 @@ export default function Dashboard(props) {
                                     )}
                                 </tbody>
                             </table>
-                            <div className="mt-4">
+                            <div className="mt-4 flex justify-between items-center">
                                 <span className="text-gray-700">Showing {from} to {to} of {total} posts</span>
+                                <div className="flex space-x-2">
+                                    <button 
+                                        onClick={() => handlePageChange(currentPage - 1)}
+                                        disabled={currentPage === 1}
+                                        className="px-4 py-2 bg-gray-300 text-gray-700 rounded"
+                                    >
+                                        Previous
+                                    </button>
+                                    {currentPage < lastPage && (
+                                        <button 
+                                            onClick={() => handlePageChange(currentPage + 1)}
+                                            className="px-4 py-2 bg-gray-300 text-gray-700 rounded"
+                                        >
+                                            Next
+                                        </button>
+                                    )}
+                                </div>
                             </div>
                         </div>
                     </div>

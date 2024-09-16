@@ -7,7 +7,28 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
 class MessageController extends Controller
-{public function msg(Request $request)
+
+{
+    
+
+    public function index(Request $request)
+{
+    $messages = Message::orderBy('created_at', 'desc')->paginate(10); // Sort by latest first
+
+    return response()->json($messages);
+}
+
+    public function destroy($id)
+    {
+        // Find and delete the message by ID
+        $message = Message::findOrFail($id);
+        $message->delete();
+
+        // Return a success response
+        return response()->json(['message' => 'Message deleted successfully.']);
+    }
+
+    public function msg(Request $request)
     {
         $validated = $request->validate([
             'name' => 'required|string|max:255',
