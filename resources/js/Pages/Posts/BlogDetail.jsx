@@ -27,7 +27,7 @@ export default function BlogDetail({ post }) {
             <Head title={post.title} />
             <Guest>
                 <section className="bg-gray-100 lg:pt-28 sm:pb-36 pb-16 pt-36 relative overflow-hidden">
-                    <div className="container mx-auto flex flex-col lg:flex-row items-center justify-between">
+                    <div className="container md:px-10 px-4 flex flex-col lg:flex-row items-center justify-between">
                         {/* Image Section */}
                         {post.image && (
                             <div className="lg:w-1/2 animate-image-float">
