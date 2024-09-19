@@ -30,7 +30,7 @@ export default function BlogDetail({ post }) {
                     <div className="container md:px-10 px-4 flex flex-col lg:flex-row items-center justify-between">
                         {/* Image Section */}
                         {post.image && (
-                            <div className="lg:w-1/2 animate-image-float">
+                            <div className="lg:w-2/5 animate-image-float">
                                 <img
                                     src={`/storage/product/image/${post.image}`}
                                     alt={post.title}
@@ -40,18 +40,27 @@ export default function BlogDetail({ post }) {
                         )}
 
                         {/* Text Section */}
-                        <div className="lg:w-1/2 lg:pl-10 mt-8 lg:mt-0">
+                        <div className="lg:w-3/5 lg:pl-10 mt-8 lg:mt-0">
                             <h1 className="text-4xl font-bold text-gray-800 mb-4 transform transition duration-500 hover:scale-105">
                                 {post.title}
                             </h1>
-                            <div
-                                id="blog-content"
-                                className="text-xl text-gray-600 opacity-0 transition-opacity duration-500"
-                                dangerouslySetInnerHTML={{ __html: post.body }}
-                            />
+                          
+                            <span className='bg-primary text-white px-1 py-1'>Author: Syed Sajid Ali</span>
+                            <p className='mt-2'> {new Date(post.created_at).toLocaleDateString('en-US', {
+                                                day: '2-digit',
+                                                month: 'long',
+                                                year: 'numeric',
+                                            })}</p>
+                            
                         </div>
                     </div>
-
+                    <div class="container m-auto md:px-10 px-4 lg:py-8 py-8">
+                    <div
+                                id="blog-content"
+                                className="text-md text-slate-500 opacity-0 transition-opacity duration-500"
+                                dangerouslySetInnerHTML={{ __html: post.body }}
+                            />
+                       </div>
                     {/* Decorative SVG */}
                     <div className="absolute -bottom-1 w-full">
                         <svg
