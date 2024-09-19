@@ -81,6 +81,7 @@ export default function NavBar() {
                         </li>
                         <li>
                             <Link className="text-gray-800 text-lg block" href="blog">
+                            
                                 Blog
                             </Link>
                         </li>

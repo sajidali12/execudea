@@ -49,17 +49,29 @@ class PostController extends Controller
     public function blog()
     {
         $user = Auth::user();
-      
+        
         $posts = Post::orderBy('created_at', 'desc')->paginate(6);
-        // $latestPost = Post::latest()->take(3)->get();
-    
+        
+        $latestPost = Post::orderBy('created_at', 'desc')->first();
+        
         return Inertia::render('Blog', [
             'posts' => $posts,
             'user' => $user,
-            // 'latestPost' => $latestPost, 
+            'latestPost' => $latestPost, // Pass the latest post to the view
         ]);
     }
+    public function deleteImage($id)
+{
+    $post = Post::findOrFail($id);
 
+    if ($post->image) {
+        Storage::delete('public/product/image/' . $post->image);
+        $post->image = null;
+        $post->save();
+    }
+
+    return response()->json(['success' => true]);
+}
   
     /**
      * Write code on Method
@@ -99,7 +111,7 @@ class PostController extends Controller
             'image' => $imageName,
         ]);
 
-        // session()->flash('success', 'Post created successfully!');
+        
 
         return redirect()->route('posts.index');
     }
@@ -130,45 +142,62 @@ class PostController extends Controller
   
    
    
-public function update(Request $request, $id)
-{
+// public function update(Request $request, $id)
+// {
     
-    $request->validate([
-        'title' => 'required|string|max:255',
-        'body' => 'required|string',
-        'image' => 'nullable|image',
-        'oldImage' => 'nullable|string',
-    ]);
+//     $request->validate([
+//         'title' => 'required|string|max:255',
+//         'body' => 'required|string',
+//         'image' => 'nullable|image',
+//         'oldImage' => 'nullable|string',
+//     ]);
 
-    $post = Post::findOrFail($id);
+//     $post = Post::findOrFail($id);
 
-    $post->title = $request->input('title');
-    $post->body = $request->input('body');
+//     $post->title = $request->input('title');
+//     $post->body = $request->input('body');
 
-    try {
-        if ($request->hasFile('image')) {
+//     try {
+//         if ($request->hasFile('image')) {
            
-            if ($post->image && Storage::exists('public/product/image/' . $post->image)) {
-                Storage::delete('public/product/image/' . $post->image);
-            }
-            $image = $request->file('image');
-            $imageName = time() . '.' . $image->getClientOriginalExtension();
-            $image->storeAs('public/product/image', $imageName);
-            $post->image = $imageName;
-        } else {
+//             if ($post->image && Storage::exists('public/product/image/' . $post->image)) {
+//                 Storage::delete('public/product/image/' . $post->image);
+//             }
+//             $image = $request->file('image');
+//             $imageName = time() . '.' . $image->getClientOriginalExtension();
+//             $image->storeAs('public/product/image', $imageName);
+//             $post->image = $imageName;
+//         } else {
            
-            $post->image = $request->input('oldImage', $post->image);
-        }
+//             $post->image = $request->input('oldImage', $post->image);
+//         }
 
         
+//         $post->save();
+
+//         return redirect()->route('posts.index');
+//     } catch (\Exception $e) {
+//         Log::error('Error updating post image: ' . $e->getMessage());
+//         return redirect()->back()->withErrors(['error' => 'An error occurred while updating the post. Please try again.']);
+//     }
+// }
+public function update(Request $request, $id)
+    {
+        // Validate the request
+        $validated = $request->validate([
+            'title' => 'required|string|max:255',
+            'body' => 'required|string',
+        ]);
+
+        // Find the post and update title and body
+        $post = Post::findOrFail($id);
+        $post->title = $validated['title'];
+        $post->body = $validated['body'];
         $post->save();
 
-        return redirect()->route('posts.index');
-    } catch (\Exception $e) {
-        Log::error('Error updating post image: ' . $e->getMessage());
-        return redirect()->back()->withErrors(['error' => 'An error occurred while updating the post. Please try again.']);
+        return redirect()->route('posts.index')->with('success', 'Post updated successfully!');
     }
-}
+
 
     
     /**
@@ -184,14 +213,6 @@ public function update(Request $request, $id)
     }
 
 
-    // public function all()
-    // {
-    //     $posts = Post::all();
-    //     foreach ($posts as $post) {
-    //         $post->slug = Str::slug($post->title, '-') . '-' . $post->id;
-    //         $post->save();
-    //     }
-    // }
 
       /**
      * Display the specified resource.

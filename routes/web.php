@@ -37,7 +37,7 @@ Route::get('/about', function () {
     return Inertia::render('About');
 });
 
-Route::get('/blog', [PostController::class, 'all'])->name('blog.all');
+// Route::get('/blog', [PostController::class, 'all'])->name('blog.all');
 Route::get('/blog', [PostController::class, 'blog'])->name('blog');
 Route::get('/blog/{id}-{title}', [PostController::class, 'show'])->name('blog.detail');
 Route::get('/', [PostController::class, 'latestPosts'])->name('posts.latest');
@@ -67,6 +67,7 @@ Route::middleware('auth')->group(function () {
     Route::put('/admin/posts/{id}', [PostController::class, 'update'])->name('posts.update');
     Route::get('/admin/messages', [MessageController::class, 'index'])->name('admin.messages.index');
     Route::delete('/admin/messages/{id}', [MessageController::class, 'destroy'])->name('admin.messages.destroy');
+    Route::delete('/posts/{id}/image', [PostController::class, 'deleteImage'])->name('posts.deleteImage');
 
 
 
@@ -77,10 +78,5 @@ Route::middleware(['web'])->group(function () {
             });
 
 
-<<<<<<< HEAD
 Route::get('/{any}', [YourController::class, 'showNotFound'])->where('any', '.*');
 
-=======
-//Route::get('/{any}', [YourController::class, 'showNotFound'])->where('any', '.*');
-require __DIR__.'/auth.php';
->>>>>>> e4d097a76a8144955678a2755960037d4bf29f57

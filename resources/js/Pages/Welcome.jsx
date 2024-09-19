@@ -49,20 +49,20 @@ export default function Welcome({ auth, laravelVersion, phpVersion, latestPosts 
                                     experiences.
                                 </p>
                                 <div className="flex flex-wrap items-center gap-5">
-                                    <a
+                                    <Link
                                         href="#work"
                                         className="py-3 px-6 rounded border border-primary text-white bg-primary hover:shadow-lg hover:shadow-black/50 focus:outline focus:outline-black/50 transition-all duration-500"
                                     >
                                         <i className="fa-solid fa-arrow-down me-2"></i>{" "}
                                         View Our Work
-                                    </a>
-                                    <a
+                                    </Link>
+                                    <Link
                                         href="https://calendly.com/execudea-info/30min"
                                         target="_blank"
                                         className="text-primary py-3 px-6 rounded border border-primary hover:border-black hover:bg-primary hover:text-white hover:shadow-lg hover:shadow-black/50 focus:outline focus:outline-black/50 transition-all duration-500"
                                     >
                                         Book a Meeting
-                                    </a>
+                                    </Link>
                                 </div>
                             </div>
                         </div>
@@ -198,6 +198,8 @@ export default function Welcome({ auth, laravelVersion, phpVersion, latestPosts 
                                     to enterprise organizations
                                 </p>
                             </div>
+                        
+                           
 
                             <div
                                 className="p-6 hover:bg-white rounded-md hover:shadow-xl transition-all duration-500"
@@ -243,8 +245,141 @@ export default function Welcome({ auth, laravelVersion, phpVersion, latestPosts 
                                     popular search engines.
                                 </p>
                             </div>
+                            <div
+                                className="p-6 hover:bg-white rounded-md hover:shadow-xl transition-all duration-500 mt-10"
+                                data-aos="fade-up"
+                                data-aos-duration="900"
+                            >
+                                <div className="w-12 h-12 rounded-md bg-green-500/10 flex items-center justify-center">
+                                                                    <svg
+                                        className="w-8 h-8 text-primary"
+                                        viewBox="0 0 100 100"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                        <defs>
+                                            <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                                <stop offset="0%" style={{ stopColor: "#4A90E2", stopOpacity: 1 }} />
+                                                <stop offset="100%" style={{ stopColor: "#00C6FF", stopOpacity: 1 }} />
+                                            </linearGradient>
+                                        </defs>
+                                        <rect x="10" y="25" width="80" height="50" rx="15" fill="url(#grad1)" />
+                                        
+                                        <path
+                                            d="M20 55 C 20 45, 30 45, 30 55 S 40 65, 40 55 S 50 45, 50 55 S 60 65, 60 55 S 70 45, 70 55 S 80 65, 80 55"
+                                            fill="none"
+                                            stroke="#fff"
+                                            strokeWidth="3"
+                                        />
+                                        
+                                        <circle cx="30" cy="40" r="5" fill="#fff" />
+                                        <circle cx="50" cy="40" r="5" fill="#fff" />
+                                        <circle cx="70" cy="40" r="5" fill="#fff" />
+
+                                        <rect x="35" y="70" width="30" height="8" fill="#fff" rx="4" />
+                                        
+                                        <line x1="15" y1="25" x2="85" y2="25" stroke="#fff" strokeWidth="2" />
+                                        <line x1="15" y1="75" x2="85" y2="75" stroke="#fff" strokeWidth="2" />
+                                    </svg>
+
+
+                                </div>
+                                <h4 className="text-xl font-medium my-5 font-futura-bold">
+                                    Saas
+                                </h4>
+                                <p className="text-slate-400">
+                                We empower businesses with innovative SaaS solutions designed for seamless scalability and efficiency. Unlock your potential with our customizable platforms that adapt to your evolving needs.
+                                </p>
+                            </div>
+                            <div
+                                className="p-6 hover:bg-white rounded-md hover:shadow-xl transition-all duration-500 mt-10"
+                                data-aos="fade-up"
+                                data-aos-duration="900"
+                            >
+                                <div className="w-12 h-12 rounded-md bg-green-500/10 flex items-center justify-center">
+                                <svg
+                                className="w-7 h-7 text-primary"
+                                viewBox="0 0 100 100"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <rect x="10" y="10" width="80" height="80" rx="10" fill="#3c5a99" />
+                                <circle cx="50" cy="50" r="25" fill="#fff" />
+                                
+                                <path
+                                    d="M50 25 Q60 35, 50 45 Q40 35, 50 25 Z"
+                                    fill="#3c5a99"
+                                />
+                                <path
+                                    d="M50 55 Q60 65, 50 75 Q40 65, 50 55 Z"
+                                    fill="#3c5a99"
+                                />
+                                
+                                <path
+                                    d="M20 40 Q15 50, 20 60 Q25 50, 20 40 Z"
+                                    fill="#3c5a99"
+                                />
+                                <path
+                                    d="M80 40 Q85 50, 80 60 Q75 50, 80 40 Z"
+                                    fill="#3c5a99"
+                                />
+
+                                <circle cx="50" cy="50" r="10" fill="#3c5a99" />
+                            </svg>
+
+
+
+                                </div>
+                                <h4 className="text-xl font-medium my-5 font-futura-bold">
+                                   Wordpress/Shopify
+                                </h4>
+                                <p className="text-slate-400">
+                                We create dynamic websites and e-commerce solutions with WordPress and Shopify. Our skilled team is committed to crafting user-friendly, high-performance platforms that elevate your online presence.
+                                </p>
+                            </div>
+                            <div
+                                className="p-6 hover:bg-white rounded-md hover:shadow-xl transition-all duration-500 mt-10"
+                                data-aos="fade-up"
+                                data-aos-duration="900"
+                            >
+                                <div className="w-12 h-12 rounded-md bg-green-500/10 flex items-center justify-center">
+                                <svg
+                                className="w-7 h-7 text-primary"
+                                viewBox="0 0 100 100"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <rect x="10" y="20" width="80" height="60" rx="10" fill="#4F5B93" />
+                                <rect x="15" y="25" width="70" height="50" fill="#fff" rx="5" />
+                                
+                                <circle cx="25" cy="35" r="5" fill="#4F5B93" />
+                                <circle cx="25" cy="55" r="5" fill="#4F5B93" />
+                                <circle cx="75" cy="35" r="5" fill="#4F5B93" />
+                                <circle cx="75" cy="55" r="5" fill="#4F5B93" />
+                                
+                                <path
+                                    d="M40 40 L60 40 L50 30 Z"
+                                    fill="#4F5B93"
+                                />
+                                <path
+                                    d="M40 50 L60 50 L50 60 Z"
+                                    fill="#4F5B93"
+                                />
+
+                                <line x1="10" y1="20" x2="90" y2="20" stroke="#4F5B93" stroke-width="2" />
+                                <line x1="10" y1="80" x2="90" y2="80" stroke="#4F5B93" stroke-width="2" />
+                            </svg>
+
+
+                                </div>
+                                <h4 className="text-xl font-medium my-5 font-futura-bold">
+                                    Backend
+                                </h4>
+                                <p className="text-slate-400">
+                                we specialize in robust backend solutions using PHP, Laravel, Node.js, and Express. Our expert team is dedicated to delivering scalable and efficient applications tailored to your business needs.
+                                </p>
+                            </div>
                         </div>
-                    </div>
+                        </div>
+                        
+                    
                 </section>
                 {/* services Section End */}
                 {/* portfolio Section Start */}
@@ -482,7 +617,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion, latestPosts 
                 Blog
             </span>
             <h1 className="text-3xl font-medium my-3">
-                Latest Posts
+                Latest Articles
             </h1>
         </div>
 
@@ -536,21 +671,21 @@ export default function Welcome({ auth, laravelVersion, phpVersion, latestPosts 
                                 })}
                             </p>
                             <h4 className="text-lg font-semibold mb-2 hover:text-primary">
-                                <a href={`/blog/${id}-${generateSlug(title)}`} className="text-primary">
+                                <Link href={`/blog/${id}-${generateSlug(title)}`} className="text-primary">
                                     {title}
-                                </a>
+                                </Link>
                             </h4>
                             <div className="flex-grow mb-4">
                                 <p className="text-sm text-gray-500 line-clamp-2">
                                     {body}
                                 </p>
                             </div>
-                            <a
+                            <Link
                                 href={`/blog/${id}-${generateSlug(title)}`}
                                 className="text-primary font-semibold"
                             >
                                 Read More
-                            </a>
+                            </Link>
                         </div>
                     </div>
                 ))
