@@ -73,8 +73,8 @@ export default function Blog() {
                                                 {title}
                                             </Link>
                                         </h1>
-                                        <p className="text-sm text-gray-500 mb-4 line-clamp-2">
-                                            {body}
+                                        <p className="text-sm text-gray-500 mb-4 line-clamp-2" dangerouslySetInnerHTML={{ __html: body }}>
+                                            
                                         </p>
                                         <Link 
                                             href={`/blog/${id}-${generateSlug(title)}`}

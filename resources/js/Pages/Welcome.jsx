@@ -676,8 +676,8 @@ export default function Welcome({ auth, laravelVersion, phpVersion, latestPosts 
                                 </Link>
                             </h4>
                             <div className="flex-grow mb-4">
-                                <p className="text-sm text-gray-500 line-clamp-2">
-                                    {body}
+                                <p className="text-sm text-gray-500 line-clamp-2" dangerouslySetInnerHTML={{ __html: post.body }}>
+                                  
                                 </p>
                             </div>
                             <Link
