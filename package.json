@@ -29,6 +29,8 @@
         "@inertiajs/inertia-react": "^0.8.1",
         "antd": "^5.11.4",
         "dompurify": "^3.1.6",
+        "quill": "^2.0.2",
+        "react-quill": "^2.0.0",
         "styled-components": "^6.1.1",
         "swiper": "^11.1.9"
     }
