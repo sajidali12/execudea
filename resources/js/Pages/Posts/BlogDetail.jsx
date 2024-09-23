@@ -28,7 +28,7 @@ export default function BlogDetail({ post }) {
             <Guest>
                 <section className="bg-gray-100 lg:pt-28 sm:pb-36 pb-16 pt-36 relative overflow-hidden">
                     <div className="container md:px-10 px-4 flex flex-col lg:flex-row items-center justify-between">
-                        {/* Image Section */}
+                     
                         {post.image && (
                             <div className="lg:w-2/5 animate-image-float">
                                 <img
@@ -39,29 +39,31 @@ export default function BlogDetail({ post }) {
                             </div>
                         )}
 
-                        {/* Text Section */}
-                        <div className="lg:w-3/5 lg:pl-10 mt-8 lg:mt-0">
-                            <h1 className="text-4xl font-bold text-gray-800 mb-4 transform transition duration-500 hover:scale-105">
+                        <div className="lg:w-3/5 lg:pl-10 mt-8 lg:mt-0 ">
+                            <h1 className="text-4xl font-bold text-gray-800 mb-4 transform transition duration-500 hover:scale-105 text-4xl ">
                                 {post.title}
                             </h1>
-                          
-                            <span className='bg-primary text-white px-1 py-1'>Author: Syed Sajid Ali</span>
-                            <p className='mt-2'> {new Date(post.created_at).toLocaleDateString('en-US', {
-                                                day: '2-digit',
-                                                month: 'long',
-                                                year: 'numeric',
-                                            })}</p>
                             
+                            <span className='bg-primary text-white px-1 py-1'>
+                                Author: {post.author_name}
+                            </span>
+                            <p className='mt-2'> 
+                                {new Date(post.created_at).toLocaleDateString('en-US', {
+                                    day: '2-digit',
+                                    month: 'long',
+                                    year: 'numeric',
+                                })}
+                            </p>
                         </div>
                     </div>
-                    <div class="container m-auto md:px-10 px-4 lg:py-8 py-8">
-                    <div
-                                id="blog-content"
-                                className="text-md text-slate-500 opacity-0 transition-opacity duration-500"
-                                dangerouslySetInnerHTML={{ __html: post.body }}
-                            />
-                       </div>
-                    {/* Decorative SVG */}
+                    <div className="container m-auto md:px-10 px-4 lg:py-8 py-8 text-xl">
+                        <div
+                            id="blog-content"
+                            className="text-md text-slate-500 opacity-0 transition-opacity duration-500"
+                            dangerouslySetInnerHTML={{ __html: post.body }}
+                        />
+                    </div>
+                    
                     <div className="absolute -bottom-1 w-full">
                         <svg
                             className="w-full h-full"

@@ -60,8 +60,8 @@ export default function Blog() {
                                             </div>
                                         )}
                                     </div>
-                                    <div className="p-6">
-                                        <p className="text-sm mb-0 mt-2 py-2">
+                                    <div className="p-4">
+                                        <p className="text-sm mb-4  py-2">
                                             {new Date(created_at).toLocaleDateString('en-US', {
                                                 day: '2-digit',
                                                 month: 'long',

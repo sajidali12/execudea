@@ -1,5 +1,3 @@
-// resources/js/Pages/NotFound.jsx
-
 import { Link } from "@inertiajs/react";
 import Guest from "@/Layouts/GuestLayout"; 
 
@@ -7,7 +5,7 @@ export default function NotFound() {
     return (
         <Guest>
             <div className="flex flex-col items-center justify-center min-h-screen p-6 bg-gradient-to-br from-gray-100 via-gray-200 to-gray-300">
-                {/* Illustration or Image */}
+                
                 <div className="relative mb-8">
                    
                     <div className="absolute inset-0 bg-gradient-to-t from-transparent to-blue-100 opacity-50 rounded-full" />

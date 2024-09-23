@@ -91,33 +91,67 @@ class PostController extends Controller
      * @return Response
      */
    
-    public function store(Request $request)
-{
+//     public function store(Request $request)
+// {
 
-    Validator::make($request->all(), [
+//     Validator::make($request->all(), [
+//         'title' => ['required'],
+//         'body' => ['required'],
+//         'author_name' => 'required|string|max:255',
+//         'image' => ['nullable', 'image'],
+//     ])->validate();
+
+//     if ($request->hasFile('image')) {
+//         $image = $request->file('image');
+//         $imageName = time() . '.' . $image->getClientOriginalExtension();
+//         $image->storeAs('public/product/image', $imageName);
+
+//         Post::create([
+//             'title' => $request->input('title'),
+//             'body' => $request->input('body'),
+//             'author_name'=> $request->input('author_name'),
+//             'image' => $imageName,
+//         ]);
+
+        
+
+//         return redirect()->route('posts.index');
+//     }
+
+//     return redirect()->back()->with('error', 'Image not uploaded');
+// }
+public function store(Request $request)
+{
+    $validatedData = $request->validate([
         'title' => ['required'],
         'body' => ['required'],
-        'image' => ['nullable', 'image'],
-    ])->validate();
+        'author_name' => 'required|string|max:255',
+        'image' => ['required', 'image'],
+    ]);
+
+    
+    $data = [
+        'title' => $validatedData['title'],
+        'body' => $validatedData['body'],
+        'author_name' => $validatedData['author_name'],
+        'image' => null,  
+    ];
+
 
     if ($request->hasFile('image')) {
         $image = $request->file('image');
         $imageName = time() . '.' . $image->getClientOriginalExtension();
         $image->storeAs('public/product/image', $imageName);
-
-        Post::create([
-            'title' => $request->input('title'),
-            'body' => $request->input('body'),
-            'image' => $imageName,
-        ]);
-
-        
-
-        return redirect()->route('posts.index');
+        $data['image'] = $imageName;  
     }
 
-    return redirect()->back()->with('error', 'Image not uploaded');
+    Post::create($data);
+
+    
+    return redirect()->route('posts.index')->with('success', 'Post created successfully.');
 }
+
+
 
   
     /**
@@ -182,21 +216,19 @@ class PostController extends Controller
 //     }
 // }
 public function update(Request $request, $id)
-    {
-        // Validate the request
-        $validated = $request->validate([
-            'title' => 'required|string|max:255',
-            'body' => 'required|string',
-        ]);
+{
+    $validated = $request->validate([
+        'title' => 'required|string|max:255',
+        'body' => 'required|string',
+        'author_name' => 'required|string|max:255',
+        
+    ]);
 
-        // Find the post and update title and body
-        $post = Post::findOrFail($id);
-        $post->title = $validated['title'];
-        $post->body = $validated['body'];
-        $post->save();
+    $post = Post::findOrFail($id);
+    $post->update($validated);
 
-        return redirect()->route('posts.index')->with('success', 'Post updated successfully!');
-    }
+    return redirect()->route('posts.index')->with('success', 'Post updated successfully!');
+}
 
 
     

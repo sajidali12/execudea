@@ -366,8 +366,6 @@ export default function Welcome({ auth, laravelVersion, phpVersion, latestPosts 
                                 <line x1="10" y1="20" x2="90" y2="20" stroke="#4F5B93" stroke-width="2" />
                                 <line x1="10" y1="80" x2="90" y2="80" stroke="#4F5B93" stroke-width="2" />
                             </svg>
-
-
                                 </div>
                                 <h4 className="text-xl font-medium my-5 font-futura-bold">
                                     Backend
@@ -382,6 +380,8 @@ export default function Welcome({ auth, laravelVersion, phpVersion, latestPosts 
                     
                 </section>
                 {/* services Section End */}
+
+                
                 {/* portfolio Section Start */}
                 <section className="py-20" id="work">
                     <div className="container m-auto md:px-10 px-2">

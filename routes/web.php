@@ -37,6 +37,7 @@ Route::get('/about', function () {
     return Inertia::render('About');
 });
 
+
 // Route::get('/blog', [PostController::class, 'all'])->name('blog.all');
 Route::get('/blog', [PostController::class, 'blog'])->name('blog');
 Route::get('/blog/{id}-{title}', [PostController::class, 'show'])->name('blog.detail');
@@ -69,9 +70,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/admin/messages/{id}', [MessageController::class, 'destroy'])->name('admin.messages.destroy');
     Route::delete('/posts/{id}/image', [PostController::class, 'deleteImage'])->name('posts.deleteImage');
 
-
-
-            });
+    });
+    
 Route::middleware(['web'])->group(function () {
     Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
             ->name('logout');
