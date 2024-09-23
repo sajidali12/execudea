@@ -1,11 +1,14 @@
 import React from 'react';
 import { Head, useForm, Link } from "@inertiajs/react";
 import AdminLayout from '@/Layouts/AdminLayout';
+import ReactQuill from 'react-quill'; 
+import 'react-quill/dist/quill.snow.css'; 
 
 export default function EditPost({ auth, post }) {
     const { data, setData, errors, put } = useForm({
         title: post?.title || "",
         body: post?.body || "",
+        author_name: post?.author_name || "",
     });
 
     function handleSubmit(e) {
@@ -14,6 +17,7 @@ export default function EditPost({ auth, post }) {
         const formData = new FormData();
         formData.append('title', data.title);
         formData.append('body', data.body);
+        formData.append('author_name', data.author_name); 
 
         put(route("posts.update", post.id), formData, {
             forceFormData: true,
@@ -38,7 +42,7 @@ export default function EditPost({ auth, post }) {
                             <form onSubmit={handleSubmit}>
                                 <div className="flex flex-col">
                                     <div className="mb-4">
-                                        <label>Title</label>
+                                        <label>Title ('avoid using html tags here!')</label>
                                         <input 
                                             type="text" 
                                             className="w-full px-4 py-2" 
@@ -50,13 +54,24 @@ export default function EditPost({ auth, post }) {
                                     </div>
                                     <div className="mb-4">
                                         <label>Body</label>
-                                        <textarea 
-                                            className="w-full rounded" 
-                                            name="body" 
+                                        <ReactQuill 
                                             value={data.body} 
-                                            onChange={(e) => setData("body", e.target.value)} 
+                                            onChange={(content) => setData("body", content)} 
+                                            className="react-quill" 
                                         />
                                         {errors.body && <span className="text-red-600">{errors.body}</span>}
+                                    </div>
+                                   
+                                    <div className="mb-4">
+                                        <label>Author Name</label>
+                                        <input 
+                                            type="text" 
+                                            className="w-full px-4 py-2" 
+                                            name="author_name" 
+                                            value={data.author_name} 
+                                            onChange={(e) => setData("author_name", e.target.value)} 
+                                        />
+                                        {errors.author_name && <span className="text-red-600">{errors.author_name}</span>}
                                     </div>
                                 </div>
                                 <div className="mt-4">
