@@ -1,6 +1,7 @@
 import Guest from '@/Layouts/GuestLayout';
 import { Head } from '@inertiajs/react';
 import { useEffect } from 'react';
+import { Link } from '@inertiajs/react';
 
 export default function BlogDetail({ post }) {
     useEffect(() => {
@@ -28,7 +29,6 @@ export default function BlogDetail({ post }) {
             <Guest>
                 <section className="bg-gray-100 lg:pt-28 sm:pb-36 pb-16 pt-36 relative overflow-hidden">
                     <div className="container md:px-10 px-4 flex flex-col lg:flex-row items-center justify-between">
-                     
                         {post.image && (
                             <div className="lg:w-2/5 animate-image-float">
                                 <img
@@ -38,12 +38,10 @@ export default function BlogDetail({ post }) {
                                 />
                             </div>
                         )}
-
-                        <div className="lg:w-3/5 lg:pl-10 mt-8 lg:mt-0 ">
-                            <h1 className="text-4xl font-bold text-gray-800 mb-4 transform transition duration-500 hover:scale-105 text-4xl ">
+                        <div className="lg:w-3/5 lg:pl-10 mt-8 lg:mt-0">
+                            <h1 className="text-4xl font-bold text-gray-800 mb-4">
                                 {post.title}
                             </h1>
-                            
                             <span className='bg-primary text-white px-1 py-1'>
                                 Author: {post.author_name}
                             </span>
@@ -62,6 +60,15 @@ export default function BlogDetail({ post }) {
                             className="text-md text-slate-500 opacity-0 transition-opacity duration-500"
                             dangerouslySetInnerHTML={{ __html: post.body }}
                         />
+                    </div>
+                    
+                    <div className="flex justify-center mt-6">
+                    <Link 
+                            href={route('blog')} 
+                            className="bg-primary text-white px-4 py-2 rounded transition duration-300 transform hover:bg-primary hover:scale-105"
+                        >
+                            Back to Blog
+                        </Link>
                     </div>
                     
                     <div className="absolute -bottom-1 w-full">
