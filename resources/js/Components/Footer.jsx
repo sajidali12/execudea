@@ -31,7 +31,7 @@ export default function Footer() {
                                         </div>
                                         <div className="text-gray-500/80">
                                             <a href="javascript:void(0);">
-                                                Portfolio
+                                                services
                                             </a>
                                         </div>
                                        

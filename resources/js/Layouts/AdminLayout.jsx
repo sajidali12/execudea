@@ -26,7 +26,7 @@ export default function AdminLayout({ user, children }) {
 
     const getSelectedKey = () => {
         if (url.startsWith(route('admin-dashboard'))) return "1";
-        if (url.startsWith(route('admin-projects'))) return "2";
+        if (url.startsWith('/admin/contect')) return "2";
         if (url.startsWith('/admin/clients')) return "3";
         if (url.startsWith('/admin/posts')) return "4";
         return "1"; 
@@ -64,7 +64,7 @@ export default function AdminLayout({ user, children }) {
                     theme="dark"
                     mode="inline"
                     defaultSelectedKeys={[getSelectedKey()]}
-                    selectedKeys={[getSelectedKey()]} // Dynamically set selected key
+                    selectedKeys={[getSelectedKey()]} 
                     items={[
                         {
                             key: "1",
@@ -84,11 +84,7 @@ export default function AdminLayout({ user, children }) {
                                 </Link>
                             ),
                         },
-                        // {
-                        //     key: "3",
-                        //     icon: <UsergroupAddOutlined />,
-                        //     label: "Clients",
-                        // },
+                        
                         {
                             key: "4",
                             icon: <FileTextOutlined />,

@@ -13,7 +13,7 @@ class MessageController extends Controller
 
     public function index(Request $request)
 {
-    $messages = Message::orderBy('created_at', 'desc')->paginate(10); // Sort by latest first
+    $messages = Message::orderBy('created_at', 'desc')->paginate(10); 
 
     return response()->json($messages);
 }
@@ -24,7 +24,6 @@ class MessageController extends Controller
         $message = Message::findOrFail($id);
         $message->delete();
 
-        // Return a success response
         return response()->json(['message' => 'Message deleted successfully.']);
     }
 

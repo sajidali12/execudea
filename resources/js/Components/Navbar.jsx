@@ -49,7 +49,7 @@ export default function NavBar() {
                         onClick={toggleMobileMenu}
                         className="text-gray-500 text-2xl"
                     >
-                        <i className="fa-solid fa-bars"></i> {/* Hamburger icon */}
+                        <i className="fa-solid fa-bars"></i> 
                     </button>
                 </div>
             </div>

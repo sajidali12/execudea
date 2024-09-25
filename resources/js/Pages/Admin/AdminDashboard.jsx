@@ -18,14 +18,12 @@ export default function AdminDashboard({ auth }) {
     return (
         
         <AdminLayout user={auth.user}>
-            {/* <div>Hi { user.name } ! </div>
-             */}
-
-
+            
             <div className="text-xl">
                 <span className="text-red-500 text-3xl">{getGreeting()}!</span>{' '}
                 <span className="text-black font-semibold">{user.name}</span>
             </div>
+            
         </AdminLayout>
        
     );
