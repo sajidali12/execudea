@@ -26,7 +26,7 @@ export default function AdminLayout({ user, children }) {
 
     const getSelectedKey = () => {
         if (url.startsWith(route('admin-dashboard'))) return "1";
-        if (url.startsWith('/admin/contect')) return "2";
+        if (url.startsWith('/admin/contact')) return "2";
         if (url.startsWith('/admin/clients')) return "3";
         if (url.startsWith('/admin/posts')) return "4";
         return "1"; 

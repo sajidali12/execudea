@@ -67,7 +67,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin/messages', [MessageController::class, 'index'])->name('admin.messages.index');
     Route::delete('/admin/messages/{id}', [MessageController::class, 'destroy'])->name('admin.messages.destroy');
     Route::delete('/posts/{id}/image', [PostController::class, 'deleteImage'])->name('posts.deleteImage');
-    Route::get('/admin/contect', function () {
+    Route::get('/admin/contact', function () {
         return Inertia::render('Admin/AdminProjects');
     })->name('admin-projects');
 

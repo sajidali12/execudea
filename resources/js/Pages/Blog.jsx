@@ -16,7 +16,7 @@ export default function Blog() {
                     <div className="container m-auto">
                         <div className="flex justify-center">
                             <div className="lg:w-7/12 text-center">
-                                <h1 className="text-5xl font-semibold text-gray-700">Blog</h1>
+                                <h1 className="text-5xl/relaxed text-gray-700">Blog</h1>
                                 <p className="mb-6 md:text-lg text-gray-500">
                                     Find useful resources about design, development, and digital marketing techniques.
                                 </p>
