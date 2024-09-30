@@ -4,22 +4,31 @@ import { Link } from '@inertiajs/react';
 
 export default function NavBar() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
     const toggleMobileMenu = () => {
         setIsMobileMenuOpen(!isMobileMenuOpen);
     };
 
+
+    const handleMouseEnter = () => {
+        setIsDropdownOpen(true);
+    };
+
+    const handleMouseLeave = () => {
+        setIsDropdownOpen(false);
+    };
+
     return (
-<header
-                id="navbar"
-                className="@@link-color fixed top-0 inset-x-0 flex items-center z-40 w-full lg:bg-transparent bg-white transition-all py-5"
-            >
+        <header
+            id="navbar"
+            className="@@link-color fixed top-0 inset-x-0 flex items-center z-40 w-full lg:bg-transparent bg-white transition-all py-5"
+        >
             <div className="container mx-auto px-2 md:px-10 flex items-center justify-between">
                 <Link href="/">
                     <ApplicationLogo className="w-32 sm:w-20 md:w-24 lg:w-36 xl:w-40" />
                 </Link>
 
-                {/* Desktop Navigation */}
                 <div className="hidden lg:flex items-center space-x-6">
                     <Link className="text-gray-800 hover:text-primary" href="/">
                         Home
@@ -27,6 +36,26 @@ export default function NavBar() {
                     <Link className="text-gray-800 hover:text-primary" href="about">
                         About
                     </Link>
+                    <div 
+                        className="relative"
+                        onMouseEnter={handleMouseEnter}
+                        onMouseLeave={handleMouseLeave}
+                    >
+                        <button 
+                            className="text-gray-800 hover:text-primary flex items-center" 
+                        >
+                            Services
+                            <i className={`fa-solid fa-chevron-${isDropdownOpen ? 'up' : 'down'} ml-1`}></i>
+                        </button>
+                        {isDropdownOpen && (
+                            <div className="absolute z-10 bg-white shadow-lg rounded-lg w-64"> 
+                                <Link className="block px-4 py-2 hover:bg-gray-200 hover:text-primary rounded-lg" href="/User-Experience-Design">User Experience Design</Link>
+                                <Link className="block px-4 py-2 hover:bg-gray-200 hover:text-primary rounded-lg" href="/web-development">Web Development</Link>
+                                <Link className="block px-4 py-2 hover:bg-gray-200 hover:text-primary rounded-lg" href="/Search-Engine-Optimization">Search Engine Optimization</Link>
+                                <Link className="block px-4 py-2 hover:bg-gray-200 hover:text-primary rounded-lg" href="/Wordpress-development">Wordpress Development</Link>
+                            </div>
+                        )}
+                    </div>
                     <Link className="text-gray-800 hover:text-primary" href="blog">
                         Blog
                     </Link>
@@ -42,7 +71,7 @@ export default function NavBar() {
                     </a>
                 </div>
 
-                {/* Mobile Menu Button */}
+                
                 <div className="lg:hidden flex items-center">
                     <button
                         type="button"
@@ -54,7 +83,7 @@ export default function NavBar() {
                 </div>
             </div>
 
-            {/* Mobile Menu */}
+           
             <div
                 className={`fixed inset-0 bg-white z-50 transition-transform transform ${
                     isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
@@ -66,7 +95,7 @@ export default function NavBar() {
                         onClick={toggleMobileMenu}
                         className="text-gray-500 text-2xl mb-6"
                     >
-                        <i className="fa-solid fa-times"></i> {/* Close icon */}
+                        <i className="fa-solid fa-times"></i>
                     </button>
                     <ul className="space-y-4">
                         <li>
@@ -79,9 +108,24 @@ export default function NavBar() {
                                 About
                             </Link>
                         </li>
+                        <li className="relative">
+                            <button 
+                                className="text-gray-800 text-lg block flex items-center" 
+                                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                            >
+                                Services
+                                <i className={`fa-solid fa-chevron-${isDropdownOpen ? 'up' : 'down'} ml-1`}></i>
+                            </button>
+                            {isDropdownOpen && (
+                                <div className="bg-white shadow-lg rounded-lg w-64"> 
+                                    <Link className="block px-4 py-2 hover:bg-gray-200 hover:text-primary rounded-lg" href="/service">User Experience Design</Link>
+                                    <Link className="block px-4 py-2 hover:bg-gray-200 hover:text-primary rounded-lg" href="/service">Front-End Development</Link>
+                                    <Link className="block px-4 py-2 hover:bg-gray-200 hover:text-primary rounded-lg" href="/service">Search Engine Optimization</Link>
+                                </div>
+                            )}
+                        </li>
                         <li>
                             <Link className="text-gray-800 text-lg block" href="blog">
-                            
                                 Blog
                             </Link>
                         </li>

@@ -56,35 +56,35 @@ export default function Welcome({ auth, laravelVersion, phpVersion, latestPosts 
                                         <i className="fa-solid fa-arrow-down me-2"></i>{" "}
                                         View Our Work
                                     </Link>
-                                    <Link
+                                    <a
                                         href="https://calendly.com/execudea-info/30min"
                                         target="_blank"
                                         className="text-primary py-3 px-6 rounded border border-primary hover:border-black hover:bg-primary hover:text-white hover:shadow-lg hover:shadow-black/50 focus:outline focus:outline-black/50 transition-all duration-500"
                                     >
                                         Book a Meeting
-                                    </Link>
+                                    </a>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div className="absolute end-0 top-48 hidden md:block">
+                    <div className="absolute end-0 top-48 hidden md:block ">
                         <div className="flex items-center gap-5 vertical-rl px-2">
                             <a
                                 href="https://www.linkedin.com/company/execudea"
-                                className="text-lg"
+                                className="text-lg  hover:text-primary "
                             >
                                 Linkedin
                             </a>
                             <a
                                 href="https://www.facebook.com/execudea"
-                                className="text-lg"
+                                className="text-lg  hover:text-primary"
                             >
                                 Facebook
                             </a>
                             <a
                                 href="https://www.instagram.com/execudea/"
-                                className="text-lg"
+                                className="text-lg  hover:text-primary"
                             >
                                 Instagram
                             </a>
@@ -190,7 +190,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion, latestPosts 
                                     </svg>
                                 </div>
                                 <h4 className="text-xl font-medium my-5 font-futura-bold">
-                                    Front End Development
+                                    Web Development
                                 </h4>
                                 <p className="text-slate-400">
                                     Development of the websites for businesses

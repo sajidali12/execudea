@@ -36,7 +36,18 @@ Route::post('/message', [MessageController::class, 'msg'])->name('msg');
 Route::get('/about', function () {
     return Inertia::render('About');
 });
-
+Route::get('/web-development', function () {
+    return Inertia::render('web');
+});
+Route::get('/User-Experience-Design', function () {
+    return Inertia::render('ux');
+});
+Route::get('/Search-Engine-Optimization', function () {
+    return Inertia::render('seo');
+});
+Route::get('/Wordpress-development', function () {
+    return Inertia::render('wordpress');
+});
 
 Route::get('/blog', [PostController::class, 'all'])->name('blog.all');
 Route::get('/blog', [PostController::class, 'blog'])->name('blog');
