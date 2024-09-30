@@ -1,7 +1,7 @@
 import TechLogos from "@/Components/TechLogos";
 import Guest from "@/Layouts/GuestLayout";
 import { Head, Link } from "@inertiajs/react";
-
+import User from "@/Components/user"
 export default function Services() {
     return (
         <>
@@ -18,12 +18,12 @@ export default function Services() {
                             />
                         </div>
                         <div className="md:w-1/2 md:pl-10">
-                            <h1 className="text-3xl sm:text-4xl font-semibold mb-5">
+                            <h1 className="text-4xl font-medium my-3 font-futura-bold">
                             User Experience Design
                             </h1>
                             <p className="text-lg text-gray-500 mb-5">
                             <p className="text-lg text-gray-500">
-                            At Execudea, we specialize in User Experience (UX) Design, dedicated to creating meaningful and relevant interactions that elevate user satisfaction with your digital products. Our approach begins with comprehensive user research, utilizing techniques such as interviews, surveys, and observational studies to gather valuable insights into your target audience. By understanding user behaviors, needs, and pain points, we develop detailed personas that represent key user segments, ensuring that our design solutions are tailored to meet their specific requirements.
+                            At Execudea, we specialize in <b>User Experience (UX) Design</b>, dedicated to creating meaningful and relevant interactions that elevate user satisfaction with your digital products. Our approach begins with comprehensive user research, utilizing techniques such as interviews, surveys, and observational studies to gather valuable insights into your target audience. By understanding user behaviors, needs, and pain points, we develop detailed personas that represent key user segments, ensuring that our design solutions are tailored to meet their specific requirements.
                             </p>
                             </p>
                             <p className="text-lg text-gray-500">
@@ -34,7 +34,7 @@ export default function Services() {
                     <div class="container m-auto mt-10 md:px-10 px-4" data-aos="fade-up">
                     <p className="text-lg text-gray-500">
                     Our UX design process is collaborative and iterative, focusing on ideation and prototyping.
-                    We work closely with your team to brainstorm innovative solutions and create low-fidelity wireframes that outline the structure and functionality of your product. Using tools like Figma and Adobe XD, we develop interactive prototypes that allow for usability testing with real users.
+                    We work closely with your team to brainstorm innovative solutions and create low-fidelity wireframes that outline the structure and functionality of your product. Using tools like <b>Figma and Adobe XD</b>, we develop interactive prototypes that allow for usability testing with real users.
                     This process enables us to refine designs based on user feedback, ensuring that each iteration enhances usability and aligns with user expectations.
                             </p>
 
@@ -49,34 +49,33 @@ export default function Services() {
                     </div>
                 </section>
 
-                {/* Services Overview Section */}
-                <section className="bg-gray-50 py-20">
-                    <div className="container md:px-10 px-4">
-                        <h2 className="text-2xl sm:text-3xl font-semibold text-center mb-8">Our Services</h2>
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-                            {["Custom Web Development", "E-commerce Solutions", "Responsive Design"].map((service, index) => (
+               
+                <section className="bg-gray-50 py-20 mx-5">
+                    <div className="container md:px-10 px-4 m-auto">
+                        <h2 className="text-4xl font-medium my-3 font-futura-bold text-center mb-8">Our Services</h2>
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mx-4">
+                            {[
+                                { title: "Interaction Design", description: "Designing subtle animations and feedback mechanisms that enhance user engagement." },
+                                { title: "User Research", description: " Conducting interviews to understand user needs and pain points. Collecting quantitative data to inform design decisions." },
+                                { title: "Responsive Design", description: " Ensuring that designs function well across various screen sizes and devices." },
+                               
+                            ].map((service, index) => (
                                 <div key={index} className="border rounded-lg shadow-lg p-5 text-center hover:shadow-xl transition-shadow">
-                                    <h3 className="font-bold text-xl mb-3">{service}</h3>
-                                    <p className="text-gray-600">
-                                        {index === 0 && "Tailored solutions to meet your business needs with a focus on performance and scalability."}
-                                        {index === 1 && "Robust e-commerce platforms designed for optimal user experience and conversion rates."}
-                                        {index === 2 && "Creating visually stunning and highly functional websites that work seamlessly across all devices."}
-                                        {index === 3 && "Creating visually stunning and highly functional websites that work seamlessly across all devices."}
-                                        {index === 4 && "Creating visually stunning and highly functional websites that work seamlessly across all devices."}
-                                        {index === 6 && "Creating visually stunning and highly functional websites that work seamlessly across all devices."}
-                                    </p>
+                                    <h3 className="font-bold text-xl mb-3">{service.title}</h3>
+                                    <p className="text-gray-600">{service.description}</p>
                                 </div>
                             ))}
                         </div>
                     </div>
                 </section>
 
-                {/* Technology Stack Section */}
+
+               
                 <section className="py-20">
                     <div className="container md:px-5 px-10">
-                        <h2 className="text-2xl sm:text-3xl font-semibold text-center mb-8">Our Technology Stack</h2>
+                        <h2 className="text-4xl font-medium my-3 font-futura-bold text-center mb-8">Our Technology Stack</h2>
                         <div className="flex justify-center">
-                            <TechLogos />
+                            <User />
                         </div>
                     </div>
                 </section>
