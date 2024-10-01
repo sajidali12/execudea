@@ -5,69 +5,70 @@ import User from "@/Components/user"
 export default function Services() {
     return (
         <>
-            <Head title="Best Web Development Agency" />
+            <Head title="Best UI/UX company in pakistan" />
             <Guest>
-                {/* Intro Section */}
-                <section className="py-20 mt-10">
-                    <div className="container md:px-10 px-4 flex flex-col md:flex-row items-center">
-                        <div className="md:w-1/2 mb-10 md:mb-0">
-                            <img 
-                                src="img/ui-ux.jpg" 
-                                alt="Web Development Intro" 
-                                className="rounded-lg shadow-lg w-full h-auto" 
-                            />
-                        </div>
-                        <div className="md:w-1/2 md:pl-10">
-                            <h1 className="text-4xl font-medium my-3 font-futura-bold">
-                            User Experience Design
-                            </h1>
-                            <p className="text-md text-gray-500 mb-5">
-                            <p className="text-md text-gray-500">
-                            At Execudea, we specialize in <b>User Experience (UX) Design</b>, dedicated to creating meaningful and relevant interactions that elevate user satisfaction with your digital products. Our approach begins with comprehensive user research, utilizing techniques such as interviews, surveys, and observational studies to gather valuable insights into your target audience. By understanding user behaviors, needs, and pain points, we develop detailed personas that represent key user segments, ensuring that our design solutions are tailored to meet their specific requirements.
-                            </p>
-                            </p>
-                            <p className="text-md text-gray-500">
-                            
-                            </p>
-                        </div>
-                    </div>
-                    <div class="container m-auto mt-10 md:px-10 px-4" data-aos="fade-up">
-                    <p className="text-md text-gray-500">
-                    Our UX design process is collaborative and iterative, focusing on ideation and prototyping.
-                    We work closely with your team to brainstorm innovative solutions and create low-fidelity wireframes that outline the structure and functionality of your product. Using tools like <b>Figma and Adobe XD</b>, we develop interactive prototypes that allow for usability testing with real users.
-                    This process enables us to refine designs based on user feedback, ensuring that each iteration enhances usability and aligns with user expectations.
-                            </p>
-
-                            <p className="text-md text-gray-500 mt-4">
-
-                            After finalizing the design, our team emphasizes seamless collaboration with your development team to implement the vision accurately. 
-                            We establish a cohesive design system that ensures consistency across all visual elements while prioritizing accessibility for all users. 
-                            Post-launch, we conduct thorough analytics monitoring and gather ongoing user feedback to identify areas for improvement. 
-                            Our commitment to continuous enhancement allows us to adapt your product based on user needs, ultimately driving user engagement and loyalty. 
-                            Trust Execudea to deliver exceptional UX design services that make a lasting impact on your business and your users.
-                            </p>
-                    </div>
-                </section>
-
                
-                <section className="bg-gray-50 py-20 mx-5">
-                    <div className="container md:px-10 px-4 m-auto">
-                        <h2 className="text-4xl font-medium my-3 font-futura-bold text-center mb-8">Our Services</h2>
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mx-4">
-                            {[
-                                { title: "Interaction Design", description: "Designing subtle animations and feedback mechanisms that enhance user engagement." },
-                                { title: "User Research", description: " Conducting interviews to understand user needs and pain points. Collecting quantitative data to inform design decisions." },
-                                { title: "Responsive Design", description: " Ensuring that designs function well across various screen sizes and devices." },
-                               
-                            ].map((service, index) => (
-                                <div key={index} className="border rounded-lg shadow-lg p-5 text-center hover:shadow-xl transition-shadow">
-                                    <h3 className="font-bold text-xl mb-3">{service.title}</h3>
-                                    <p className="text-gray-600">{service.description}</p>
+            <section class="relative" style={{ background: 'linear-gradient(rgba(0,85,255,.07) 0,rgba(0,85,255,.05) 100%)' }}>
+                       <section class="relative pt-20 pb-24">
+                            <div class="container">
+                                <div class="grid lg:grid-cols-7 grid-cols-1 gap-16 items-center">
+
+                                    <div class="lg:col-span-4" data-aos="fade-right">
+                                        <div class="relative 2xl:-ml-64 lg:-ml-28 2xl:min-w-[130%] lg:w-[113%] w-full">
+                                            <img src="img/hero/marketing.png" alt="marketing-img" />
+                                        </div>
+                                    </div>
+
+                                    <div class="lg:col-span-3" data-aos="fade-left">
+                                        <div class="text-center sm:text-start">
+                                            <h1 class="text-3xl/snug sm:text-4xl/snug xl:text-5xl/snug font-semibold font-futura-bold mb-7">Make<span class="relative after:bg-yellow-500/50 after:-z-10 after:absolute after:h-6 after:w-full after:bottom-0 after:end-0"> User Experience Design</span> with Execudea.
+                                            </h1>
+                                            <p class="text-base/relaxed text-gray-500">  At Execudea, we specialize in <b>User Experience (UX) Design</b>, dedicated to creating meaningful and relevant interactions that elevate user satisfaction with your digital products. 
+                                            Our approach begins with comprehensive user research, utilizing techniques such as interviews, surveys, and observational studies to gather valuable insights into your target audience. 
+                                            By understanding user behaviors, needs, and pain points, we develop detailed personas that represent key user segments, ensuring that our design solutions are tailored to meet their specific requirements.</p>
+                                            <div class="flex sm:flex-row flex-col gap-2 mt-10">
+                                            
+                                                <div className="flex sm:flex-row flex-col gap-2 mt-10">
+                                                <Link href="/contact" className="bg-primary text-white px-4 py-2 rounded inline-flex items-center text-sm md:m-0 m-auto transition duration-300 hover:bg-secondary-400">Contact Us <i class="fa-solid fa-arrow-right ms-2"></i></Link>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 </div>
-                            ))}
+                            </div>
+                        </section>
+
+                        <div class="absolute bottom-0 inset-x-0 hidden sm:block">
+                            <img src="img/shapes/white-wave.svg" alt="white-wave-svg" class="w-full -scale-x-100 -scale-y-100" />
                         </div>
+
+                        </section>
+               
+               
+                <div className="container md:px-10 px-4 m-auto mt-10">
+                    <div className="text-center">
+                        <span className="text-sm font-medium py-1 px-3 rounded-full text-primary bg-primary/10">Our Services</span>
+                        <h2 className="text-3xl font-medium mt-5 mb-4 font-futura-bold mb-5">User Experience (UX) Design</h2>
                     </div>
-                </section>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mx-4 mt-14">
+                        {[
+                            { title: "Interaction Design", description: "Designing subtle animations and feedback mechanisms that enhance user engagement." },
+                            { title: "User Research", description: " Conducting interviews to understand user needs and pain points. Collecting quantitative data to inform design decisions." },
+                            { title: "Responsive Design", description: " Ensuring that designs function well across various screen sizes and devices." },
+                        ].map((service, index) => (
+                            <div key={index} className="border-2 border-transparent rounded-lg p-6  hover:bg-white hover:border-gray-300 hover:shadow-lg transition-all duration-300">
+                                <div className="h-12 w-12 rounded-md bg-blue-500/10 flex items-center justify-center mb-4">
+                                    <img className="h-8 w-8" src="favicon.png" alt="Execudea Private Limited" />
+                                </div>
+                                <h3 className="mb-3 mt-4 text-lg font-semibold">{service.title}</h3>
+                                <p className="text-gray-600">{service.description}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+              
+
 
 
                
