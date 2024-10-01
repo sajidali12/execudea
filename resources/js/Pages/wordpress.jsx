@@ -22,8 +22,8 @@ export default function Services() {
                             <h1 className="text-4xl font-medium my-3 font-futura-bold">
                             Wordpress
                             </h1>
-                            <p className="text-lg text-gray-500 mb-5">
-                            <p className="text-lg text-gray-500">
+                            <p className="text-md text-gray-500 mb-5">
+                            <p className="text-md text-gray-500">
                            At Execudea, we specialize in WordPress development, creating robust, visually appealing, and highly interactive websites tailored to your needs. 
                            Our skilled team transforms design mockups into functional WordPress sites using popular themes and plugins. 
                            We prioritize performance and optimization, ensuring your WordPress site loads quickly and provides exceptional user experiences across all devices.
@@ -36,14 +36,14 @@ export default function Services() {
                     </div>
                     <div class="container m-auto mt-10 md:px-10 px-4" data-aos="fade-up">
                           
-                            <p className="text-lg text-gray-500 mt-2">
+                            <p className="text-md text-gray-500 mt-2">
                             Our WordPress development process begins with a deep understanding of your business requirements and close collaboration with your design team. 
                             We utilize popular page builders and frameworks, including Elementor and Gutenberg, to build dynamic, engaging content that reflects your brand. Our commitment to responsive design guarantees that your site performs flawlessly across various devices and screen sizes, while accessibility remains a key focus in all our projects.
                             </p>
-                            <p className="text-lg text-gray-500 mt-2">
+                            <p className="text-md text-gray-500 mt-2">
                             We leverage powerful WordPress features like custom post types, taxonomies, and user roles to create scalable and efficient solutions. Our development ensures seamless integration of plugins, API connections, and database management, allowing for a smooth flow of information across your site. This comprehensive approach ensures your WordPress site is not only user-friendly but also reliable and performant.
                             </p>
-                            <p className="text-lg text-gray-500 mt-2">
+                            <p className="text-md text-gray-500 mt-2">
                             Once the initial development phase is complete, we conduct rigorous testing and debugging to ensure compatibility with various browsers and adherence to industry standards. After launching your site, we offer ongoing maintenance and updates, continuously improving your WordPress presence based on user feedback and analytics. Trust Execudea to elevate your WordPress development experience, delivering outstanding results that drive success for your business.
                             </p>
                     </div>

@@ -21,24 +21,24 @@ export default function Services() {
                             <h1 className="text-4xl font-medium my-3 font-futura-bold">
                             User Experience Design
                             </h1>
-                            <p className="text-lg text-gray-500 mb-5">
-                            <p className="text-lg text-gray-500">
+                            <p className="text-md text-gray-500 mb-5">
+                            <p className="text-md text-gray-500">
                             At Execudea, we specialize in <b>User Experience (UX) Design</b>, dedicated to creating meaningful and relevant interactions that elevate user satisfaction with your digital products. Our approach begins with comprehensive user research, utilizing techniques such as interviews, surveys, and observational studies to gather valuable insights into your target audience. By understanding user behaviors, needs, and pain points, we develop detailed personas that represent key user segments, ensuring that our design solutions are tailored to meet their specific requirements.
                             </p>
                             </p>
-                            <p className="text-lg text-gray-500">
+                            <p className="text-md text-gray-500">
                             
                             </p>
                         </div>
                     </div>
                     <div class="container m-auto mt-10 md:px-10 px-4" data-aos="fade-up">
-                    <p className="text-lg text-gray-500">
+                    <p className="text-md text-gray-500">
                     Our UX design process is collaborative and iterative, focusing on ideation and prototyping.
                     We work closely with your team to brainstorm innovative solutions and create low-fidelity wireframes that outline the structure and functionality of your product. Using tools like <b>Figma and Adobe XD</b>, we develop interactive prototypes that allow for usability testing with real users.
                     This process enables us to refine designs based on user feedback, ensuring that each iteration enhances usability and aligns with user expectations.
                             </p>
 
-                            <p className="text-lg text-gray-500 mt-4">
+                            <p className="text-md text-gray-500 mt-4">
 
                             After finalizing the design, our team emphasizes seamless collaboration with your development team to implement the vision accurately. 
                             We establish a cohesive design system that ensures consistency across all visual elements while prioritizing accessibility for all users. 
