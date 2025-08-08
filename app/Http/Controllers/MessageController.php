@@ -12,11 +12,38 @@ class MessageController extends Controller
     
 
     public function index(Request $request)
-{
-    $messages = Message::orderBy('created_at', 'desc')->paginate(10); 
+    {
+        $query = Message::query();
 
-    return response()->json($messages);
-}
+        // Search functionality
+        if ($request->search) {
+            $query->where(function($q) use ($request) {
+                $q->where('name', 'like', '%' . $request->search . '%')
+                  ->orWhere('email', 'like', '%' . $request->search . '%')
+                  ->orWhere('subject', 'like', '%' . $request->search . '%')
+                  ->orWhere('message', 'like', '%' . $request->search . '%');
+            });
+        }
+
+        // Date filter
+        if ($request->start_date && $request->end_date) {
+            $query->whereBetween('created_at', [$request->start_date, $request->end_date]);
+        }
+
+        $messages = $query->orderBy('created_at', 'desc')->paginate(15);
+        
+        // Get statistics
+        $totalMessages = Message::count();
+        $todayMessages = Message::whereDate('created_at', today())->count();
+        $thisWeekMessages = Message::where('created_at', '>=', now()->startOfWeek())->count();
+
+        return view('admin.messages.index', compact(
+            'messages',
+            'totalMessages', 
+            'todayMessages',
+            'thisWeekMessages'
+        ));
+    }
 
     public function destroy($id)
     {
@@ -24,7 +51,8 @@ class MessageController extends Controller
         $message = Message::findOrFail($id);
         $message->delete();
 
-        return response()->json(['message' => 'Message deleted successfully.']);
+        return redirect()->route('admin.messages.index')
+            ->with('success', 'Message deleted successfully.');
     }
 
     public function msg(Request $request)

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
     
 use App\Models\Post;
-use Inertia\Inertia;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -30,11 +29,7 @@ class PostController extends Controller
     
         $posts = Post::orderBy('created_at', 'desc')->paginate($perPage);
     
-        return Inertia::render('Posts/Index', [
-            'posts' => $posts,
-            'user' => $user,
-            'perPage' => $perPage, 
-        ]);
+        return view('admin.posts.index', compact('posts', 'user', 'perPage'));
     }
     
     public function latestPosts()
@@ -81,7 +76,7 @@ class PostController extends Controller
     public function create()
     {
         $user = Auth::user();
-        return Inertia::render('Posts/Create', ['user' => $user]);
+        return view('admin.posts.create', compact('user'));
     }
 
     
@@ -127,6 +122,11 @@ public function store(Request $request)
         'body' => ['required'],
         'author_name' => 'required|string|max:255',
         'image' => ['required', 'image'],
+        'meta_title' => 'nullable|string|max:60',
+        'meta_description' => 'nullable|string|max:160',
+        'meta_keywords' => 'nullable|string',
+        'slug' => 'nullable|string|unique:posts,slug',
+        'excerpt' => 'nullable|string',
     ]);
 
     
@@ -134,6 +134,11 @@ public function store(Request $request)
         'title' => $validatedData['title'],
         'body' => $validatedData['body'],
         'author_name' => $validatedData['author_name'],
+        'meta_title' => $validatedData['meta_title'],
+        'meta_description' => $validatedData['meta_description'],
+        'meta_keywords' => $validatedData['meta_keywords'],
+        'slug' => $validatedData['slug'],
+        'excerpt' => $validatedData['excerpt'],
         'image' => null,  
     ];
 
@@ -162,10 +167,9 @@ public function store(Request $request)
     public function edit($id)
     {
         $post = Post::findOrFail($id);
+        $user = Auth::user();
     
-        return Inertia::render('Posts/Edit', [
-            'post' => $post,
-        ]);
+        return view('admin.posts.edit', compact('post', 'user'));
     }
     
     /**
@@ -221,7 +225,11 @@ public function update(Request $request, $id)
         'title' => 'required|string|max:255',
         'body' => 'required|string',
         'author_name' => 'required|string|max:255',
-        
+        'meta_title' => 'nullable|string|max:60',
+        'meta_description' => 'nullable|string|max:160',
+        'meta_keywords' => 'nullable|string',
+        'slug' => 'nullable|string|unique:posts,slug,' . $id,
+        'excerpt' => 'nullable|string',
     ]);
 
     $post = Post::findOrFail($id);

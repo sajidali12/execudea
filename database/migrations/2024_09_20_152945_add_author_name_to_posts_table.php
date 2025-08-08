@@ -12,14 +12,18 @@ return new class extends Migration
     public function up()
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->string('author_name')->nullable(); // Add author_name column
+            if (!Schema::hasColumn('posts', 'author_name')) {
+                $table->string('author_name')->nullable(); // Add author_name column
+            }
         });
     }
 
     public function down()
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->dropColumn('author_name'); // Remove author_name column
+            if (Schema::hasColumn('posts', 'author_name')) {
+                $table->dropColumn('author_name'); // Remove author_name column
+            }
         });
     }
 };

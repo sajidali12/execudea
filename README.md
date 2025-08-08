@@ -1,66 +1,168 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Execudea - Laravel 11 Website
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+This is the converted Laravel 11 version of the Execudea website, transformed from React/Inertia.js to traditional Blade templates while maintaining the exact same frontend design.
 
-## About Laravel
+## Features
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- **Homepage** with hero section, services, portfolio, testimonials, and latest blog posts
+- **About Page** with company information and technology showcase
+- **Service Pages**: UX Design, Web Development, SEO, and WordPress Development
+- **Blog System** with article listing and detailed post views
+- **Contact Form** with validation and email notifications
+- **Responsive Design** with Tailwind CSS
+- **Google Reviews Carousel** using Swiper.js
+- **Technology Showcases** with animated carousels
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Tech Stack
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- **Laravel 11** - PHP Framework
+- **Blade Templates** - Server-side templating
+- **Tailwind CSS** - Utility-first CSS framework
+- **Swiper.js** - Modern touch slider
+- **AOS** - Animate On Scroll library
+- **Font Awesome** - Icon library
 
-## Learning Laravel
+## Installation
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd execudea
+   ```
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+2. **Install PHP dependencies**
+   ```bash
+   composer install
+   ```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+3. **Install Node.js dependencies**
+   ```bash
+   npm install
+   ```
 
-## Laravel Sponsors
+4. **Environment setup**
+   ```bash
+   cp .env.example .env
+   php artisan key:generate
+   ```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+5. **Database setup**
+   - Create a MySQL database named `execudea`
+   - Update your `.env` file with database credentials
+   - Run migrations:
+   ```bash
+   php artisan migrate
+   ```
 
-### Premium Partners
+6. **Build assets**
+   ```bash
+   npm run build
+   ```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+7. **Start the server**
+   ```bash
+   php artisan serve
+   ```
 
-## Contributing
+## Pages Structure
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### Main Pages
+- `/` - Homepage
+- `/about` - About page
+- `/contact` - Contact form
+- `/blog` - Blog listing
+- `/blog/{id}-{slug}` - Individual blog post
 
-## Code of Conduct
+### Service Pages
+- `/User-Experience-Design` - UX Design services
+- `/web-development` - Web Development services
+- `/Search-Engine-Optimization` - SEO services
+- `/Wordpress-development` - WordPress services
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## Key Components
 
-## Security Vulnerabilities
+### Blade Templates
+- `layouts/app.blade.php` - Main layout
+- `partials/navbar.blade.php` - Navigation bar
+- `partials/footer.blade.php` - Footer
+- `partials/google-reviews.blade.php` - Reviews carousel
+- `partials/tech-logos.blade.php` - Technology carousel
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### Controllers
+- `HomeController` - Homepage and about page
+- `BlogController` - Blog functionality
+- `ContactController` - Contact form handling
+- `ServiceController` - Service pages
 
-## License
+## Styling
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+The project uses Tailwind CSS with custom colors defined in the configuration:
+- **Primary**: #4db8b3 (teal)
+- **Secondary**: #fc4258 (red)
+- **Secondary-400**: #feb2b4 (light red)
+
+Custom fonts (Futura) are loaded for headings and used throughout the design.
+
+## Development
+
+To work on the project:
+
+1. **Start the development server**
+   ```bash
+   php artisan serve
+   ```
+
+2. **Watch for CSS changes** (in development)
+   ```bash
+   npm run dev
+   ```
+
+3. **Build for production**
+   ```bash
+   npm run build
+   ```
+
+## Features Converted from React
+
+✅ **Completed Conversions:**
+- Homepage with all sections (hero, services, portfolio, clients, blog, reviews)
+- About page with technology showcase
+- All service pages (UX, Web Dev, SEO, WordPress)
+- Blog listing and individual post pages
+- Contact form with validation
+- Responsive navigation with mobile menu
+- Google Reviews carousel
+- Technology logo carousels
+- All styling and animations preserved
+
+✅ **Laravel Features:**
+- Clean routing structure
+- Controller-based architecture
+- Blade template inheritance
+- Form validation and handling
+- Database integration for blog posts
+- Email notifications for contact form
+- SEO-friendly URLs
+- Asset compilation with Vite
+
+## Database Models
+
+- **Post** - Blog posts with title, body, image, and author
+- **Message** - Contact form submissions
+- **User** - Admin users (from existing Laravel auth)
+
+## Admin Features
+
+The existing admin functionality for managing blog posts and viewing messages has been preserved and can be accessed through the Laravel auth system.
+
+## Browser Support
+
+The website is optimized for modern browsers and includes:
+- Responsive design for mobile, tablet, and desktop
+- CSS animations and transitions
+- Modern JavaScript features (ES6+)
+- Progressive enhancement
+
+---
+
+**Note**: This conversion maintains the exact same visual design and user experience as the original React version while providing the benefits of server-side rendering and traditional Laravel architecture.
