@@ -80,15 +80,6 @@
                     </button>
                 </div>
             </form>
-
-            <!-- Test Credentials -->
-            <div class="mt-6 p-4 bg-blue-50 border border-blue-200 rounded">
-                <h3 class="text-sm font-semibold text-blue-800 mb-2">Test Credentials:</h3>
-                <p class="text-xs text-blue-700">
-                    <strong>Email:</strong> admin@execudea.com<br>
-                    <strong>Password:</strong> admin123
-                </p>
-            </div>
         </div>
     </div>
 </body>

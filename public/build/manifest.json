@@ -1,8 +1,24 @@
 {
   "resources/css/app.css": {
-    "file": "assets/app-2f760f53.css",
+    "file": "assets/app-426cf231.css",
     "isEntry": true,
     "src": "resources/css/app.css"
+  },
+  "resources/fonts/FuturaBT-BoldCondensed.woff": {
+    "file": "assets/FuturaBT-BoldCondensed-db508eb8.woff",
+    "src": "resources/fonts/FuturaBT-BoldCondensed.woff"
+  },
+  "resources/fonts/FuturaBT-BoldCondensed.woff2": {
+    "file": "assets/FuturaBT-BoldCondensed-f4f04473.woff2",
+    "src": "resources/fonts/FuturaBT-BoldCondensed.woff2"
+  },
+  "resources/fonts/FuturaBT-LightCondensed.woff": {
+    "file": "assets/FuturaBT-LightCondensed-6a258bcb.woff",
+    "src": "resources/fonts/FuturaBT-LightCondensed.woff"
+  },
+  "resources/fonts/FuturaBT-LightCondensed.woff2": {
+    "file": "assets/FuturaBT-LightCondensed-dcadb878.woff2",
+    "src": "resources/fonts/FuturaBT-LightCondensed.woff2"
   },
   "resources/js/app.js": {
     "file": "assets/app-0ab5afef.js",

@@ -17,8 +17,21 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <!-- Font Awesome - Multiple CDN Sources for Reliability -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" onerror="this.onerror=null;this.href='https://use.fontawesome.com/releases/v6.4.0/css/all.css';">
+    
+    <!-- Alternative CDN if primary fails -->
+    <script>
+        // Check if Font Awesome loaded, if not load alternative
+        document.addEventListener('DOMContentLoaded', function() {
+            if (!window.FontAwesome && !document.querySelector('.fa, .fas, .far, .fal, .fab')) {
+                var link = document.createElement('link');
+                link.rel = 'stylesheet';
+                link.href = 'https://maxcdn.bootstrapcdn.com/font-awesome/6.4.0/css/all.min.css';
+                document.head.appendChild(link);
+            }
+        });
+    </script>
 
     <!-- Custom Fonts and Colors -->
     <style>
