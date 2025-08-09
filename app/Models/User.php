@@ -67,4 +67,22 @@ class User extends Authenticatable
     {
         return $this->hasOne(Team::class);
     }
+
+    // Task-related relationships
+    public function taskAssignments()
+    {
+        return $this->hasMany(TaskAssignment::class);
+    }
+
+    public function assignedTasks()
+    {
+        return $this->belongsToMany(ProjectTask::class, 'task_assignments', 'user_id', 'task_id')
+                    ->withPivot('status', 'notes', 'started_at', 'completed_at', 'actual_hours', 'assigned_by')
+                    ->withTimestamps();
+    }
+
+    public function createdTasks()
+    {
+        return $this->hasMany(ProjectTask::class, 'created_by');
+    }
 }

@@ -366,7 +366,7 @@
                 data-aos="fade-up"
                 data-aos-duration="500"
             >
-                <div class="mb-6 flex justify-center">
+                <div class="mb-6 flex justify-center md:justify-start">
                     <div class="w-20 h-20 bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl flex items-center justify-center shadow-xl floating-animation transform hover:scale-110 transition-transform duration-300">
                         <i class="fas fa-palette text-3xl text-white drop-shadow-lg"></i>
                     </div>
@@ -388,7 +388,7 @@
                 data-aos-duration="700"
                 style="animation-delay: 0.2s;"
             >
-                <div class="mb-6 flex justify-center">
+                <div class="mb-6 flex justify-center md:justify-start">
                     <div class="w-20 h-20 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-2xl flex items-center justify-center shadow-xl floating-animation transform hover:scale-110 transition-transform duration-300" style="animation-delay: 0.2s;">
                         <i class="fas fa-code text-3xl text-white drop-shadow-lg"></i>
                     </div>
@@ -409,7 +409,7 @@
                 data-aos-duration="900"
                 style="animation-delay: 0.4s;"
             >
-                <div class="mb-6 flex justify-center">
+                <div class="mb-6 flex justify-center md:justify-start">
                     <div class="w-20 h-20 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center shadow-xl floating-animation transform hover:scale-110 transition-transform duration-300" style="animation-delay: 0.4s;">
                         <i class="fas fa-search text-3xl text-white drop-shadow-lg"></i>
                     </div>
@@ -431,7 +431,7 @@
                 data-aos-duration="900"
                 style="animation-delay: 0.6s;"
             >
-                <div class="mb-6 flex justify-center">
+                <div class="mb-6 flex justify-center md:justify-start">
                     <div class="w-20 h-20 bg-gradient-to-br from-orange-500 to-red-600 rounded-2xl flex items-center justify-center shadow-xl floating-animation transform hover:scale-110 transition-transform duration-300" style="animation-delay: 0.6s;">
                         <i class="fas fa-cloud text-3xl text-white drop-shadow-lg"></i>
                     </div>
@@ -450,7 +450,7 @@
                 data-aos-duration="900"
                 style="animation-delay: 0.8s;"
             >
-                <div class="mb-6 flex justify-center">
+                <div class="mb-6 flex justify-center md:justify-start">
                     <div class="w-20 h-20 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl flex items-center justify-center shadow-xl floating-animation" style="animation-delay: 0.8s;">
                         <i class="fab fa-wordpress text-3xl text-white"></i>
                     </div>
@@ -469,7 +469,7 @@
                 data-aos-duration="900"
                 style="animation-delay: 1.0s;"
             >
-                <div class="mb-6 flex justify-center">
+                <div class="mb-6 flex justify-center md:justify-start">
                     <div class="w-20 h-20 bg-gradient-to-br from-gray-700 to-gray-900 rounded-2xl flex items-center justify-center shadow-xl floating-animation" style="animation-delay: 1.0s;">
                         <i class="fas fa-server text-3xl text-white"></i>
                     </div>

@@ -1,7 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "Bash(php artisan make:controller:*)"
+      "Bash(php artisan make:controller:*)",
+      "Bash(php artisan make:model:*)"
     ],
     "deny": []
   }

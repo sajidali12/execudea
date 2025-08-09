@@ -62,7 +62,7 @@
         <div class="bg-gray-800 text-white w-64 space-y-6 py-7 px-2 transform -translate-x-full md:translate-x-0 transition duration-200 ease-in-out" id="sidebar">
             <!-- Logo -->
             <div class="flex items-center space-x-2 px-4">
-                <i class="fas fa-cogs text-2xl text-primary"></i>
+                <img src="{{ asset('favicon.png') }}" alt="Execudea" class="w-8 h-8">
                 <h2 class="text-2xl font-semibold">Admin Panel</h2>
             </div>
 
@@ -71,6 +71,20 @@
                 <a href="{{ route('admin-dashboard') }}" class="flex items-center space-x-2 py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700 {{ request()->routeIs('admin-dashboard') ? 'sidebar-active' : '' }}">
                     <i class="fas fa-tachometer-alt"></i>
                     <span>Dashboard</span>
+                </a>
+                
+                <!-- Daily Tasks (Available to all users) -->
+                <a href="{{ route('user.daily-tasks.index') }}" class="flex items-center space-x-2 py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700 {{ request()->routeIs('user.daily-tasks.*') ? 'sidebar-active' : '' }}">
+                    <i class="fas fa-tasks"></i>
+                    <span>My Daily Tasks</span>
+                    @php
+                        $pendingTasksCount = \App\Models\TaskAssignment::where('user_id', auth()->id())
+                                                                     ->whereIn('status', ['assigned', 'in_progress'])
+                                                                     ->count();
+                    @endphp
+                    @if($pendingTasksCount > 0)
+                        <span class="bg-red-500 text-white rounded-full text-xs px-2 py-1 ml-auto">{{ $pendingTasksCount }}</span>
+                    @endif
                 </a>
                 
                 <!-- Content Management -->
@@ -98,10 +112,37 @@
                         <i class="fas fa-users"></i>
                         <span>Clients</span>
                     </a>
-                    <a href="{{ route('admin.projects.index') }}" class="flex items-center space-x-2 py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700 {{ request()->routeIs('admin.projects.*') ? 'sidebar-active' : '' }}">
+                    <a href="{{ route('admin.projects.index') }}" class="flex items-center space-x-2 py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700 {{ request()->routeIs('admin.projects.*') && !request()->routeIs('admin.projects.tasks.*') ? 'sidebar-active' : '' }}">
                         <i class="fas fa-project-diagram"></i>
                         <span>Projects</span>
                     </a>
+                    
+                    <!-- Quick access to project tasks for admins -->
+                    @php
+                        $activeProjects = \App\Models\Project::where('status', 'active')->with('tasks')->get();
+                        $totalTasks = $activeProjects->sum(function($project) { return $project->tasks->count(); });
+                        $pendingTasks = $activeProjects->sum(function($project) { 
+                            return $project->tasks->where('status', 'pending')->count(); 
+                        });
+                    @endphp
+                    @if($activeProjects->count() > 0)
+                    <div class="ml-6 space-y-1">
+                        @foreach($activeProjects->take(3) as $project)
+                            @if($project->tasks->count() > 0)
+                            <a href="{{ route('admin.projects.tasks.index', $project) }}" class="flex items-center space-x-2 py-1.5 px-4 rounded text-sm transition duration-200 hover:bg-gray-700 {{ request()->routeIs('admin.projects.tasks.*') && request()->route('project')?->id == $project->id ? 'sidebar-active' : '' }}">
+                                <i class="fas fa-list-check text-sm"></i>
+                                <span class="truncate">{{ Str::limit($project->name, 15) }} Tasks</span>
+                                @if($project->tasks->where('status', 'pending')->count() > 0)
+                                    <span class="bg-yellow-500 text-white rounded-full text-xs px-1.5 py-0.5">{{ $project->tasks->where('status', 'pending')->count() }}</span>
+                                @endif
+                            </a>
+                            @endif
+                        @endforeach
+                        @if($activeProjects->count() > 3)
+                            <div class="text-xs text-gray-400 px-4">+ {{ $activeProjects->count() - 3 }} more projects</div>
+                        @endif
+                    </div>
+                    @endif
                     <a href="{{ route('admin.invoices.index') }}" class="flex items-center space-x-2 py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700 {{ request()->routeIs('admin.invoices.*') ? 'sidebar-active' : '' }}">
                         <i class="fas fa-file-invoice-dollar"></i>
                         <span>Invoices</span>

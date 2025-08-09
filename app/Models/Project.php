@@ -45,6 +45,16 @@ class Project extends Model
         return $this->hasMany(Invoice::class);
     }
 
+    public function tasks()
+    {
+        return $this->hasMany(ProjectTask::class);
+    }
+
+    public function taskAssignments()
+    {
+        return $this->hasManyThrough(TaskAssignment::class, ProjectTask::class);
+    }
+
     // Scopes
     public function scopeActive($query)
     {

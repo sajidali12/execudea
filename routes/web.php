@@ -21,6 +21,8 @@ use App\Http\Controllers\Admin\InvoiceController as AdminInvoiceController;
 use App\Http\Controllers\Admin\ExpenseController as AdminExpenseController;
 use App\Http\Controllers\Admin\FinancialReportController;
 use App\Http\Controllers\Admin\TeamController as AdminTeamController;
+use App\Http\Controllers\Admin\ProjectTaskController;
+use App\Http\Controllers\User\DailyTaskController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
@@ -58,6 +60,17 @@ Route::middleware('auth')->group(function () {
 });
 
 
+
+// User Daily Tasks Routes (for all authenticated users)
+Route::middleware(['auth'])->group(function () {
+    Route::get('/daily-tasks', [DailyTaskController::class, 'index'])->name('user.daily-tasks.index');
+    Route::post('/daily-tasks/{assignment}/start', [DailyTaskController::class, 'start'])->name('user.daily-tasks.start');
+    Route::patch('/daily-tasks/{assignment}/complete', [DailyTaskController::class, 'complete'])->name('user.daily-tasks.complete');
+    Route::patch('/daily-tasks/{assignment}/notes', [DailyTaskController::class, 'addNotes'])->name('user.daily-tasks.notes');
+    Route::get('/daily-tasks/{assignment}/show', [DailyTaskController::class, 'show'])->name('user.daily-tasks.show');
+    Route::get('/daily-tasks/calendar', [DailyTaskController::class, 'calendar'])->name('user.daily-tasks.calendar');
+    Route::patch('/daily-tasks/bulk-update', [DailyTaskController::class, 'bulkUpdate'])->name('user.daily-tasks.bulk-update');
+});
 
 // Routes accessible to both admin and editor
 Route::middleware(['auth', 'role:admin,editor'])->group(function () {
@@ -133,6 +146,23 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         'update' => 'admin.projects.update',
         'destroy' => 'admin.projects.destroy',
     ]);
+    
+    // Project Tasks Management Routes (Admin only)
+    Route::resource('/admin/projects/{project}/tasks', ProjectTaskController::class)->names([
+        'index' => 'admin.projects.tasks.index',
+        'create' => 'admin.projects.tasks.create',
+        'store' => 'admin.projects.tasks.store',
+        'show' => 'admin.projects.tasks.show',
+        'edit' => 'admin.projects.tasks.edit',
+        'update' => 'admin.projects.tasks.update',
+        'destroy' => 'admin.projects.tasks.destroy',
+    ]);
+    
+    // Task Assignment Routes (Admin only)
+    Route::post('/admin/projects/{project}/tasks/{task}/assign', [ProjectTaskController::class, 'assign'])->name('admin.projects.tasks.assign');
+    Route::patch('/admin/projects/{project}/tasks/{task}/assignments/{assignment}', [ProjectTaskController::class, 'updateAssignment'])->name('admin.projects.tasks.assignments.update');
+    Route::delete('/admin/projects/{project}/tasks/{task}/assignments/{assignment}', [ProjectTaskController::class, 'unassign'])->name('admin.projects.tasks.assignments.destroy');
+    Route::post('/admin/projects/{project}/tasks/reorder', [ProjectTaskController::class, 'reorder'])->name('admin.projects.tasks.reorder');
     
     // Invoices Management Routes (Admin only)
     Route::resource('/admin/invoices', AdminInvoiceController::class)->names([

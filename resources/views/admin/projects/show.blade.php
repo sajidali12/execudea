@@ -169,7 +169,7 @@
                     @endif
 
                     @if($project->notes)
-                    <div>
+                    <div class="mb-6">
                         <h3 class="text-lg font-semibold text-gray-900 mb-4 flex items-center">
                             <i class="fas fa-sticky-note text-primary mr-2"></i>
                             Notes
@@ -179,6 +179,112 @@
                         </div>
                     </div>
                     @endif
+
+                    <!-- Project Tasks Section -->
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-lg font-semibold text-gray-900 flex items-center">
+                                <i class="fas fa-tasks text-primary mr-2"></i>
+                                Project Tasks
+                                @if($project->tasks->count() > 0)
+                                    <span class="ml-2 inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                                        {{ $project->tasks->count() }} tasks
+                                    </span>
+                                @endif
+                            </h3>
+                            <div class="flex space-x-2">
+                                <a href="{{ route('admin.projects.tasks.create', $project) }}" 
+                                   class="inline-flex items-center px-3 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-primary hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
+                                    <i class="fas fa-plus mr-2"></i>
+                                    Add Task
+                                </a>
+                                @if($project->tasks->count() > 0)
+                                <a href="{{ route('admin.projects.tasks.index', $project) }}" 
+                                   class="inline-flex items-center px-3 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
+                                    <i class="fas fa-list mr-2"></i>
+                                    Manage All Tasks
+                                </a>
+                                @endif
+                            </div>
+                        </div>
+                        
+                        @if($project->tasks->count() > 0)
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <!-- Task Statistics -->
+                            <div class="grid grid-cols-4 gap-4 mb-4">
+                                <div class="text-center">
+                                    <div class="text-2xl font-bold text-gray-600">{{ $project->tasks->where('status', 'pending')->count() }}</div>
+                                    <div class="text-xs text-gray-500">Pending</div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="text-2xl font-bold text-blue-600">{{ $project->tasks->where('status', 'in_progress')->count() }}</div>
+                                    <div class="text-xs text-gray-500">In Progress</div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="text-2xl font-bold text-green-600">{{ $project->tasks->where('status', 'completed')->count() }}</div>
+                                    <div class="text-xs text-gray-500">Completed</div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="text-2xl font-bold text-red-600">{{ $project->tasks->filter(fn($task) => $task->isOverdue())->count() }}</div>
+                                    <div class="text-xs text-gray-500">Overdue</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Recent Tasks -->
+                            @php
+                                $recentTasks = $project->tasks()->orderBy('created_at', 'desc')->limit(5)->get();
+                            @endphp
+                            @if($recentTasks->count() > 0)
+                            <div>
+                                <h4 class="text-sm font-medium text-gray-700 mb-3">Recent Tasks</h4>
+                                <div class="space-y-2">
+                                    @foreach($recentTasks as $task)
+                                    <div class="flex items-center justify-between bg-white p-3 rounded border">
+                                        <div class="flex items-center space-x-3">
+                                            <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium {{ $task->priority_color }}">
+                                                {{ ucfirst($task->priority) }}
+                                            </span>
+                                            <a href="{{ route('admin.projects.tasks.show', [$project, $task]) }}" 
+                                               class="text-sm font-medium text-gray-900 hover:text-primary">
+                                                {{ Str::limit($task->title, 50) }}
+                                            </a>
+                                        </div>
+                                        <div class="flex items-center space-x-2">
+                                            <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium {{ $task->status_color }}">
+                                                {{ ucfirst(str_replace('_', ' ', $task->status)) }}
+                                            </span>
+                                            @if($task->assignments->count() > 0)
+                                            <span class="text-xs text-gray-500">{{ $task->assignments->count() }} assigned</span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    @endforeach
+                                </div>
+                                
+                                @if($project->tasks->count() > 5)
+                                <div class="mt-3 text-center">
+                                    <a href="{{ route('admin.projects.tasks.index', $project) }}" 
+                                       class="text-sm text-primary hover:text-primary-dark font-medium">
+                                        View all {{ $project->tasks->count() }} tasks →
+                                    </a>
+                                </div>
+                                @endif
+                            </div>
+                            @endif
+                        </div>
+                        @else
+                        <div class="bg-gray-50 p-8 rounded-lg text-center">
+                            <i class="fas fa-tasks text-4xl text-gray-300 mb-4"></i>
+                            <h4 class="text-lg font-medium text-gray-900 mb-2">No tasks created yet</h4>
+                            <p class="text-gray-600 mb-4">Get started by creating the first task for this project to organize and track work progress.</p>
+                            <a href="{{ route('admin.projects.tasks.create', $project) }}" 
+                               class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-primary hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
+                                <i class="fas fa-plus mr-2"></i>
+                                Create First Task
+                            </a>
+                        </div>
+                        @endif
+                    </div>
                 </div>
             </div>
 
