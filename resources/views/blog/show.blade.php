@@ -111,12 +111,12 @@
                 <div class="mt-16">
                     <div class="bg-gray-50 rounded-lg p-8">
                         <h2 class="text-2xl font-bold text-gray-900 mb-8 text-center">Frequently Asked Questions</h2>
-                        <div class="space-y-6" itemscope itemtype="https://schema.org/FAQPage">
+                        <div class="space-y-6">
                             @foreach($post->faqs as $faq)
-                                <div class="bg-white rounded-lg p-6 shadow-sm" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                                    <h3 class="text-lg font-semibold text-gray-900 mb-3" itemprop="name">{{ $faq['question'] }}</h3>
-                                    <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                                        <p class="text-gray-700 leading-relaxed" itemprop="text">{{ $faq['answer'] }}</p>
+                                <div class="bg-white rounded-lg p-6 shadow-sm">
+                                    <h3 class="text-lg font-semibold text-gray-900 mb-3">{{ $faq['question'] }}</h3>
+                                    <div>
+                                        <p class="text-gray-700 leading-relaxed">{{ $faq['answer'] }}</p>
                                     </div>
                                 </div>
                             @endforeach
@@ -249,27 +249,8 @@
 </style>
 @endpush
 
-@if($post->faqs && count($post->faqs) > 0)
 @push('scripts')
-<script type="application/ld+json">
-{
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-        @foreach($post->faqs as $index => $faq)
-        {
-            "@type": "Question",
-            "name": "{{ addslashes($faq['question']) }}",
-            "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "{{ addslashes($faq['answer']) }}"
-            }
-        }@if($index < count($post->faqs) - 1),@endif
-        @endforeach
-    ]
-}
-</script>
-
+<!-- BlogPosting Schema -->
 <script type="application/ld+json">
 {
     "@context": "https://schema.org",
@@ -294,26 +275,30 @@
     "mainEntityOfPage": {
         "@type": "WebPage",
         "@id": "{{ request()->fullUrl() }}"
-    },
-    @if($post->faqs && count($post->faqs) > 0)
-    "mainEntity": {
-        "@type": "FAQPage",
-        "mainEntity": [
-            @foreach($post->faqs as $index => $faq)
-            {
-                "@type": "Question",
-                "name": "{{ addslashes($faq['question']) }}",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "{{ addslashes($faq['answer']) }}"
-                }
-            }@if($index < count($post->faqs) - 1),@endif
-            @endforeach
-        ]
     }
-    @endif
 }
 </script>
-@endpush
+
+@if($post->faqs && count($post->faqs) > 0)
+<!-- FAQPage Schema (Separate from BlogPosting) -->
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+        @foreach($post->faqs as $index => $faq)
+        {
+            "@type": "Question",
+            "name": "{{ addslashes($faq['question']) }}",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "{{ addslashes($faq['answer']) }}"
+            }
+        }@if($index < count($post->faqs) - 1),@endif
+        @endforeach
+    ]
+}
+</script>
 @endif
+@endpush
 @endsection
