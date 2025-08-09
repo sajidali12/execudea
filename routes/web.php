@@ -29,10 +29,10 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 
 // Service routes
-Route::get('/User-Experience-Design', [ServiceController::class, 'ux'])->name('service.ux');
+Route::get('/user-experience-design', [ServiceController::class, 'ux'])->name('service.ux');
 Route::get('/web-development', [ServiceController::class, 'web'])->name('service.web');
-Route::get('/Search-Engine-Optimization', [ServiceController::class, 'seo'])->name('service.seo');
-Route::get('/Wordpress-development', [ServiceController::class, 'wordpress'])->name('service.wordpress');
+Route::get('/search-engine-optimization', [ServiceController::class, 'seo'])->name('service.seo');
+Route::get('/wordpress-development', [ServiceController::class, 'wordpress'])->name('service.wordpress');
 
 // Blog routes
 Route::get('/blog', [BlogController::class, 'index'])->name('blog');
