@@ -2,20 +2,62 @@
 
 @section('title', $post->title)
 
+@push('meta')
+<!-- SEO Meta Tags -->
+<meta name="description" content="{{ $post->getSeoDescription() }}">
+<meta name="keywords" content="{{ $post->meta_keywords }}">
+<link rel="canonical" href="{{ request()->fullUrl() }}">
+
+<!-- Open Graph Meta Tags -->
+<meta property="og:title" content="{{ $post->getSeoTitle() }}">
+<meta property="og:description" content="{{ $post->getSeoDescription() }}">
+<meta property="og:type" content="article">
+<meta property="og:url" content="{{ request()->fullUrl() }}">
+@if($post->image)
+<meta property="og:image" content="{{ asset('storage/product/image/' . $post->image) }}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+@endif
+<meta property="og:site_name" content="{{ config('app.name') }}">
+<meta property="article:author" content="{{ $post->author_name }}">
+<meta property="article:published_time" content="{{ $post->created_at->toISOString() }}">
+<meta property="article:modified_time" content="{{ $post->updated_at->toISOString() }}">
+
+<!-- Twitter Card Meta Tags -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ $post->getSeoTitle() }}">
+<meta name="twitter:description" content="{{ $post->getSeoDescription() }}">
+@if($post->image)
+<meta name="twitter:image" content="{{ asset('storage/product/image/' . $post->image) }}">
+@endif
+
+<!-- Additional SEO -->
+<meta name="author" content="{{ $post->author_name }}">
+<meta name="robots" content="index, follow">
+@endpush
+
 @section('content')
+<article itemscope itemtype="https://schema.org/BlogPosting">
 <section class="bg-gray-100 lg:pt-28 sm:pb-36 pb-16 pt-36 relative">
     <div class="container m-auto">
         <div class="flex justify-center">
             <div class="lg:w-8/12 text-center">
-                <h1 class="text-4xl/relaxed text-gray-700 font-futura-bold">
+                <h1 class="text-4xl/relaxed text-gray-700 font-futura-bold" itemprop="headline">
                     {{ $post->title }}
                 </h1>
                 <p class="mb-6 md:text-lg text-gray-500">
-                    Published on {{ $post->created_at->format('F d, Y') }}
+                    Published on <time datetime="{{ $post->created_at->toISOString() }}" itemprop="datePublished">{{ $post->created_at->format('F d, Y') }}</time>
                     @if($post->author_name)
-                        by {{ $post->author_name }}
+                        by <span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="name">{{ $post->author_name }}</span></span>
                     @endif
                 </p>
+                <meta itemprop="dateModified" content="{{ $post->updated_at->toISOString() }}">
+                <div itemprop="publisher" itemscope itemtype="https://schema.org/Organization" style="display: none;">
+                    <span itemprop="name">{{ config('app.name') }}</span>
+                    <div itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
+                        <meta itemprop="url" content="{{ asset('images/logo.png') }}">
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -49,18 +91,39 @@
     <div class="container m-auto md:px-10 px-4">
         <div class="max-w-4xl mx-auto">
             @if($post->image)
-                <div class="mb-8">
+                <div class="mb-8" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
                     <img
                         src="{{ asset('storage/product/image/' . $post->image) }}"
                         alt="{{ $post->title }}"
                         class="w-full h-96 object-cover rounded-lg shadow-lg"
+                        itemprop="url"
                     />
+                    <meta itemprop="width" content="1200">
+                    <meta itemprop="height" content="630">
                 </div>
             @endif
 
-            <div class="prose prose-lg max-w-none">
+            <div class="prose prose-lg max-w-none" itemprop="articleBody">
                 {!! $post->body !!}
             </div>
+
+            @if($post->faqs && count($post->faqs) > 0)
+                <div class="mt-16">
+                    <div class="bg-gray-50 rounded-lg p-8">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-8 text-center">Frequently Asked Questions</h2>
+                        <div class="space-y-6" itemscope itemtype="https://schema.org/FAQPage">
+                            @foreach($post->faqs as $faq)
+                                <div class="bg-white rounded-lg p-6 shadow-sm" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                                    <h3 class="text-lg font-semibold text-gray-900 mb-3" itemprop="name">{{ $faq['question'] }}</h3>
+                                    <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                                        <p class="text-gray-700 leading-relaxed" itemprop="text">{{ $faq['answer'] }}</p>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+            @endif
 
             <div class="mt-12">
                 <div class="border-t pt-8">
@@ -106,6 +169,7 @@
         </div>
     </div>
 </section>
+</article>
 
 @push('styles')
 <style>
@@ -184,4 +248,72 @@
 }
 </style>
 @endpush
+
+@if($post->faqs && count($post->faqs) > 0)
+@push('scripts')
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+        @foreach($post->faqs as $index => $faq)
+        {
+            "@type": "Question",
+            "name": "{{ addslashes($faq['question']) }}",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "{{ addslashes($faq['answer']) }}"
+            }
+        }@if($index < count($post->faqs) - 1),@endif
+        @endforeach
+    ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "{{ addslashes($post->title) }}",
+    "description": "{{ addslashes($post->getSeoDescription()) }}",
+    "image": @if($post->image)"{{ asset('storage/product/image/' . $post->image) }}"@else null @endif,
+    "author": {
+        "@type": "Person",
+        "name": "{{ addslashes($post->author_name) }}"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "{{ config('app.name') }}",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "{{ asset('images/logo.png') }}"
+        }
+    },
+    "datePublished": "{{ $post->created_at->toISOString() }}",
+    "dateModified": "{{ $post->updated_at->toISOString() }}",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "{{ request()->fullUrl() }}"
+    },
+    @if($post->faqs && count($post->faqs) > 0)
+    "mainEntity": {
+        "@type": "FAQPage",
+        "mainEntity": [
+            @foreach($post->faqs as $index => $faq)
+            {
+                "@type": "Question",
+                "name": "{{ addslashes($faq['question']) }}",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "{{ addslashes($faq['answer']) }}"
+                }
+            }@if($index < count($post->faqs) - 1),@endif
+            @endforeach
+        ]
+    }
+    @endif
+}
+</script>
+@endpush
+@endif
 @endsection

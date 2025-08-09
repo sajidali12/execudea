@@ -139,11 +139,58 @@
             <div class="mb-6">
                 <label for="body" class="block text-sm font-medium text-gray-700 mb-2">Post Content</label>
                 <div id="quill-editor" style="height: 400px;" class="@error('body') border-red-300 @enderror"></div>
-                <textarea id="body" name="body" style="display: none;" required>{{ old('body', $post->body) }}</textarea>
+                <textarea id="body" name="body" style="display: none;" required>{!! old('body', $post->body) !!}</textarea>
                 @error('body')
                     <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                 @enderror
             </div>
+        </div>
+
+        <!-- FAQ Section -->
+        <div class="bg-white rounded-lg shadow-sm p-6 mb-6">
+            <h3 class="text-lg font-medium text-gray-900 mb-4">Frequently Asked Questions</h3>
+            <div id="faqs-container">
+                @if($post->faqs && count($post->faqs) > 0)
+                    @foreach($post->faqs as $index => $faq)
+                        <div class="faq-item bg-gray-50 p-4 rounded-lg mb-4" data-index="{{ $index }}">
+                            <div class="flex justify-between items-center mb-3">
+                                <h4 class="text-sm font-medium text-gray-700">FAQ #{{ $index + 1 }}</h4>
+                                <button type="button" class="remove-faq text-red-600 hover:text-red-800 text-sm">
+                                    <i class="fas fa-trash"></i> Remove
+                                </button>
+                            </div>
+                            <div class="mb-3">
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Question</label>
+                                <input type="text" name="faqs[{{ $index }}][question]" value="{{ $faq['question'] ?? '' }}" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-primary" placeholder="Enter FAQ question...">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Answer</label>
+                                <textarea name="faqs[{{ $index }}][answer]" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-primary" placeholder="Enter FAQ answer...">{{ $faq['answer'] ?? '' }}</textarea>
+                            </div>
+                        </div>
+                    @endforeach
+                @else
+                    <div class="faq-item bg-gray-50 p-4 rounded-lg mb-4" data-index="0">
+                        <div class="flex justify-between items-center mb-3">
+                            <h4 class="text-sm font-medium text-gray-700">FAQ #1</h4>
+                            <button type="button" class="remove-faq text-red-600 hover:text-red-800 text-sm">
+                                <i class="fas fa-trash"></i> Remove
+                            </button>
+                        </div>
+                        <div class="mb-3">
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Question</label>
+                            <input type="text" name="faqs[0][question]" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-primary" placeholder="Enter FAQ question...">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Answer</label>
+                            <textarea name="faqs[0][answer]" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-primary" placeholder="Enter FAQ answer..."></textarea>
+                        </div>
+                    </div>
+                @endif
+            </div>
+            <button type="button" id="add-faq" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-white bg-primary hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
+                <i class="fas fa-plus mr-2"></i>Add FAQ
+            </button>
         </div>
 
         <!-- SEO Section -->
@@ -239,6 +286,11 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
+        // Get initial content from textarea
+        var bodyTextarea = document.getElementById('body');
+        var initialContent = bodyTextarea.value;
+        
+
         // Initialize Quill
         var quill = new Quill('#quill-editor', {
             theme: 'snow',
@@ -262,17 +314,33 @@
             placeholder: 'Write your post content here...'
         });
 
+        // Load initial content into Quill editor
+        if (initialContent && initialContent.trim() !== '') {
+            // Method 1: Try dangerouslyPasteHTML
+            try {
+                quill.clipboard.dangerouslyPasteHTML(0, initialContent);
+            } catch (e) {
+                // Method 2: Try root.innerHTML
+                try {
+                    quill.root.innerHTML = initialContent;
+                } catch (e2) {
+                    // Method 3: Try setContents with Delta
+                    try {
+                        const delta = quill.clipboard.convert(initialContent);
+                        quill.setContents(delta);
+                    } catch (e3) {
+                        // If all methods fail, fall back to simple innerHTML
+                        quill.root.innerHTML = initialContent;
+                    }
+                }
+            }
+        }
+
         // Sync Quill content with hidden textarea
-        var bodyTextarea = document.getElementById('body');
         quill.on('text-change', function() {
             bodyTextarea.value = quill.root.innerHTML;
             updateSeoPreview();
         });
-
-        // Set initial content if editing
-        if (bodyTextarea.value) {
-            quill.root.innerHTML = bodyTextarea.value;
-        }
 
         // Character counting and SEO preview functionality
         const metaTitleInput = document.getElementById('meta_title');
@@ -365,8 +433,68 @@
             }
         };
 
+        // Form submission handler to ensure Quill content is synced
+        document.querySelector('form').addEventListener('submit', function(e) {
+            // Force sync Quill content to textarea before submission
+            bodyTextarea.value = quill.root.innerHTML;
+        });
+
         // Initial SEO preview update
         updateSeoPreview();
+
+        // FAQ functionality
+        let faqIndex = {{ $post->faqs ? count($post->faqs) : 1 }};
+        
+        document.getElementById('add-faq').addEventListener('click', function() {
+            const container = document.getElementById('faqs-container');
+            const newFaq = document.createElement('div');
+            newFaq.className = 'faq-item bg-gray-50 p-4 rounded-lg mb-4';
+            newFaq.setAttribute('data-index', faqIndex);
+            newFaq.innerHTML = `
+                <div class="flex justify-between items-center mb-3">
+                    <h4 class="text-sm font-medium text-gray-700">FAQ #${faqIndex + 1}</h4>
+                    <button type="button" class="remove-faq text-red-600 hover:text-red-800 text-sm">
+                        <i class="fas fa-trash"></i> Remove
+                    </button>
+                </div>
+                <div class="mb-3">
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Question</label>
+                    <input type="text" name="faqs[${faqIndex}][question]" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-primary" placeholder="Enter FAQ question...">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Answer</label>
+                    <textarea name="faqs[${faqIndex}][answer]" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-primary" placeholder="Enter FAQ answer..."></textarea>
+                </div>
+            `;
+            container.appendChild(newFaq);
+            faqIndex++;
+            updateFaqNumbers();
+        });
+
+        // Remove FAQ functionality
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('remove-faq') || e.target.parentElement.classList.contains('remove-faq')) {
+                const faqItem = e.target.closest('.faq-item');
+                const container = document.getElementById('faqs-container');
+                if (container.children.length > 1) {
+                    faqItem.remove();
+                    updateFaqNumbers();
+                } else {
+                    alert('You must have at least one FAQ.');
+                }
+            }
+        });
+
+        function updateFaqNumbers() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach((item, index) => {
+                const title = item.querySelector('h4');
+                title.textContent = `FAQ #${index + 1}`;
+            });
+        }
+
+        // Initial FAQ numbering
+        updateFaqNumbers();
     });
 </script>
 @endsection

@@ -18,7 +18,7 @@
             </div>
         </div>
 
-        <form action="{{ route('admin.projects.store') }}" method="POST" class="p-6">
+        <form action="{{ route('admin.projects.store') }}" method="POST" enctype="multipart/form-data" class="p-6">
             @csrf
             
             <!-- Project Information -->
@@ -208,6 +208,52 @@
                     @error('notes')
                         <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                     @enderror
+                </div>
+            </div>
+
+            <!-- Website Display -->
+            <div class="mb-8">
+                <h3 class="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+                    <i class="fas fa-globe text-primary mr-2"></i>
+                    Website Display
+                </h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Project Image -->
+                    <div class="md:col-span-2">
+                        <label for="project_image" class="block text-sm font-medium text-gray-700 mb-2">
+                            Project Image
+                        </label>
+                        <input type="file" 
+                               id="project_image" 
+                               name="project_image" 
+                               accept="image/*"
+                               class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary @error('project_image') border-red-500 @enderror">
+                        <p class="mt-1 text-xs text-gray-500">Upload an image to showcase this project (JPG, PNG, max 2MB)</p>
+                        @error('project_image')
+                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <!-- Show on Website -->
+                    <div class="md:col-span-2">
+                        <div class="flex items-center">
+                            <input type="hidden" name="show_on_website" value="0">
+                            <input type="checkbox" 
+                                   id="show_on_website" 
+                                   name="show_on_website" 
+                                   value="1"
+                                   {{ old('show_on_website') ? 'checked' : '' }}
+                                   class="h-4 w-4 text-primary border-gray-300 rounded focus:ring-primary @error('show_on_website') border-red-500 @enderror">
+                            <label for="show_on_website" class="ml-2 text-sm font-medium text-gray-700">
+                                Show on Website
+                            </label>
+                        </div>
+                        <p class="mt-1 text-xs text-gray-500">Check this to display the project in the "Latest Projects" section on the homepage</p>
+                        @error('show_on_website')
+                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
+                    </div>
                 </div>
             </div>
 

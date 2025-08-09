@@ -25,7 +25,7 @@
                     Services
                     <i class="fa-solid fa-chevron-down text-xs group-hover:rotate-180 transition-all duration-300 ease-in-out"></i>
                 </button>
-                <div class="absolute top-full left-0 mt-2 z-10 bg-white shadow-xl rounded-xl w-72 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-in-out transform translate-y-2 group-hover:translate-y-0 border border-gray-100"> 
+                <div class="absolute top-full left-0 mt-2 z-10 bg-white shadow-xl rounded-xl w-[450px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-in-out transform translate-y-2 group-hover:translate-y-0 border border-gray-100"> 
                     <div class="py-2">
                         <a class="flex items-center px-4 py-3 hover:bg-gradient-to-r hover:from-primary/5 hover:to-primary/10 hover:text-primary transition-all duration-200 group/item" href="{{ route('service.ux') }}">
                             <div class="w-10 h-10 bg-gradient-to-br from-purple-500 to-pink-600 rounded-lg flex items-center justify-center mr-3 group-hover/item:scale-110 transition-transform duration-200">

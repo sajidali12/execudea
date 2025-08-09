@@ -127,6 +127,9 @@ public function store(Request $request)
         'meta_keywords' => 'nullable|string',
         'slug' => 'nullable|string|unique:posts,slug',
         'excerpt' => 'nullable|string',
+        'faqs' => 'nullable|array',
+        'faqs.*.question' => 'required_with:faqs|string',
+        'faqs.*.answer' => 'required_with:faqs|string',
     ]);
 
     
@@ -139,6 +142,9 @@ public function store(Request $request)
         'meta_keywords' => $validatedData['meta_keywords'],
         'slug' => $validatedData['slug'],
         'excerpt' => $validatedData['excerpt'],
+        'faqs' => $request->has('faqs') ? array_filter($validatedData['faqs'], function($faq) {
+            return !empty($faq['question']) && !empty($faq['answer']);
+        }) : null,
         'image' => null,  
     ];
 
@@ -164,9 +170,8 @@ public function store(Request $request)
      *
      * @return response()
      */
-    public function edit($id)
+    public function edit(Post $post)
     {
-        $post = Post::findOrFail($id);
         $user = Auth::user();
     
         return view('admin.posts.edit', compact('post', 'user'));
@@ -219,21 +224,50 @@ public function store(Request $request)
 //         return redirect()->back()->withErrors(['error' => 'An error occurred while updating the post. Please try again.']);
 //     }
 // }
-public function update(Request $request, $id)
+public function update(Request $request, Post $post)
 {
+    
     $validated = $request->validate([
         'title' => 'required|string|max:255',
         'body' => 'required|string',
         'author_name' => 'required|string|max:255',
+        'image' => 'nullable|image|max:10240', // Allow optional image upload
         'meta_title' => 'nullable|string|max:60',
         'meta_description' => 'nullable|string|max:160',
         'meta_keywords' => 'nullable|string',
-        'slug' => 'nullable|string|unique:posts,slug,' . $id,
+        'slug' => 'nullable|string|unique:posts,slug,' . $post->id,
         'excerpt' => 'nullable|string',
+        'faqs' => 'nullable|array',
+        'faqs.*.question' => 'required_with:faqs|string',
+        'faqs.*.answer' => 'required_with:faqs|string',
     ]);
 
-    $post = Post::findOrFail($id);
+    
+    // Process FAQs to remove empty ones
+    if ($request->has('faqs')) {
+        $validated['faqs'] = array_filter($validated['faqs'], function($faq) {
+            return !empty($faq['question']) && !empty($faq['answer']);
+        });
+        // Re-index the array to avoid gaps
+        $validated['faqs'] = array_values($validated['faqs']);
+    }
+    
+    // Handle image upload if present
+    if ($request->hasFile('image')) {
+        // Delete old image if exists
+        if ($post->image && Storage::exists('public/product/image/' . $post->image)) {
+            Storage::delete('public/product/image/' . $post->image);
+        }
+        
+        $image = $request->file('image');
+        $imageName = time() . '.' . $image->getClientOriginalExtension();
+        $image->storeAs('public/product/image', $imageName);
+        $validated['image'] = $imageName;
+    }
+    
+    
     $post->update($validated);
+
 
     return redirect()->route('posts.index')->with('success', 'Post updated successfully!');
 }

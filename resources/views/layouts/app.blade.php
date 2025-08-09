@@ -7,6 +7,8 @@
 
     <title>@yield('title', 'Best Website Development Company In Pakistan')</title>
 
+    @stack('meta')
+
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
     <link rel="shortcut icon" type="image/png" href="{{ asset('favicon.png') }}">
@@ -16,32 +18,17 @@
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
 
     <!-- Custom Fonts and Colors -->
     <style>
-        @font-face {
-            font-family: 'FuturaBT-BoldCondensed';
-            src: url('{{ asset('fonts/FuturaBT-BoldCondensed.woff2') }}') format('woff2'),
-                 url('{{ asset('fonts/FuturaBT-BoldCondensed.woff') }}') format('woff');
-            font-weight: bold;
-            font-display: swap;
-        }
-
-        @font-face {
-            font-family: 'FuturaBT-LightCondensed';
-            src: url('{{ asset('fonts/FuturaBT-LightCondensed.woff2') }}') format('woff2'),
-                 url('{{ asset('fonts/FuturaBT-LightCondensed.woff') }}') format('woff');
-            font-weight: 300;
-            font-display: swap;
-        }
 
         .font-futura-bold {
-            font-family: 'FuturaBT-BoldCondensed', sans-serif;
+            font-family: 'futura-bold', sans-serif;
         }
 
         .font-futura-light {
-            font-family: 'FuturaBT-LightCondensed', sans-serif;
+            font-family: 'futura-light', sans-serif;
         }
         
         :root {
@@ -224,6 +211,46 @@
         
         .service-card:hover {
             background: linear-gradient(135deg, rgba(255, 255, 255, 1), rgba(77, 184, 179, 0.1));
+        }
+        
+        /* FontAwesome icon fixes */
+        .fas, .fab, .fa-solid, .fa-brands {
+            font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands" !important;
+            font-weight: 900 !important;
+            display: inline-block !important;
+            font-style: normal !important;
+            font-variant: normal !important;
+            text-rendering: auto !important;
+            -webkit-font-smoothing: antialiased !important;
+        }
+        
+        .fab, .fa-brands {
+            font-weight: 400 !important;
+            font-family: "Font Awesome 6 Brands" !important;
+        }
+        
+        /* Ensure icons are visible and properly sized */
+        i[class*="fa-"] {
+            display: inline-block !important;
+            font-style: normal !important;
+            font-variant: normal !important;
+            text-rendering: auto !important;
+            line-height: 1 !important;
+        }
+        
+        /* Line clamp utilities */
+        .line-clamp-2 {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .line-clamp-3 {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
     </style>
 

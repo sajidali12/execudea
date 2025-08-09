@@ -56,12 +56,22 @@ class ProjectController extends Controller
             'due_date' => 'nullable|date|after_or_equal:start_date',
             'progress' => 'nullable|integer|min:0|max:100',
             'notes' => 'nullable|string',
+            'project_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'show_on_website' => 'nullable|boolean',
         ]);
 
         $data = $request->all();
         if ($request->status === 'completed' && !$request->completion_date) {
             $data['completion_date'] = now();
         }
+
+        // Handle file upload
+        if ($request->hasFile('project_image')) {
+            $data['project_image'] = $request->file('project_image')->store('projects', 'public');
+        }
+
+        // Handle checkbox
+        $data['show_on_website'] = $request->has('show_on_website') ? 1 : 0;
 
         Project::create($data);
 
@@ -95,12 +105,26 @@ class ProjectController extends Controller
             'completion_date' => 'nullable|date',
             'progress' => 'nullable|integer|min:0|max:100',
             'notes' => 'nullable|string',
+            'project_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'show_on_website' => 'nullable|boolean',
         ]);
 
         $data = $request->all();
         if ($request->status === 'completed' && !$project->completion_date && !$request->completion_date) {
             $data['completion_date'] = now();
         }
+
+        // Handle file upload
+        if ($request->hasFile('project_image')) {
+            // Delete old image if exists
+            if ($project->project_image && \Storage::disk('public')->exists($project->project_image)) {
+                \Storage::disk('public')->delete($project->project_image);
+            }
+            $data['project_image'] = $request->file('project_image')->store('projects', 'public');
+        }
+
+        // Handle checkbox
+        $data['show_on_website'] = $request->has('show_on_website') ? 1 : 0;
 
         $project->update($data);
 

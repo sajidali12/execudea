@@ -21,6 +21,8 @@ class Project extends Model
         'completion_date',
         'progress',
         'notes',
+        'project_image',
+        'show_on_website',
     ];
 
     protected $casts = [
@@ -29,6 +31,7 @@ class Project extends Model
         'due_date' => 'date',
         'completion_date' => 'date',
         'progress' => 'integer',
+        'show_on_website' => 'boolean',
     ];
 
     // Relationships
@@ -61,6 +64,11 @@ class Project extends Model
     public function scopeOnHold($query)
     {
         return $query->where('status', 'on_hold');
+    }
+
+    public function scopeShowOnWebsite($query)
+    {
+        return $query->where('show_on_website', true);
     }
 
     // Accessors

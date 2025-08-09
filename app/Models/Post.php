@@ -17,7 +17,11 @@ class Post extends Model
      */
     protected $fillable = [
         'title', 'body', 'image', 'author_name', 'meta_title', 'meta_description', 
-        'meta_keywords', 'slug', 'excerpt'
+        'meta_keywords', 'slug', 'excerpt', 'faqs'
+    ];
+
+    protected $casts = [
+        'faqs' => 'array'
     ];
 
     /**
@@ -71,9 +75,14 @@ class Post extends Model
 
     /**
      * Get the route key for the model.
+     * Use slug for public routes, ID for admin routes
      */
     public function getRouteKeyName()
     {
+        // Use ID for admin routes, slug for public routes
+        if (request()->is('admin/*')) {
+            return 'id';
+        }
         return 'slug';
     }
 

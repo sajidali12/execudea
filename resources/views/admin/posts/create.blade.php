@@ -123,6 +123,32 @@
             </div>
         </div>
 
+        <!-- FAQ Section -->
+        <div class="bg-white rounded-lg shadow-sm p-6 mb-6">
+            <h3 class="text-lg font-medium text-gray-900 mb-4">Frequently Asked Questions</h3>
+            <div id="faqs-container">
+                <div class="faq-item bg-gray-50 p-4 rounded-lg mb-4" data-index="0">
+                    <div class="flex justify-between items-center mb-3">
+                        <h4 class="text-sm font-medium text-gray-700">FAQ #1</h4>
+                        <button type="button" class="remove-faq text-red-600 hover:text-red-800 text-sm">
+                            <i class="fas fa-trash"></i> Remove
+                        </button>
+                    </div>
+                    <div class="mb-3">
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Question</label>
+                        <input type="text" name="faqs[0][question]" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-primary" placeholder="Enter FAQ question...">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Answer</label>
+                        <textarea name="faqs[0][answer]" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-primary" placeholder="Enter FAQ answer..."></textarea>
+                    </div>
+                </div>
+            </div>
+            <button type="button" id="add-faq" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-white bg-primary hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
+                <i class="fas fa-plus mr-2"></i>Add FAQ
+            </button>
+        </div>
+
         <!-- SEO Section -->
         <div class="bg-white rounded-lg shadow-sm p-6 mb-6">
             <h3 class="text-lg font-medium text-gray-900 mb-4">SEO Settings</h3>
@@ -338,8 +364,65 @@
             }
         });
 
+        // Form submission handler to ensure Quill content is synced
+        document.querySelector('form').addEventListener('submit', function(e) {
+            // Force sync Quill content to textarea before submission
+            bodyTextarea.value = quill.root.innerHTML;
+        });
+
         // Initial SEO preview update
         updateSeoPreview();
+
+        // FAQ functionality
+        let faqIndex = 1;
+        
+        document.getElementById('add-faq').addEventListener('click', function() {
+            const container = document.getElementById('faqs-container');
+            const newFaq = document.createElement('div');
+            newFaq.className = 'faq-item bg-gray-50 p-4 rounded-lg mb-4';
+            newFaq.setAttribute('data-index', faqIndex);
+            newFaq.innerHTML = `
+                <div class="flex justify-between items-center mb-3">
+                    <h4 class="text-sm font-medium text-gray-700">FAQ #${faqIndex + 1}</h4>
+                    <button type="button" class="remove-faq text-red-600 hover:text-red-800 text-sm">
+                        <i class="fas fa-trash"></i> Remove
+                    </button>
+                </div>
+                <div class="mb-3">
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Question</label>
+                    <input type="text" name="faqs[${faqIndex}][question]" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-primary" placeholder="Enter FAQ question...">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Answer</label>
+                    <textarea name="faqs[${faqIndex}][answer]" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-primary" placeholder="Enter FAQ answer..."></textarea>
+                </div>
+            `;
+            container.appendChild(newFaq);
+            faqIndex++;
+            updateFaqNumbers();
+        });
+
+        // Remove FAQ functionality
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('remove-faq') || e.target.parentElement.classList.contains('remove-faq')) {
+                const faqItem = e.target.closest('.faq-item');
+                const container = document.getElementById('faqs-container');
+                if (container.children.length > 1) {
+                    faqItem.remove();
+                    updateFaqNumbers();
+                } else {
+                    alert('You must have at least one FAQ.');
+                }
+            }
+        });
+
+        function updateFaqNumbers() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach((item, index) => {
+                const title = item.querySelector('h4');
+                title.textContent = `FAQ #${index + 1}`;
+            });
+        }
     });
 </script>
 @endsection

@@ -68,9 +68,6 @@ Route::middleware(['auth', 'role:admin,editor'])->group(function () {
     
     // Posts Management (accessible to admin and editor)
     Route::resource('/admin/posts', PostController::class);
-    Route::delete('/admin/posts/{id}', [PostController::class, 'destroy'])->name('posts.destroy');
-    Route::get('/admin/posts/{id}/edit', [PostController::class, 'edit'])->name('posts.edit');
-    Route::put('/admin/posts/{id}', [PostController::class, 'update'])->name('posts.update');
     Route::delete('/posts/{id}/image', [PostController::class, 'deleteImage'])->name('posts.deleteImage');
     
     // Messages (accessible to all admin users)
@@ -80,6 +77,7 @@ Route::middleware(['auth', 'role:admin,editor'])->group(function () {
     // Site Settings Routes (accessible to admin and editor)
     Route::get('/admin/site-settings', [SiteSettingController::class, 'index'])->name('admin.settings.index');
     Route::put('/admin/site-settings', [SiteSettingController::class, 'update'])->name('admin.settings.update');
+    
     
     // Courses Management Routes (accessible to admin and editor)
     Route::resource('/admin/courses', AdminCourseController::class)->names([
