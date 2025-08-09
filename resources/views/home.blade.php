@@ -287,8 +287,7 @@
                                 New!
                             </div>
                             <div class="font-medium">
-                                Check our latest article on
-                                design
+                                Check our latest article
                             </div>
                         </div>
                     </a>
@@ -299,7 +298,7 @@
                         works
                     </span>
                 </h1>
-                <p class="w-3/4 text-2xl font-medium mt-6 mb-20 text-slate-600 font-futura-light">
+                <p class="w-full md:w-3/4 text-lg md:text-2xl font-medium mt-6 mb-12 md:mb-20 text-slate-600 font-futura-light">
                     We're a top-notch web design and development
                     team helping business to craft the
                     meaningful and interactive product
@@ -352,10 +351,10 @@
 <!-- Hero Section End -->
 <!-- services Section Start -->
 <section class="py-20" itemscope itemtype="https://schema.org/Service">
-    <div class="container m-auto md:px-10 px-0">
+    <div class="container m-auto md:px-10 px-4">
         <div class="text-center">
-            <h2 class="text-4xl font-medium font-futura-bold" itemprop="name">What We Do</h2>
-            <p class="text-2xl font-medium text-slate-500 mt-5 mb-4 font-futura-light">
+            <h2 class="text-2xl md:text-4xl font-medium font-futura-bold" itemprop="name">What We Do</h2>
+            <p class="text-lg md:text-2xl font-medium text-slate-500 mt-5 mb-4 font-futura-light px-4 md:px-0">
                 We are helping businesses to develop their web
                 applications
             </p>
@@ -489,20 +488,20 @@
 
 <!-- portfolio Section Start -->
 <section class="py-20" id="work">
-    <div class="container m-auto md:px-10 px-2">
+    <div class="container m-auto md:px-10 px-4">
         <div class="text-center">
             <span class="text-sm font-medium py-1 px-3 rounded-full text-primary bg-primary/10">
                 Latest
             </span>
-            <h1 class="text-4xl font-medium my-3 font-futura-bold">
+            <h1 class="text-2xl md:text-4xl font-medium my-3 font-futura-bold">
                 Explore some of our latest projects!
             </h1>
-            <p class="text-2xl font-medium text-slate-400 mt-5 mb-4 font-futura-light">
+            <p class="text-lg md:text-2xl font-medium text-slate-400 mt-5 mb-4 font-futura-light px-4 md:px-0">
             </p>
         </div>
 
         @if(isset($featuredProjects) && $featuredProjects->count() > 0)
-            <div class="grid lg:grid-cols-2 xl:grid-cols-2 grid-cols-1 gap-8 mt-12">
+            <div class="grid lg:grid-cols-2 xl:grid-cols-2 grid-cols-1 gap-4 md:gap-8 mt-8 md:mt-12">
                 @foreach($featuredProjects as $index => $project)
                     <div class="group relative bg-white/70 backdrop-blur-sm border border-gray-100/50 rounded-2xl overflow-hidden card-hover transition-all duration-500 shadow-lg hover:shadow-2xl"
                          data-aos="fade-up"
@@ -613,13 +612,13 @@
             class="w-full -scale-x-100"
         />
     </div>
-    <div class="container relative m-auto md:px-10 px-2">
+    <div class="container relative m-auto md:px-10 px-4">
         <span class="text-sm font-medium py-1 px-3 rounded-full text-primary bg-primary/10">
             Our Customers
         </span>
 
         <div class="grid lg:grid-cols-2 grid-cols-1 gap-6 mt-5">
-            <h1 class="text-3xl font-semibold">
+            <h1 class="text-xl md:text-3xl font-semibold">
                 We have worked with more than 500 happy clients
             </h1>
             <p class="text-slate-600">
@@ -658,12 +657,12 @@
 
 <!-- Blog Section Start -->
 <section class="py-20">
-    <div class="container m-auto md:px-10 px-2">
+    <div class="container m-auto md:px-10 px-4">
         <div class="text-center">
             <span class="text-sm font-medium py-1 px-3 rounded-full text-primary bg-primary/10">
                 Blog
             </span>
-            <h1 class="text-3xl font-medium my-3">
+            <h1 class="text-2xl md:text-3xl font-medium my-3">
                 Latest Articles
             </h1>
         </div>
@@ -743,9 +742,9 @@
 
 <!-- openings Section Start -->
 <section class="py-20">
-    <div class="container m-auto md:px-10 px-2">
-        <div class="text-center mb-16 md:px-10 px-0">
-            <h1 class="text-3xl font-medium my-3">
+    <div class="container m-auto md:px-10 px-4">
+        <div class="text-center mb-16 md:px-10 px-4">
+            <h1 class="text-2xl md:text-3xl font-medium my-3">
                 Our Happy Customers
             </h1>
             <p class="font-medium text-slate-500 mb-8">
@@ -809,9 +808,45 @@
     font-size: clamp(1.5rem, 4vw, 3rem);
 }
 
+/* Mobile responsive improvements */
 @media (max-width: 768px) {
     .hero-section {
         padding: 2rem 1rem;
+    }
+    
+    /* Better mobile spacing */
+    section {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+    }
+    
+    /* Mobile buttons */
+    .flex-wrap.gap-5 {
+        gap: 1rem;
+    }
+    
+    /* Mobile text improvements */
+    .font-futura-bold {
+        line-height: 1.2;
+    }
+    
+    /* Service cards mobile spacing */
+    .service-card {
+        margin-bottom: 1.5rem;
+    }
+    
+    /* Project cards mobile improvements */
+    .card-hover {
+        transform: none;
+    }
+    
+    .card-hover:hover {
+        transform: translateY(-4px);
+    }
+    
+    /* Mobile swiper improvements */
+    .swiper-slide {
+        padding: 0 0.5rem;
     }
 }
 </style>

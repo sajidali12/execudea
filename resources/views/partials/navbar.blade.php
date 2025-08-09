@@ -97,64 +97,73 @@
     </div>
 
    
+    <!-- Mobile Menu Background Overlay -->
     <div
         id="mobileMenu"
-        class="fixed inset-0 bg-white z-50 transition-transform transform translate-x-full"
+        class="fixed inset-0 z-50 transition-transform transform translate-x-full"
+        style="background: white !important; min-height: 100vh !important; min-width: 100vw !important;"
     >
-        <div class="container mx-auto px-6 py-8">
+        <!-- Full white background layer -->
+        <div class="absolute inset-0 bg-white" style="background: white !important; z-index: 1;"></div>
+        
+        <!-- Content layer -->
+        <div class="relative z-10 w-full h-full px-6 py-8 bg-white overflow-y-auto" style="background: white !important;">
             <button
                 type="button"
                 onclick="toggleMobileMenu()"
-                class="text-gray-500 text-2xl mb-6"
+                class="text-gray-500 text-2xl mb-6 bg-white"
+                style="background: white !important;"
             >
                 <i class="fa-solid fa-times"></i>
             </button>
-            <ul class="space-y-4">
-                <li>
-                    <a class="text-gray-800 text-lg block" href="{{ route('home') }}">
+            <ul class="space-y-4 bg-white" style="background: white !important;">
+                <li class="bg-white" style="background: white !important;">
+                    <a class="text-gray-800 text-lg block py-2 px-2 bg-white" href="{{ route('home') }}" style="background: white !important;">
                         Home
                     </a>
                 </li>
-                <li>
-                    <a class="text-gray-800 text-lg block" href="{{ route('about') }}">
+                <li class="bg-white" style="background: white !important;">
+                    <a class="text-gray-800 text-lg block py-2 px-2 bg-white" href="{{ route('about') }}" style="background: white !important;">
                         About
                     </a>
                 </li>
-                <li class="relative">
+                <li class="relative bg-white" style="background: white !important;">
                     <button 
-                        class="text-gray-800 text-lg block flex items-center w-full text-left" 
+                        class="text-gray-800 text-lg block flex items-center w-full text-left py-2 px-2 bg-white" 
                         onclick="toggleDropdown()"
+                        style="background: white !important;"
                     >
                         Services
                         <i id="dropdownIcon" class="fa-solid fa-chevron-down ml-1"></i>
                     </button>
-                    <div id="servicesDropdown" class="bg-white shadow-lg rounded-lg w-64 hidden"> 
-                        <a class="block px-4 py-2 hover:bg-gray-200 hover:text-primary rounded-lg" href="{{ route('service.ux') }}">User Experience Design</a>
-                        <a class="block px-4 py-2 hover:bg-gray-200 hover:text-primary rounded-lg" href="{{ route('service.web') }}">Web Development</a>
-                        <a class="block px-4 py-2 hover:bg-gray-200 hover:text-primary rounded-lg" href="{{ route('service.seo') }}">Search Engine Optimization</a>
-                        <a class="block px-4 py-2 hover:bg-gray-200 hover:text-primary rounded-lg" href="{{ route('service.wordpress') }}">Wordpress Development</a>
+                    <div id="servicesDropdown" class="bg-white shadow-lg rounded-lg w-64 hidden mt-2 border border-gray-200" style="background: white !important;"> 
+                        <a class="block px-4 py-2 hover:bg-gray-200 hover:text-primary rounded-lg bg-white" href="{{ route('service.ux') }}" style="background: white !important;">User Experience Design</a>
+                        <a class="block px-4 py-2 hover:bg-gray-200 hover:text-primary rounded-lg bg-white" href="{{ route('service.web') }}" style="background: white !important;">Web Development</a>
+                        <a class="block px-4 py-2 hover:bg-gray-200 hover:text-primary rounded-lg bg-white" href="{{ route('service.seo') }}" style="background: white !important;">Search Engine Optimization</a>
+                        <a class="block px-4 py-2 hover:bg-gray-200 hover:text-primary rounded-lg bg-white" href="{{ route('service.wordpress') }}" style="background: white !important;">Wordpress Development</a>
                     </div>
                 </li>
-                <li>
-                    <a class="text-gray-800 text-lg block" href="{{ route('courses.index') }}">
+                <li class="bg-white" style="background: white !important;">
+                    <a class="text-gray-800 text-lg block py-2 px-2 bg-white" href="{{ route('courses.index') }}" style="background: white !important;">
                         Courses
                     </a>
                 </li>
-                <li>
-                    <a class="text-gray-800 text-lg block" href="{{ route('blog') }}">
+                <li class="bg-white" style="background: white !important;">
+                    <a class="text-gray-800 text-lg block py-2 px-2 bg-white" href="{{ route('blog') }}" style="background: white !important;">
                         Blog
                     </a>
                 </li>
-                <li>
-                    <a class="text-gray-800 text-lg block" href="{{ route('contact') }}">
+                <li class="bg-white" style="background: white !important;">
+                    <a class="text-gray-800 text-lg block py-2 px-2 bg-white" href="{{ route('contact') }}" style="background: white !important;">
                         Contact us
                     </a>
                 </li>
-                <li>
+                <li class="bg-white" style="background: white !important;">
                     <a
                         href="https://calendly.com/execudea-info/30min"
                         target="_blank"
                         class="bg-primary text-white px-4 py-2 rounded block text-center"
+                        style="background: var(--primary) !important;"
                     >
                         Book a Meeting
                     </a>
@@ -164,11 +173,67 @@
     </div>
 </header>
 
+<style>
+/* Mobile menu complete solid background fix */
+#mobileMenu {
+    background: white !important;
+    background-color: #ffffff !important;
+    background-image: none !important;
+    backdrop-filter: none !important;
+    min-height: 100vh !important;
+    min-width: 100vw !important;
+}
+
+#mobileMenu * {
+    background-color: white !important;
+}
+
+#mobileMenu .bg-primary {
+    background-color: #4db8b3 !important;
+}
+
+#mobileMenu ul, #mobileMenu li, #mobileMenu a, #mobileMenu button {
+    background: white !important;
+    background-color: white !important;
+}
+
+#mobileMenu .bg-primary, #mobileMenu .bg-primary:hover {
+    background: #4db8b3 !important;
+    background-color: #4db8b3 !important;
+}
+
+/* Override any hover states except for the primary button */
+#mobileMenu a:not(.bg-primary):hover {
+    background: #f3f4f6 !important;
+    background-color: #f3f4f6 !important;
+}
+
+/* Ensure full coverage */
+.translate-x-0#mobileMenu {
+    background: white !important;
+    background-color: #ffffff !important;
+}
+
+#servicesDropdown a:hover {
+    background: #f3f4f6 !important;
+    background-color: #f3f4f6 !important;
+}
+</style>
+
 <script>
     function toggleMobileMenu() {
         const mobileMenu = document.getElementById('mobileMenu');
+        const body = document.body;
+        
         mobileMenu.classList.toggle('translate-x-full');
         mobileMenu.classList.toggle('translate-x-0');
+        
+        // Prevent body scroll when menu is open
+        if (mobileMenu.classList.contains('translate-x-0')) {
+            body.style.overflow = 'hidden';
+        } else {
+            body.style.overflow = 'auto';
+        }
     }
 
     function toggleDropdown() {
@@ -179,6 +244,28 @@
         icon.classList.toggle('fa-chevron-down');
         icon.classList.toggle('fa-chevron-up');
     }
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', function(event) {
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuButton = document.querySelector('[onclick="toggleMobileMenu()"]');
+        
+        if (mobileMenu && !mobileMenu.contains(event.target) && !menuButton.contains(event.target)) {
+            if (mobileMenu.classList.contains('translate-x-0')) {
+                toggleMobileMenu();
+            }
+        }
+    });
+
+    // Close mobile menu when clicking on menu links
+    document.querySelectorAll('#mobileMenu a[href]').forEach(link => {
+        link.addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            if (mobileMenu.classList.contains('translate-x-0')) {
+                toggleMobileMenu();
+            }
+        });
+    });
 
     // Enhanced sticky navbar with smooth transitions
     window.addEventListener('scroll', function() {
