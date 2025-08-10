@@ -61,7 +61,7 @@
                 @if($course->image)
                     <img src="{{ asset('storage/' . $course->image) }}" 
                          alt="{{ $course->title }}" 
-                         class="w-full h-80 object-cover rounded-xl shadow-lg">
+                         class="w-full object-contain rounded-xl shadow-lg">
                 @else
                     <div class="w-full h-80 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-xl shadow-lg flex items-center justify-center">
                         <i class="fas fa-graduation-cap text-8xl text-gray-400"></i>

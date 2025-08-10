@@ -358,10 +358,6 @@
                 We are helping businesses to develop their web
                 applications
             </p>
-            <!-- Font Awesome Test (Remove after testing) -->
-            <div class="text-center p-2 bg-yellow-100 border border-yellow-400 rounded mb-4">
-                <p class="text-sm">Font Awesome Test: <i class="fas fa-check text-green-500"></i> <i class="fab fa-wordpress text-blue-500"></i> <i class="fas fa-code text-purple-500"></i></p>
-            </div>
         </div>
 
         <div class="grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 pt-12 gap-6">
