@@ -71,7 +71,7 @@ class ProjectController extends Controller
         }
 
         // Handle checkbox
-        $data['show_on_website'] = $request->has('show_on_website') ? 1 : 0;
+        $data['show_on_website'] = $request->input('show_on_website', 0);
 
         Project::create($data);
 
@@ -124,7 +124,7 @@ class ProjectController extends Controller
         }
 
         // Handle checkbox
-        $data['show_on_website'] = $request->has('show_on_website') ? 1 : 0;
+        $data['show_on_website'] = $request->input('show_on_website', 0);
 
         $project->update($data);
 

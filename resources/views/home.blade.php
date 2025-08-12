@@ -549,9 +549,15 @@
                         <div class="p-6">
                             <div class="flex items-center justify-between mb-4">
                                 <div class="flex items-center space-x-2">
-                                    <div class="w-2 h-2 bg-primary rounded-full"></div>
-                                    <span class="text-xs font-medium text-primary uppercase tracking-wider">
-                                        {{ $project->client->name ?? 'Client' }}
+                                    <div class="flex items-center space-x-1">
+                                        <i class="fas fa-star text-yellow-500 text-sm"></i>
+                                        <i class="fas fa-star text-yellow-500 text-sm"></i>
+                                        <i class="fas fa-star text-yellow-500 text-sm"></i>
+                                        <i class="fas fa-star text-yellow-500 text-sm"></i>
+                                        <i class="fas fa-star text-yellow-500 text-sm"></i>
+                                    </div>
+                                    <span class="text-xs font-medium text-gray-600 uppercase tracking-wider">
+                                        Trusted Project
                                     </span>
                                 </div>
                                 <span class="text-xs text-gray-500">
