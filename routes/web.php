@@ -31,10 +31,21 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 
 // Service routes
-Route::get('/user-experience-design', [ServiceController::class, 'ux'])->name('service.ux');
-Route::get('/web-development', [ServiceController::class, 'web'])->name('service.web');
-Route::get('/search-engine-optimization', [ServiceController::class, 'seo'])->name('service.seo');
-Route::get('/wordpress-development', [ServiceController::class, 'wordpress'])->name('service.wordpress');
+Route::get('/services/{service:slug}', [ServiceController::class, 'show'])->name('services.show');
+
+// Redirect old service URLs to new ones (for SEO)
+Route::get('/user-experience-design', function () {
+    return redirect()->route('services.show', 'user-experience-design', 301);
+});
+Route::get('/web-development', function () {
+    return redirect()->route('services.show', 'web-development', 301);
+});
+Route::get('/search-engine-optimization', function () {
+    return redirect()->route('services.show', 'search-engine-optimization', 301);
+});
+Route::get('/wordpress-development', function () {
+    return redirect()->route('services.show', 'wordpress-development', 301);
+});
 
 // Blog routes
 Route::get('/blog', [BlogController::class, 'index'])->name('blog');

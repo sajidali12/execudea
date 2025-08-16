@@ -361,47 +361,51 @@
         </div>
 
         <div class="grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 pt-12 gap-6">
-            <div
-                class="p-6 bg-white/50 backdrop-blur-sm border border-gray-100 rounded-xl card-hover service-card floating-animation"
-                data-aos="fade-up"
-                data-aos-duration="500"
-            >
-                <div class="mb-6 flex justify-center md:justify-start">
-                    <div class="w-20 h-20 bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl flex items-center justify-center shadow-xl floating-animation transform hover:scale-110 transition-transform duration-300">
-                        <i class="fas fa-palette text-3xl text-white drop-shadow-lg"></i>
+            <a href="{{ route('services.show', 'user-experience-design') }}" class="block group">
+                <div
+                    class="p-6 bg-white/50 backdrop-blur-sm border border-gray-100 rounded-xl card-hover service-card floating-animation group-hover:shadow-xl group-hover:scale-105 transition-all duration-300"
+                    data-aos="fade-up"
+                    data-aos-duration="500"
+                >
+                    <div class="mb-6 flex justify-center md:justify-start">
+                        <div class="w-20 h-20 bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl flex items-center justify-center shadow-xl floating-animation transform group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-palette text-3xl text-white drop-shadow-lg"></i>
+                        </div>
                     </div>
+                    <h4 class="text-xl font-medium my-5 font-futura-bold text-gradient group-hover:text-primary transition-colors duration-300">
+                        User Experience Design
+                    </h4>
+                    <p class="text-slate-400 group-hover:text-slate-600 transition-colors duration-300">
+                        Following the best process that a great
+                        design teams use to create products that
+                        provide meaningful and relevant experiences
+                        to users
+                    </p>
                 </div>
-                <h4 class="text-xl font-medium my-5 font-futura-bold text-gradient">
-                    User Experience Design
-                </h4>
-                <p class="text-slate-400">
-                    Following the best process that a great
-                    design teams use to create products that
-                    provide meaningful and relevant experiences
-                    to users
-                </p>
-            </div>
+            </a>
 
-            <div
-                class="p-6 bg-white/50 backdrop-blur-sm border border-gray-100 rounded-xl card-hover service-card floating-animation"
-                data-aos="fade-up"
-                data-aos-duration="700"
-                style="animation-delay: 0.2s;"
-            >
-                <div class="mb-6 flex justify-center md:justify-start">
-                    <div class="w-20 h-20 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-2xl flex items-center justify-center shadow-xl floating-animation transform hover:scale-110 transition-transform duration-300" style="animation-delay: 0.2s;">
-                        <i class="fas fa-code text-3xl text-white drop-shadow-lg"></i>
+            <a href="{{ route('services.show', 'web-development') }}" class="block group">
+                <div
+                    class="p-6 bg-white/50 backdrop-blur-sm border border-gray-100 rounded-xl card-hover service-card floating-animation group-hover:shadow-xl group-hover:scale-105 transition-all duration-300"
+                    data-aos="fade-up"
+                    data-aos-duration="700"
+                    style="animation-delay: 0.2s;"
+                >
+                    <div class="mb-6 flex justify-center md:justify-start">
+                        <div class="w-20 h-20 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-2xl flex items-center justify-center shadow-xl floating-animation transform group-hover:scale-110 transition-transform duration-300" style="animation-delay: 0.2s;">
+                            <i class="fas fa-code text-3xl text-white drop-shadow-lg"></i>
+                        </div>
                     </div>
+                    <h4 class="text-xl font-medium my-5 font-futura-bold group-hover:text-primary transition-colors duration-300">
+                        Web Development
+                    </h4>
+                    <p class="text-slate-400 group-hover:text-slate-600 transition-colors duration-300">
+                        Development of the websites for businesses
+                        of all sizes and shapes and covering a small
+                        to enterprise organizations
+                    </p>
                 </div>
-                <h4 class="text-xl font-medium my-5 font-futura-bold">
-                    Web Development
-                </h4>
-                <p class="text-slate-400">
-                    Development of the websites for businesses
-                    of all sizes and shapes and covering a small
-                    to enterprise organizations
-                </p>
-            </div>
+            </a>
 
             <div
                 class="p-6 bg-white/50 backdrop-blur-sm border border-gray-100 rounded-xl card-hover service-card floating-animation"

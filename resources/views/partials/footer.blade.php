@@ -24,10 +24,10 @@
                 </div>
                 <div class="flex flex-col gap-2 mt-5 md:mt-0">
                     <h5 class="font-semibold">Services</h5>
-                    <a class="text-gray-500 hover:text-primary" href="{{ route('service.ux') }}">User Experience Design</a>
-                    <a class="text-gray-500 hover:text-primary" href="{{ route('service.web') }}">Web Development</a>
-                    <a class="text-gray-500 hover:text-primary" href="{{ route('service.seo') }}">Search Engine Optimization</a>
-                    <a class="text-gray-500 hover:text-primary" href="{{ route('service.wordpress') }}">Wordpress Development</a>
+                    <a class="text-gray-500 hover:text-primary" href="{{ route('services.show', 'user-experience-design') }}">User Experience Design</a>
+                    <a class="text-gray-500 hover:text-primary" href="{{ route('services.show', 'web-development') }}">Web Development</a>
+                    <a class="text-gray-500 hover:text-primary" href="{{ route('services.show', 'search-engine-optimization') }}">Search Engine Optimization</a>
+                    <a class="text-gray-500 hover:text-primary" href="{{ route('services.show', 'wordpress-development') }}">WordPress Development</a>
                 </div>
                 
                 <div class="flex flex-col gap-3 mt-5 md:mt-0">

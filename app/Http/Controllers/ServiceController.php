@@ -2,27 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Service;
 use Illuminate\Http\Request;
 
 class ServiceController extends Controller
 {
-    public function ux()
+    public function show(Service $service)
     {
-        return view('services.ux');
-    }
+        if (!$service->is_active) {
+            abort(404);
+        }
 
-    public function web()
-    {
-        return view('services.web');
-    }
-
-    public function seo()
-    {
-        return view('services.seo');
-    }
-
-    public function wordpress()
-    {
-        return view('services.wordpress');
+        return view('services.show', compact('service'));
     }
 }

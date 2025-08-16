@@ -27,7 +27,7 @@
                 </button>
                 <div class="absolute top-full left-0 mt-2 z-10 bg-white shadow-xl rounded-xl w-[450px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-in-out transform translate-y-2 group-hover:translate-y-0 border border-gray-100"> 
                     <div class="py-2">
-                        <a class="flex items-center px-4 py-3 hover:bg-gradient-to-r hover:from-primary/5 hover:to-primary/10 hover:text-primary transition-all duration-200 group/item" href="{{ route('service.ux') }}">
+                        <a class="flex items-center px-4 py-3 hover:bg-gradient-to-r hover:from-primary/5 hover:to-primary/10 hover:text-primary transition-all duration-200 group/item" href="{{ route('services.show', 'user-experience-design') }}">
                             <div class="w-10 h-10 bg-gradient-to-br from-purple-500 to-pink-600 rounded-lg flex items-center justify-center mr-3 group-hover/item:scale-110 transition-transform duration-200">
                                 <i class="fas fa-palette text-white text-sm"></i>
                             </div>
@@ -36,7 +36,7 @@
                                 <div class="text-xs text-gray-500">Create meaningful experiences</div>
                             </div>
                         </a>
-                        <a class="flex items-center px-4 py-3 hover:bg-gradient-to-r hover:from-primary/5 hover:to-primary/10 hover:text-primary transition-all duration-200 group/item" href="{{ route('service.web') }}">
+                        <a class="flex items-center px-4 py-3 hover:bg-gradient-to-r hover:from-primary/5 hover:to-primary/10 hover:text-primary transition-all duration-200 group/item" href="{{ route('services.show', 'web-development') }}">
                             <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-lg flex items-center justify-center mr-3 group-hover/item:scale-110 transition-transform duration-200">
                                 <i class="fas fa-code text-white text-sm"></i>
                             </div>
@@ -45,7 +45,7 @@
                                 <div class="text-xs text-gray-500">Build scalable applications</div>
                             </div>
                         </a>
-                        <a class="flex items-center px-4 py-3 hover:bg-gradient-to-r hover:from-primary/5 hover:to-primary/10 hover:text-primary transition-all duration-200 group/item" href="{{ route('service.seo') }}">
+                        <a class="flex items-center px-4 py-3 hover:bg-gradient-to-r hover:from-primary/5 hover:to-primary/10 hover:text-primary transition-all duration-200 group/item" href="{{ route('services.show', 'search-engine-optimization') }}">
                             <div class="w-10 h-10 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg flex items-center justify-center mr-3 group-hover/item:scale-110 transition-transform duration-200">
                                 <i class="fas fa-search text-white text-sm"></i>
                             </div>
@@ -54,7 +54,7 @@
                                 <div class="text-xs text-gray-500">Improve your visibility</div>
                             </div>
                         </a>
-                        <a class="flex items-center px-4 py-3 hover:bg-gradient-to-r hover:from-primary/5 hover:to-primary/10 hover:text-primary transition-all duration-200 group/item" href="{{ route('service.wordpress') }}">
+                        <a class="flex items-center px-4 py-3 hover:bg-gradient-to-r hover:from-primary/5 hover:to-primary/10 hover:text-primary transition-all duration-200 group/item" href="{{ route('services.show', 'wordpress-development') }}">
                             <div class="w-10 h-10 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-lg flex items-center justify-center mr-3 group-hover/item:scale-110 transition-transform duration-200">
                                 <i class="fab fa-wordpress text-white text-sm"></i>
                             </div>
@@ -137,10 +137,10 @@
                         <i id="dropdownIcon" class="fa-solid fa-chevron-down ml-1"></i>
                     </button>
                     <div id="servicesDropdown" class="bg-white shadow-lg rounded-lg w-64 hidden mt-2 border border-gray-200" style="background: white !important;"> 
-                        <a class="block px-4 py-2 hover:bg-gray-200 hover:text-primary rounded-lg bg-white" href="{{ route('service.ux') }}" style="background: white !important;">User Experience Design</a>
-                        <a class="block px-4 py-2 hover:bg-gray-200 hover:text-primary rounded-lg bg-white" href="{{ route('service.web') }}" style="background: white !important;">Web Development</a>
-                        <a class="block px-4 py-2 hover:bg-gray-200 hover:text-primary rounded-lg bg-white" href="{{ route('service.seo') }}" style="background: white !important;">Search Engine Optimization</a>
-                        <a class="block px-4 py-2 hover:bg-gray-200 hover:text-primary rounded-lg bg-white" href="{{ route('service.wordpress') }}" style="background: white !important;">Wordpress Development</a>
+                        <a class="block px-4 py-2 hover:bg-gray-200 hover:text-primary rounded-lg bg-white" href="{{ route('services.show', 'user-experience-design') }}" style="background: white !important;">User Experience Design</a>
+                        <a class="block px-4 py-2 hover:bg-gray-200 hover:text-primary rounded-lg bg-white" href="{{ route('services.show', 'web-development') }}" style="background: white !important;">Web Development</a>
+                        <a class="block px-4 py-2 hover:bg-gray-200 hover:text-primary rounded-lg bg-white" href="{{ route('services.show', 'search-engine-optimization') }}" style="background: white !important;">Search Engine Optimization</a>
+                        <a class="block px-4 py-2 hover:bg-gray-200 hover:text-primary rounded-lg bg-white" href="{{ route('services.show', 'wordpress-development') }}" style="background: white !important;">WordPress Development</a>
                     </div>
                 </li>
                 <li class="bg-white" style="background: white !important;">
