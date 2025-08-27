@@ -6,10 +6,13 @@
                 ['src' => 'img/tech/css.png', 'alt' => 'CSS3 Web Development', 'name' => 'CSS3'],
                 ['src' => 'img/tech/java-script.png', 'alt' => 'JavaScript Web Development', 'name' => 'JavaScript'],
                 ['src' => 'img/tech/react.png', 'alt' => 'React JS Web Development', 'name' => 'React'],
+                ['src' => 'img/tech/next-js-logo.png', 'alt' => 'Next.js Web Development', 'name' => 'Next.js'],
                 ['src' => 'img/tech/php.png', 'alt' => 'PHP Web Development', 'name' => 'PHP'],
                 ['src' => 'img/tech/node.png', 'alt' => 'Node JS Web Development', 'name' => 'Node.js'],
                 ['src' => 'img/tech/laravel.png', 'alt' => 'Laravel Web Development', 'name' => 'Laravel'],
                 ['src' => 'img/tech/vue.png', 'alt' => 'Vue JS Web Development', 'name' => 'Vue.js'],
+                ['src' => 'img/tech/payload-cms.png', 'alt' => 'Payload CMS Development', 'name' => 'Payload'],
+                ['src' => 'img/tech/wordpress-logo.webp', 'alt' => 'WordPress Development', 'name' => 'WordPress'],
             ];
         @endphp
         

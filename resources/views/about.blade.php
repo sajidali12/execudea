@@ -3,19 +3,45 @@
 @section('title', 'Best Web Development Agency')
 
 @section('content')
-<section class="pt-36 md:pb-24 pb-0 relative">
-    <div class="container md:px-10 px-4">
-        <div class="text-center">
-            <h1 class="text-3xl/tight sm:text-4xl/tight lg:text-5xl/tight font-semibold mb-5 font-futura-bold">
-                We are on a mission to 
-                <span class="relative z-0 after:bg-primary/30 after:-z-10 after:absolute md:after:h-6 sm:after:h-5 after:h-4 after:w-full after:bottom-0 after:end-0"> revolutionize
-                </span>
-                the web
-            </h1>
-            <p class="lg:text-2xl text-lg text-gray-500 font-futura-light">
-                At <img class="inline md:w-28 w-20" src="{{ asset('img/execudea.png') }}" alt="Execudea Private Limited Best Web Developers"/> we are passionate about bringing ideas to life through innovative web development solutions.
-            </p>
+<section class="bg-gray-100 lg:pt-36 sm:pb-36 pb-16 pt-36 relative">
+    <div class="container m-auto max-w-7xl px-4 md:px-6 lg:px-8">
+        <div class="flex justify-center">
+            <div class="lg:w-8/12 xl:w-7/12 text-center">
+                <h1 class="text-3xl/tight sm:text-4xl/tight lg:text-5xl/tight font-semibold mb-5 font-futura-bold">
+                    We are on a mission to 
+                    <span class="relative z-0 after:bg-primary/30 after:-z-10 after:absolute md:after:h-6 sm:after:h-5 after:h-4 after:w-full after:bottom-0 after:end-0"> revolutionize
+                    </span>
+                    the web
+                </h1>
+                <p class="lg:text-2xl text-lg text-gray-500 font-futura-light max-w-4xl mx-auto">
+                    At <img class="inline md:w-28 w-20" src="{{ asset('img/execudea.png') }}" alt="Execudea Private Limited Best Web Developers"/> we are passionate about bringing ideas to life through innovative web development solutions.
+                </p>
+            </div>
         </div>
+    </div>
+    <div class="absolute -bottom-1 w-full">
+        <svg
+            class="w-full h-full"
+            viewBox="0 0 1440 40"
+            version="1.1"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+        >
+            <g
+                id="shape-b"
+                stroke="none"
+                stroke-width="1"
+                fill="none"
+                fill-rule="evenodd"
+            >
+                <g id="curve" fill="#fff">
+                    <path
+                        d="M0,30.013 C239.659,10.004 479.143,0 718.453,0 C957.763,0 1198.28,10.004 1440,30.013 L1440,40 L0,40 L0,30.013 Z"
+                        id="Path"
+                    ></path>
+                </g>
+            </g>
+        </svg>
     </div>
 </section>
 
