@@ -63,6 +63,15 @@
                                 <div class="text-xs text-gray-500">Custom CMS solutions</div>
                             </div>
                         </a>
+                        <a class="flex items-center px-4 py-3 hover:bg-gradient-to-r hover:from-primary/5 hover:to-primary/10 hover:text-primary transition-all duration-200 group/item" href="{{ route('services.show', 'payload-cms-development') }}">
+                            <div class="w-10 h-10 bg-gradient-to-br from-orange-500 to-red-600 rounded-lg flex items-center justify-center mr-3 group-hover/item:scale-110 transition-transform duration-200">
+                                <img src="{{ asset('img/tech/payload-cms.png') }}" alt="Payload CMS" class="w-6 h-6 object-contain">
+                            </div>
+                            <div>
+                                <div class="font-medium">Payload CMS Development</div>
+                                <div class="text-xs text-gray-500">Modern headless CMS</div>
+                            </div>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -141,6 +150,7 @@
                         <a class="block px-4 py-2 hover:bg-gray-200 hover:text-primary rounded-lg bg-white" href="{{ route('services.show', 'web-development') }}" style="background: white !important;">Web Development</a>
                         <a class="block px-4 py-2 hover:bg-gray-200 hover:text-primary rounded-lg bg-white" href="{{ route('services.show', 'search-engine-optimization') }}" style="background: white !important;">Search Engine Optimization</a>
                         <a class="block px-4 py-2 hover:bg-gray-200 hover:text-primary rounded-lg bg-white" href="{{ route('services.show', 'wordpress-development') }}" style="background: white !important;">WordPress Development</a>
+                        <a class="block px-4 py-2 hover:bg-gray-200 hover:text-primary rounded-lg bg-white" href="{{ route('services.show', 'payload-cms-development') }}" style="background: white !important;">Payload CMS Development</a>
                     </div>
                 </li>
                 <li class="bg-white" style="background: white !important;">

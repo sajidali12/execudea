@@ -84,7 +84,21 @@
             </p>
         </div>
         <div class="max-w-5xl mx-auto">
-            @include('partials.user-tech')
+            @if($service->slug == 'web-development')
+                @include('partials.tech-logos')
+            @elseif($service->slug == 'search-engine-optimization')
+                @include('partials.seo-tools')
+            @elseif($service->slug == 'user-experience-design')
+                @include('partials.user-tech')
+            @elseif($service->slug == 'wordpress-development')
+                @include('partials.wordpress-tools')
+            @elseif($service->slug == 'payload-cms-development')
+                @include('partials.payload-tech')
+            @elseif($service->slug == 'ai-development')
+                @include('partials.ai-tech')
+            @else
+                @include('partials.tech-logos')
+            @endif
         </div>
     </div>
 </section>
@@ -257,6 +271,72 @@
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "Yes, we specialize in local SEO including Google My Business optimization, local citations, and location-based keyword targeting to help businesses dominate local search results."
+      }
+    }
+    @elseif($service->slug == 'payload-cms-development')
+    {
+      "@type": "Question",
+      "name": "What is Payload CMS and why should I choose it?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Payload CMS is a modern, TypeScript-based headless CMS that offers exceptional developer experience with React admin panels, automatic API generation, and type safety. It's perfect for developers who want full control over their content management system."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does it take to develop a Payload CMS application?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Development time varies based on complexity. A basic Payload CMS setup takes 1-2 weeks, while complex applications with custom collections, authentication, and integrations can take 4-8 weeks."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can you migrate my existing CMS to Payload CMS?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, we provide migration services from various CMS platforms to Payload CMS. We handle data migration, content restructuring, and ensure smooth transition while maintaining SEO rankings."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you provide ongoing maintenance for Payload CMS applications?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Absolutely! We offer comprehensive maintenance packages including updates, security monitoring, performance optimization, feature enhancements, and technical support."
+      }
+    }
+    @elseif($service->slug == 'ai-development')
+    {
+      "@type": "Question",
+      "name": "What types of AI applications can you develop?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We develop various AI applications including machine learning models, chatbots, recommendation systems, computer vision applications, natural language processing tools, and predictive analytics solutions."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does it take to develop an AI solution?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "AI development timelines vary based on complexity. Simple ML models take 2-4 weeks, while complex AI systems with multiple components can take 3-6 months."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can you integrate AI solutions with existing systems?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Absolutely! We specialize in integrating AI capabilities into existing applications through APIs, microservices, and custom integrations while ensuring minimal disruption."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you provide ongoing support for AI applications?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, we offer comprehensive support including model monitoring, performance optimization, retraining services, feature updates, and technical maintenance."
       }
     }
     @elseif($service->slug == 'wordpress-development')

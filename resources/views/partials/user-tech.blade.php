@@ -28,6 +28,23 @@
     <div class="swiper-pagination mt-8"></div>
 </div>
 
+@push('styles')
+<style>
+.userTechSwiper .swiper-pagination {
+    position: relative !important;
+    bottom: auto !important;
+    margin-top: 2rem;
+}
+.userTechSwiper .swiper-pagination-bullet {
+    background: #cbd5e1 !important;
+    opacity: 1 !important;
+}
+.userTechSwiper .swiper-pagination-bullet-active {
+    background: #0055ff !important;
+}
+</style>
+@endpush
+
 @push('scripts')
 <script>
     document.addEventListener('DOMContentLoaded', function() {

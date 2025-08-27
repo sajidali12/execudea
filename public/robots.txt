@@ -1,2 +1,3 @@
 User-agent: *
-Disallow:
+Disallow: /ai-development
+Disallow: /services/ai-development

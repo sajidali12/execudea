@@ -46,6 +46,12 @@ Route::get('/search-engine-optimization', function () {
 Route::get('/wordpress-development', function () {
     return redirect()->route('services.show', 'wordpress-development', 301);
 });
+Route::get('/payload-cms-development', function () {
+    return redirect()->route('services.show', 'payload-cms-development', 301);
+});
+Route::get('/ai-development', function () {
+    return redirect()->route('services.show', 'ai-development', 301);
+});
 
 // Blog routes
 Route::get('/blog', [BlogController::class, 'index'])->name('blog');

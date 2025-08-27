@@ -1,25 +1,27 @@
-<div class="swiper wpToolsSwiper max-w-4xl mx-auto">
+<div class="swiper payloadTechSwiper max-w-4xl mx-auto">
     <div class="swiper-wrapper">
         @php
-            $wpTools = [
-                ['src' => 'img/wordpress/wp1.png', 'alt' => 'WordPress CMS', 'name' => 'WordPress'],
-                ['src' => 'img/wordpress/woo.png', 'alt' => 'WooCommerce', 'name' => 'WooCommerce'],
-                ['src' => 'img/wordpress/elementor.png', 'alt' => 'Elementor Page Builder', 'name' => 'Elementor'],
-                ['src' => 'img/wordpress/WP2.png', 'alt' => 'WordPress Development', 'name' => 'WP Development'],
+            $payloadLogos = [
+                ['src' => 'img/tech/payload-cms.png', 'alt' => 'Payload CMS', 'name' => 'Payload CMS'],
+                ['src' => 'img/tech/Node.js_logo.png', 'alt' => 'Node.js', 'name' => 'Node.js'],
+                ['src' => 'img/tech/react.png', 'alt' => 'React', 'name' => 'React'],
+                ['src' => 'img/tech/next-js-logo.png', 'alt' => 'Next.js', 'name' => 'Next.js'],
+                ['src' => 'img/tech/typescript-logo.png', 'alt' => 'TypeScript', 'name' => 'TypeScript'],
+                ['src' => 'img/tech/mongodb-logo.webp', 'alt' => 'MongoDB', 'name' => 'MongoDB'],
             ];
         @endphp
         
-        @foreach($wpTools as $tool)
+        @foreach($payloadLogos as $logo)
             <div class="swiper-slide">
                 <div class="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
                     <div class="flex flex-col items-center">
                         <img
                             class="h-16 w-16 mb-4 object-contain filter hover:scale-110 transition-transform duration-300"
-                            src="{{ asset($tool['src']) }}"
-                            alt="{{ $tool['alt'] }}"
+                            src="{{ asset($logo['src']) }}"
+                            alt="{{ $logo['alt'] }}"
                         />
-                        <h3 class="text-lg font-semibold text-gray-800">{{ $tool['name'] }}</h3>
-                        <p class="text-sm text-gray-500 mt-1">WordPress Tool</p>
+                        <h3 class="text-lg font-semibold text-gray-800">{{ $logo['name'] }}</h3>
+                        <p class="text-sm text-gray-500 mt-1">CMS Technology</p>
                     </div>
                 </div>
             </div>
@@ -30,16 +32,16 @@
 
 @push('styles')
 <style>
-.wpToolsSwiper .swiper-pagination {
+.payloadTechSwiper .swiper-pagination {
     position: relative !important;
     bottom: auto !important;
     margin-top: 2rem;
 }
-.wpToolsSwiper .swiper-pagination-bullet {
+.payloadTechSwiper .swiper-pagination-bullet {
     background: #cbd5e1 !important;
     opacity: 1 !important;
 }
-.wpToolsSwiper .swiper-pagination-bullet-active {
+.payloadTechSwiper .swiper-pagination-bullet-active {
     background: #0055ff !important;
 }
 </style>
@@ -48,7 +50,7 @@
 @push('scripts')
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        var wpToolsSwiper = new Swiper(".wpToolsSwiper", {
+        var payloadTechSwiper = new Swiper(".payloadTechSwiper", {
             slidesPerView: 1,
             spaceBetween: 30,
             loop: true,

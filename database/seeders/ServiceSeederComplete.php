@@ -332,6 +332,22 @@ class ServiceSeederComplete extends Seeder
                 'icon' => 'img/wordpress.jpg',
                 'is_active' => true,
             ],
+            [
+                'name' => 'Payload CMS Development',
+                'slug' => 'payload-cms-development',
+                'description' => 'Professional Payload CMS development services in Pakistan. Build modern headless CMS applications with TypeScript, React admin panels, and scalable content management solutions.',
+                'content' => null,
+                'icon' => 'img/tech/payload-top-banner-image.jpg',
+                'is_active' => true,
+            ],
+            [
+                'name' => 'AI Development',
+                'slug' => 'ai-development',
+                'description' => 'Professional AI development services in Pakistan. Build intelligent applications with machine learning, natural language processing, computer vision, and custom AI solutions using Python, TensorFlow, and modern AI frameworks.',
+                'content' => null,
+                'icon' => 'img/tech/ai.png',
+                'is_active' => false,
+            ],
         ];
 
         foreach ($services as $service) {

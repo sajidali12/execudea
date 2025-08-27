@@ -87,8 +87,8 @@
                 },
                 {
                     "@type": "OfferCatalog",
-                    "name": "Backend Development",
-                    "description": "Robust backend solutions using PHP, Laravel, Node.js"
+                    "name": "Payload CMS Development",
+                    "description": "Modern headless CMS solutions using TypeScript, React, and Node.js"
                 }
             ]
         },
@@ -474,15 +474,15 @@
                 style="animation-delay: 1.0s;"
             >
                 <div class="mb-6 flex justify-center md:justify-start">
-                    <div class="w-20 h-20 bg-gradient-to-br from-gray-700 to-gray-900 rounded-2xl flex items-center justify-center shadow-xl floating-animation" style="animation-delay: 1.0s;">
-                        <i class="fas fa-server text-3xl text-white"></i>
+                    <div class="w-20 h-20 bg-gradient-to-br from-orange-500 to-red-600 rounded-2xl flex items-center justify-center shadow-xl floating-animation" style="animation-delay: 1.0s;">
+                        <img src="{{ asset('img/tech/payload-cms.png') }}" alt="Payload CMS" class="w-10 h-10 object-contain">
                     </div>
                 </div>
                 <h4 class="text-xl font-medium my-5 font-futura-bold text-gradient">
-                    Backend
+                    Payload CMS
                 </h4>
                 <p class="text-slate-400">
-                we specialize in robust backend solutions using PHP, Laravel, Node.js, and Express. Our expert team is dedicated to delivering scalable and efficient applications tailored to your business needs.
+                We specialize in modern Payload CMS development using TypeScript, React, and Node.js. Our expert team delivers headless content management solutions tailored to your business needs.
                 </p>
             </div>
         </div>
@@ -931,8 +931,8 @@
         {
             "@type": "Service",
             "position": 6,
-            "name": "Backend Development",
-            "description": "We specialize in robust backend solutions using PHP, Laravel, Node.js, and Express",
+            "name": "Payload CMS Development",
+            "description": "We specialize in modern Payload CMS development using TypeScript, React, and Node.js for headless content management solutions",
             "provider": {
                 "@type": "Organization",
                 "name": "Execudea"

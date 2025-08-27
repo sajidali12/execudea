@@ -1,25 +1,27 @@
-<div class="swiper wpToolsSwiper max-w-4xl mx-auto">
+<div class="swiper aiTechSwiper max-w-4xl mx-auto">
     <div class="swiper-wrapper">
         @php
-            $wpTools = [
-                ['src' => 'img/wordpress/wp1.png', 'alt' => 'WordPress CMS', 'name' => 'WordPress'],
-                ['src' => 'img/wordpress/woo.png', 'alt' => 'WooCommerce', 'name' => 'WooCommerce'],
-                ['src' => 'img/wordpress/elementor.png', 'alt' => 'Elementor Page Builder', 'name' => 'Elementor'],
-                ['src' => 'img/wordpress/WP2.png', 'alt' => 'WordPress Development', 'name' => 'WP Development'],
+            $aiLogos = [
+                ['src' => 'img/tech/python.png', 'alt' => 'Python', 'name' => 'Python'],
+                ['src' => 'img/tech/tensorflow.png', 'alt' => 'TensorFlow', 'name' => 'TensorFlow'],
+                ['src' => 'img/tech/pytorch.png', 'alt' => 'PyTorch', 'name' => 'PyTorch'],
+                ['src' => 'img/tech/opencv.png', 'alt' => 'OpenCV', 'name' => 'OpenCV'],
+                ['src' => 'img/tech/sklearn.png', 'alt' => 'Scikit-Learn', 'name' => 'Scikit-Learn'],
+                ['src' => 'img/tech/jupyter.png', 'alt' => 'Jupyter', 'name' => 'Jupyter'],
             ];
         @endphp
         
-        @foreach($wpTools as $tool)
+        @foreach($aiLogos as $logo)
             <div class="swiper-slide">
                 <div class="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
                     <div class="flex flex-col items-center">
                         <img
                             class="h-16 w-16 mb-4 object-contain filter hover:scale-110 transition-transform duration-300"
-                            src="{{ asset($tool['src']) }}"
-                            alt="{{ $tool['alt'] }}"
+                            src="{{ asset($logo['src']) }}"
+                            alt="{{ $logo['alt'] }}"
                         />
-                        <h3 class="text-lg font-semibold text-gray-800">{{ $tool['name'] }}</h3>
-                        <p class="text-sm text-gray-500 mt-1">WordPress Tool</p>
+                        <h3 class="text-lg font-semibold text-gray-800">{{ $logo['name'] }}</h3>
+                        <p class="text-sm text-gray-500 mt-1">AI Technology</p>
                     </div>
                 </div>
             </div>
@@ -30,16 +32,16 @@
 
 @push('styles')
 <style>
-.wpToolsSwiper .swiper-pagination {
+.aiTechSwiper .swiper-pagination {
     position: relative !important;
     bottom: auto !important;
     margin-top: 2rem;
 }
-.wpToolsSwiper .swiper-pagination-bullet {
+.aiTechSwiper .swiper-pagination-bullet {
     background: #cbd5e1 !important;
     opacity: 1 !important;
 }
-.wpToolsSwiper .swiper-pagination-bullet-active {
+.aiTechSwiper .swiper-pagination-bullet-active {
     background: #0055ff !important;
 }
 </style>
@@ -48,7 +50,7 @@
 @push('scripts')
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        var wpToolsSwiper = new Swiper(".wpToolsSwiper", {
+        var aiTechSwiper = new Swiper(".aiTechSwiper", {
             slidesPerView: 1,
             spaceBetween: 30,
             loop: true,
