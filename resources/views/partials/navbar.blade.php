@@ -81,6 +81,9 @@
             <a class="text-gray-800 hover:text-primary" href="{{ route('blog') }}">
                 Blog
             </a>
+            <a class="text-gray-800 hover:text-primary" href="{{ route('payload-case-studies') }}">
+                Case Studies
+            </a>
             <a class="text-gray-800 hover:text-primary" href="{{ route('contact') }}">
                 Contact us
             </a>
@@ -161,6 +164,11 @@
                 <li class="bg-white" style="background: white !important;">
                     <a class="text-gray-800 text-lg block py-2 px-2 bg-white" href="{{ route('blog') }}" style="background: white !important;">
                         Blog
+                    </a>
+                </li>
+                <li class="bg-white" style="background: white !important;">
+                    <a class="text-gray-800 text-lg block py-2 px-2 bg-white" href="{{ route('payload-case-studies') }}" style="background: white !important;">
+                        Case Studies
                     </a>
                 </li>
                 <li class="bg-white" style="background: white !important;">
