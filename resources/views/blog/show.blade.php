@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', $post->title)
+@section('title', $post->getSeoTitle())
 
 @push('meta')
 <!-- SEO Meta Tags -->
