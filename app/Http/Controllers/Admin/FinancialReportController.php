@@ -20,7 +20,7 @@ class FinancialReportController extends Controller
         
         // Revenue Data (from paid invoices only)
         $totalRevenue = Invoice::where('status', 'paid')
-            ->whereBetween('created_at', [$startDate, $endDate])
+            ->whereBetween('paid_date', [$startDate, $endDate])
             ->sum('total_amount');
             
         $paidRevenue = $totalRevenue; // Same as total revenue since we only count paid
@@ -57,12 +57,12 @@ class FinancialReportController extends Controller
         
         // Monthly Revenue Trend (last 12 months) - paid invoices only
         $monthlyRevenue = Invoice::select(
-                DB::raw('YEAR(created_at) as year'),
-                DB::raw('MONTH(created_at) as month'),
+                DB::raw('YEAR(paid_date) as year'),
+                DB::raw('MONTH(paid_date) as month'),
                 DB::raw('SUM(total_amount) as total')
             )
             ->where('status', 'paid')
-            ->where('created_at', '>=', Carbon::now()->subMonths(12))
+            ->where('paid_date', '>=', Carbon::now()->subMonths(12))
             ->groupBy('year', 'month')
             ->orderBy('year', 'desc')
             ->orderBy('month', 'desc')
@@ -122,7 +122,7 @@ class FinancialReportController extends Controller
         $revenueByClient = Invoice::with('client')
             ->select('client_id', DB::raw('SUM(total_amount) as total'))
             ->where('status', 'paid')
-            ->whereBetween('created_at', [$startDate, $endDate])
+            ->whereBetween('paid_date', [$startDate, $endDate])
             ->groupBy('client_id')
             ->orderBy('total', 'desc')
             ->limit(10)

@@ -44,7 +44,7 @@ class AdminController extends Controller
             
             // Financial data (monthly)
             'monthly_revenue' => Invoice::where('status', 'paid')
-                ->whereBetween('created_at', [$currentMonth, $currentMonthEnd])
+                ->whereBetween('paid_date', [$currentMonth, $currentMonthEnd])
                 ->sum('total_amount'),
             'monthly_expenses' => Expense::where('status', 'paid')
                 ->whereBetween('expense_date', [$currentMonth, $currentMonthEnd])
@@ -102,7 +102,7 @@ class AdminController extends Controller
             $monthlyData[] = [
                 'month' => $month->format('M'),
                 'revenue' => Invoice::where('status', 'paid')
-                    ->whereBetween('created_at', [$monthStart, $monthEnd])
+                    ->whereBetween('paid_date', [$monthStart, $monthEnd])
                     ->sum('total_amount'),
                 'expenses' => $totalExpenses,
             ];
