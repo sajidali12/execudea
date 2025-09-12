@@ -23,6 +23,10 @@ class InvoiceController extends Controller
             $query->where('client_id', $request->client_id);
         }
 
+        if ($request->subscription_based !== null) {
+            $query->where('subscription_based', $request->subscription_based);
+        }
+
         if ($request->search) {
             $query->where(function($q) use ($request) {
                 $q->where('invoice_number', 'like', '%' . $request->search . '%')
@@ -60,8 +64,10 @@ class InvoiceController extends Controller
             'amount' => 'required|numeric|min:0',
             'tax_amount' => 'nullable|numeric|min:0',
             'status' => 'required|in:draft,pending,paid,overdue,cancelled',
+            'subscription_based' => 'boolean',
             'issue_date' => 'required|date',
             'due_date' => 'required|date|after_or_equal:issue_date',
+            'next_due_date' => 'nullable|date|after:due_date',
             'description' => 'nullable|string',
             'payment_terms' => 'nullable|string',
             'notes' => 'nullable|string',
@@ -77,9 +83,15 @@ class InvoiceController extends Controller
 
         $data = $request->all();
         $data['total_amount'] = $request->amount + ($request->tax_amount ?? 0);
+        $data['subscription_based'] = $request->boolean('subscription_based');
 
         if ($request->status === 'paid' && !$request->paid_date) {
             $data['paid_date'] = now();
+        }
+
+        // If subscription-based and no next_due_date set, auto-calculate one year from due date
+        if ($data['subscription_based'] && !$data['next_due_date']) {
+            $data['next_due_date'] = \Carbon\Carbon::parse($data['due_date'])->addYear();
         }
 
         Invoice::create($data);
@@ -109,9 +121,11 @@ class InvoiceController extends Controller
             'amount' => 'required|numeric|min:0',
             'tax_amount' => 'nullable|numeric|min:0',
             'status' => 'required|in:draft,pending,paid,overdue,cancelled',
+            'subscription_based' => 'boolean',
             'issue_date' => 'required|date',
             'due_date' => 'required|date|after_or_equal:issue_date',
             'paid_date' => 'nullable|date',
+            'next_due_date' => 'nullable|date|after:due_date',
             'description' => 'nullable|string',
             'payment_terms' => 'nullable|string',
             'notes' => 'nullable|string',
@@ -127,9 +141,15 @@ class InvoiceController extends Controller
 
         $data = $request->all();
         $data['total_amount'] = $request->amount + ($request->tax_amount ?? 0);
+        $data['subscription_based'] = $request->boolean('subscription_based');
 
         if ($request->status === 'paid' && !$invoice->paid_date && !$request->paid_date) {
             $data['paid_date'] = now();
+        }
+
+        // If subscription-based and no next_due_date set, auto-calculate one year from due date
+        if ($data['subscription_based'] && !$data['next_due_date']) {
+            $data['next_due_date'] = \Carbon\Carbon::parse($data['due_date'])->addYear();
         }
 
         $invoice->update($data);

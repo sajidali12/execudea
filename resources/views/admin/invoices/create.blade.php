@@ -91,6 +91,32 @@
                             <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                         @enderror
                     </div>
+
+                    <!-- Subscription Based -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-3">
+                            Subscription Type
+                        </label>
+                        <div class="flex items-center space-x-3">
+                            <input type="hidden" name="subscription_based" value="0">
+                            <input type="checkbox" 
+                                   id="subscription_based" 
+                                   name="subscription_based" 
+                                   value="1"
+                                   onchange="toggleSubscriptionFields()"
+                                   {{ old('subscription_based') ? 'checked' : '' }}
+                                   class="w-4 h-4 text-primary bg-gray-100 border-gray-300 rounded focus:ring-primary focus:ring-2">
+                            <label for="subscription_based" class="text-sm text-gray-700">
+                                This is a subscription-based invoice (yearly recurring)
+                            </label>
+                        </div>
+                        <p class="mt-1 text-xs text-gray-500">
+                            Check this for hosting clients or other yearly recurring services
+                        </p>
+                        @error('subscription_based')
+                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
+                    </div>
                 </div>
 
                 <!-- Description -->
@@ -204,6 +230,24 @@
                             <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                         @enderror
                     </div>
+
+                    <!-- Next Due Date (for subscriptions) -->
+                    <div id="next_due_date_field" style="display: none;">
+                        <label for="next_due_date" class="block text-sm font-medium text-gray-700 mb-2">
+                            Next Due Date (Renewal Date)
+                        </label>
+                        <input type="date" 
+                               id="next_due_date" 
+                               name="next_due_date" 
+                               value="{{ old('next_due_date', date('Y-m-d', strtotime('+1 year'))) }}"
+                               class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary @error('next_due_date') border-red-500 @enderror">
+                        <p class="mt-1 text-xs text-gray-500">
+                            Set the date when this subscription will expire and need renewal
+                        </p>
+                        @error('next_due_date')
+                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
+                    </div>
                 </div>
             </div>
 
@@ -303,9 +347,21 @@ function calculateTotal() {
     });
 }
 
+function toggleSubscriptionFields() {
+    const subscriptionCheckbox = document.getElementById('subscription_based');
+    const nextDueDateField = document.getElementById('next_due_date_field');
+    
+    if (subscriptionCheckbox.checked) {
+        nextDueDateField.style.display = 'block';
+    } else {
+        nextDueDateField.style.display = 'none';
+    }
+}
+
 // Initialize
 document.addEventListener('DOMContentLoaded', function() {
     calculateTotal();
+    toggleSubscriptionFields();
     const clientId = document.getElementById('client_id').value;
     if (clientId) {
         loadClientProjects(clientId);

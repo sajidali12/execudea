@@ -17,9 +17,11 @@ class Invoice extends Model
         'tax_amount',
         'total_amount',
         'status',
+        'subscription_based',
         'issue_date',
         'due_date',
         'paid_date',
+        'next_due_date',
         'description',
         'payment_terms',
         'notes',
@@ -29,9 +31,11 @@ class Invoice extends Model
         'amount' => 'decimal:2',
         'tax_amount' => 'decimal:2',
         'total_amount' => 'decimal:2',
+        'subscription_based' => 'boolean',
         'issue_date' => 'date',
         'due_date' => 'date',
         'paid_date' => 'date',
+        'next_due_date' => 'date',
     ];
 
     // Relationships
@@ -64,6 +68,19 @@ class Invoice extends Model
     public function scopeDraft($query)
     {
         return $query->where('status', 'draft');
+    }
+
+    public function scopeSubscriptionBased($query)
+    {
+        return $query->where('subscription_based', true);
+    }
+
+    public function scopeExpiringSubscriptions($query, $days = 30)
+    {
+        return $query->where('subscription_based', true)
+                    ->where('status', 'paid')
+                    ->whereNotNull('next_due_date')
+                    ->where('next_due_date', '<=', now()->addDays($days));
     }
 
     // Accessors

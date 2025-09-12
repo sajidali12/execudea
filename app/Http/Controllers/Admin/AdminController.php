@@ -53,6 +53,14 @@ class AdminController extends Controller
             'pending_invoices' => Invoice::where('status', 'pending')->count(),
             'paid_invoices' => Invoice::where('status', 'paid')->count(),
             
+            // Subscription warnings
+            'expiring_subscriptions' => Invoice::expiringSubscriptions(30)->count(),
+            'expired_subscriptions' => Invoice::where('subscription_based', true)
+                ->where('status', 'paid')
+                ->whereNotNull('next_due_date')
+                ->where('next_due_date', '<', Carbon::now())
+                ->count(),
+            
             // Recent activity
             'recent_messages' => Message::whereDate('created_at', '>=', Carbon::now()->subDays(7))->count(),
             'recent_expenses' => Expense::whereDate('created_at', '>=', Carbon::now()->subDays(7))->count(),
@@ -85,6 +93,13 @@ class AdminController extends Controller
             ->take(5)
             ->get();
             
+        // Get expiring subscriptions for alerts
+        $expiringSubscriptions = Invoice::with(['client'])
+            ->expiringSubscriptions(30)
+            ->orderBy('next_due_date')
+            ->take(10)
+            ->get();
+            
         // Monthly trends (last 6 months)
         $monthlyData = [];
         for ($i = 5; $i >= 0; $i--) {
@@ -115,6 +130,7 @@ class AdminController extends Controller
             'recentExpenses', 
             'recentMessages',
             'recentProjects',
+            'expiringSubscriptions',
             'monthlyData'
         ));
     }

@@ -60,6 +60,16 @@
                         @endforeach
                     </select>
                 </div>
+
+                <!-- Subscription Filter -->
+                <div class="sm:w-48">
+                    <select name="subscription_based" 
+                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary">
+                        <option value="">All Types</option>
+                        <option value="1" {{ request('subscription_based') == '1' ? 'selected' : '' }}>Subscriptions Only</option>
+                        <option value="0" {{ request('subscription_based') == '0' ? 'selected' : '' }}>One-time Only</option>
+                    </select>
+                </div>
                 
                 <!-- Filter Button -->
                 <button type="submit" 
@@ -68,7 +78,7 @@
                 </button>
                 
                 <!-- Clear Filters -->
-                @if(request('search') || request('status') || request('client_id'))
+                @if(request('search') || request('status') || request('client_id') || request('subscription_based') !== null)
                     <a href="{{ route('admin.invoices.index') }}" 
                        class="px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition duration-200">
                         <i class="fas fa-times mr-2"></i>Clear
@@ -102,17 +112,37 @@
                                     Due Date
                                 </th>
                                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Subscription
+                                </th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                     Actions
                                 </th>
                             </tr>
                         </thead>
                         <tbody class="bg-white divide-y divide-gray-200">
                             @foreach($invoices as $invoice)
-                                <tr class="hover:bg-gray-50">
+                                @php
+                                    $isExpired = false;
+                                    $isExpiring = false;
+                                    $daysLeft = 0;
+                                    
+                                    if ($invoice->subscription_based && $invoice->status === 'paid' && $invoice->next_due_date) {
+                                        $daysLeft = now()->diffInDays($invoice->next_due_date, false);
+                                        $isExpired = $daysLeft < 0;
+                                        $isExpiring = !$isExpired && $daysLeft <= 30;
+                                    }
+                                @endphp
+                                <tr class="hover:bg-gray-50 {{ ($isExpired || $isExpiring) ? 'bg-red-50' : '' }}">
                                     <td class="px-6 py-4 whitespace-nowrap">
-                                        <div>
-                                            <div class="text-sm font-medium text-gray-900">{{ $invoice->invoice_number }}</div>
-                                            <div class="text-sm text-gray-500">{{ $invoice->issue_date->format('M d, Y') }}</div>
+                                        <div class="flex items-center">
+                                            @if($isExpired || $isExpiring)
+                                                <i class="fas fa-exclamation-triangle text-red-500 mr-2" 
+                                                   title="{{ $isExpired ? 'Subscription Expired' : 'Subscription Expiring Soon' }}"></i>
+                                            @endif
+                                            <div>
+                                                <div class="text-sm font-medium text-gray-900">{{ $invoice->invoice_number }}</div>
+                                                <div class="text-sm text-gray-500">{{ $invoice->issue_date->format('M d, Y') }}</div>
+                                            </div>
                                         </div>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
@@ -144,6 +174,11 @@
                                             @else bg-gray-100 text-gray-800 @endif">
                                             {{ ucfirst($invoice->status) }}
                                         </span>
+                                        @if($invoice->subscription_based)
+                                            <div class="text-xs text-blue-600 mt-1">
+                                                <i class="fas fa-sync-alt mr-1"></i>Subscription
+                                            </div>
+                                        @endif
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <div class="text-sm text-gray-900">{{ $invoice->due_date->format('M d, Y') }}</div>
@@ -152,6 +187,30 @@
                                         @endif
                                         @if($invoice->paid_date)
                                             <div class="text-xs text-green-600">Paid: {{ $invoice->paid_date->format('M d') }}</div>
+                                        @endif
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        @if($invoice->subscription_based)
+                                            @if($invoice->next_due_date)
+                                                <div class="text-sm {{ ($isExpired || $isExpiring) ? 'text-red-700 font-semibold' : 'text-gray-900' }}">
+                                                    {{ $invoice->next_due_date->format('M d, Y') }}
+                                                </div>
+                                                @if($isExpired)
+                                                    <div class="text-xs text-red-600 font-medium">
+                                                        Expired {{ abs($daysLeft) }} days ago
+                                                    </div>
+                                                @elseif($isExpiring)
+                                                    <div class="text-xs text-red-600 font-medium">
+                                                        Expires in {{ $daysLeft }} days
+                                                    </div>
+                                                @else
+                                                    <div class="text-xs text-gray-500">Renewal Date</div>
+                                                @endif
+                                            @else
+                                                <span class="text-xs text-gray-400">No renewal date</span>
+                                            @endif
+                                        @else
+                                            <span class="text-xs text-gray-400">One-time</span>
                                         @endif
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium space-x-2">
@@ -229,6 +288,10 @@ document.querySelector('select[name="status"]').addEventListener('change', funct
 });
 
 document.querySelector('select[name="client_id"]').addEventListener('change', function() {
+    this.form.submit();
+});
+
+document.querySelector('select[name="subscription_based"]').addEventListener('change', function() {
     this.form.submit();
 });
 </script>
