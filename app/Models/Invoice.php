@@ -107,7 +107,13 @@ class Invoice extends Model
 
         static::creating(function ($invoice) {
             if (empty($invoice->invoice_number)) {
-                $invoice->invoice_number = 'INV-' . date('Y') . '-' . str_pad((Invoice::count() + 1), 4, '0', STR_PAD_LEFT);
+                $year = date('Y');
+                $prefix = 'INV-' . $year . '-';
+                $last = Invoice::where('invoice_number', 'like', $prefix . '%')
+                    ->orderByRaw('CAST(SUBSTRING(invoice_number, ' . (strlen($prefix) + 1) . ') AS UNSIGNED) DESC')
+                    ->value('invoice_number');
+                $next = $last ? ((int) substr($last, strlen($prefix))) + 1 : 1;
+                $invoice->invoice_number = $prefix . str_pad($next, 4, '0', STR_PAD_LEFT);
             }
         });
     }
