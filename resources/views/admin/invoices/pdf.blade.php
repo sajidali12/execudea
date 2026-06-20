@@ -388,7 +388,6 @@
             <div class="header-left">
                 <img src="{{ public_path('img/execudea.png') }}" alt="Execudea Logo" class="company-logo">
                 <div class="company-name">Execudea Private Limited</div>
-                <div class="company-tagline">Best Website Development Company In Pakistan</div>
             </div>
             <div class="header-right">
                 <div class="invoice-title">INVOICE</div>
@@ -403,7 +402,6 @@
                 <div class="billing-title">From</div>
                 <div class="company-info">
                     <p class="company-name-billing">Execudea Private Limited</p>
-                    <p>Best Website Development Company</p>
                     <p>Office #02, 2nd Floor, Building 140</p>
                     <p>I&T Center G9/1 Islamabad, Pakistan</p>
                     <p><strong>Email:</strong> info@execudea.com</p>
@@ -504,7 +502,7 @@
             </div>
             <div class="contact-info">
                 <div class="footer-row">
-                    <strong>Execudea Private Limited</strong> | Best Website Development Company In Pakistan
+                    <strong>Execudea Private Limited</strong>
                 </div>
                 <div class="footer-row">
                     Email: info@execudea.com | Phone: +92 336 5707907 | Web: www.execudea.com
