@@ -1,14 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Git & GitHub Desktop — Visual Guide | Execudea</title>
-<link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
-<link rel="shortcut icon" type="image/png" href="{{ asset('favicon.png') }}">
+@extends('layouts.app')
+
+@section('title', 'Git & GitHub Desktop — Visual Guide | Execudea')
+
+@push('meta')
+<meta name="robots" content="noindex, nofollow">
+@endpush
+
+@push('styles')
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  .git-preso, .git-preso *, .git-preso *::before, .git-preso *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
     --cream:    #F7F4EF;
@@ -37,7 +38,7 @@
 
   html { scroll-behavior: smooth; }
 
-  body {
+  .git-preso {
     font-family: 'DM Sans', sans-serif;
     background: var(--cream);
     color: var(--ink);
@@ -45,48 +46,8 @@
     overflow-x: hidden;
   }
 
-  /* ── NAV ─────────────────────────────────── */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    background: rgba(247,244,239,.88);
-    backdrop-filter: blur(16px);
-    border-bottom: 1px solid var(--border);
-    padding: 0 40px;
-    display: flex; align-items: center; justify-content: space-between;
-    height: 60px;
-  }
-  .nav-brand {
-    display: flex; align-items: center; gap: 10px;
-    font-family: 'Fraunces', serif; font-weight: 700; font-size: 16px;
-    color: var(--ink); text-decoration: none;
-  }
-  .nav-brand img { height: 26px; width: auto; }
-  .nav-brand .nav-divider { color: var(--border); font-weight: 400; }
-  .nav-brand .nav-title { font-size: 14px; }
-  .nav-pills {
-    display: flex; gap: 6px; list-style: none;
-  }
-  .nav-pills a {
-    display: block; padding: 5px 14px;
-    font-size: 12px; font-weight: 500; color: var(--ink-lt);
-    text-decoration: none; border-radius: 20px;
-    transition: all .2s;
-  }
-  .nav-pills a:hover, .nav-pills a.active {
-    background: var(--purple); color: #fff;
-  }
-  .nav-progress {
-    width: 100%; height: 3px;
-    background: var(--border);
-    position: fixed; top: 60px; left: 0; z-index: 99;
-  }
-  .nav-progress-bar {
-    height: 100%; background: var(--purple);
-    width: 0%; transition: width .3s;
-  }
-
   /* ── SECTIONS ────────────────────────────── */
-  section {
+  .git-preso section {
     min-height: 100vh;
     display: flex; flex-direction: column; justify-content: center;
     padding: 100px 60px 80px;
@@ -94,7 +55,7 @@
     opacity: 0; transform: translateY(30px);
     transition: opacity .7s ease, transform .7s ease;
   }
-  section.visible { opacity: 1; transform: translateY(0); }
+  .git-preso section.visible { opacity: 1; transform: translateY(0); }
 
   .section-inner {
     max-width: 1100px; margin: 0 auto; width: 100%;
@@ -610,39 +571,21 @@
 
   /* ── RESPONSIVE ──────────────────────────── */
   @media (max-width: 860px) {
-    section { padding: 90px 24px 60px; }
+    .git-preso section { padding: 90px 24px 60px; }
     .grid-2, .grid-3, .grid-4, .split, .clone-options, .lr-diagram { grid-template-columns: 1fr; }
     .workflow-flow { flex-direction: column; }
     .flow-step:not(:last-child)::after { display: none; }
     .flow-step:first-child, .flow-step:last-child { border-radius: var(--radius-sm); }
-    nav { padding: 0 20px; }
-    .nav-pills { display: none; }
     .app-body { flex-direction: column; }
     .app-sidebar { width: 100%; border-right: none; border-bottom: 1px solid var(--border); }
     .lr-arrows { flex-direction: row; }
   }
 </style>
-</head>
-<body>
+@endpush
 
-<!-- NAV -->
-<nav>
-  <a class="nav-brand" href="#hero">
-    <img src="{{ asset('img/execudea.png') }}" alt="Execudea">
-    <span class="nav-divider">|</span>
-    <span class="nav-title">Git &amp; GitHub Desktop</span>
-  </a>
-  <ul class="nav-pills">
-    <li><a href="#what-is-git">What is Git</a></li>
-    <li><a href="#terms">Terms</a></li>
-    <li><a href="#local-remote">Local vs Remote</a></li>
-    <li><a href="#create-repo">Create Repo</a></li>
-    <li><a href="#clone">Clone</a></li>
-    <li><a href="#push">Push</a></li>
-    <li><a href="#pull">Pull</a></li>
-  </ul>
-</nav>
-<div class="nav-progress"><div class="nav-progress-bar" id="progressBar"></div></div>
+@section('content')
+
+<div class="git-preso">
 
 <!-- ── SLIDE 1: HERO ──────────────────────────── -->
 <section id="hero">
@@ -1151,35 +1094,19 @@
   </div>
 </section>
 
-<script>
-  // Scroll progress bar
-  const bar = document.getElementById('progressBar');
-  window.addEventListener('scroll', () => {
-    const pct = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
-    bar.style.width = pct + '%';
-  });
+</div>
 
+@endsection
+
+@push('scripts')
+<script>
   // Intersection observer for section animations
-  const sections = document.querySelectorAll('section');
-  const obs = new IntersectionObserver((entries) => {
+  const gitPresoSections = document.querySelectorAll('#hero, #what-is-git, #terms, #local-remote, #create-repo, #clone, #push, #pull, #golden-rule, #closing');
+  const gitPresoObs = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting) e.target.classList.add('visible');
     });
   }, { threshold: 0.1 });
-  sections.forEach(s => obs.observe(s));
-
-  // Active nav link
-  const navLinks = document.querySelectorAll('.nav-pills a');
-  const sectionObserver = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        navLinks.forEach(a => a.classList.remove('active'));
-        const link = document.querySelector(`.nav-pills a[href="#${e.target.id}"]`);
-        if (link) link.classList.add('active');
-      }
-    });
-  }, { threshold: 0.4 });
-  sections.forEach(s => sectionObserver.observe(s));
+  gitPresoSections.forEach(s => gitPresoObs.observe(s));
 </script>
-</body>
-</html>
+@endpush
