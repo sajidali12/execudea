@@ -66,6 +66,11 @@ Route::get('/payload-case-studies', function () {
     return view('payload-case-studies');
 })->name('payload-case-studies');
 
+// Internal team training guides
+Route::get('/git-presentation', function () {
+    return view('git-presentation');
+})->name('git-presentation');
+
 // Course routes
 Route::get('/courses', [CourseController::class, 'index'])->name('courses.index');
 Route::get('/courses/{course:slug}', [CourseController::class, 'show'])->name('courses.show');
