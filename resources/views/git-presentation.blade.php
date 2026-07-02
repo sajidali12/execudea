@@ -569,6 +569,41 @@
   .after-item { display: flex; align-items: center; gap: 8px; font-size: 13px; }
   .after-check { color: var(--green); font-size: 15px; }
 
+  /* terminal block */
+  .terminal-wrap {
+    background: #1E1E2E;
+    border: 1px solid #2D2D44;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+  }
+  .terminal-tb {
+    background: #161622;
+    padding: 10px 16px;
+    display: flex; align-items: center; gap: 10px;
+    border-bottom: 1px solid #2D2D44;
+  }
+  .terminal-tb-title {
+    flex: 1; text-align: center;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px; color: rgba(255,255,255,.4);
+  }
+  .terminal-body {
+    padding: 20px 24px;
+    font-family: 'DM Mono', monospace;
+    font-size: 13px; line-height: 1.9;
+    color: #CDD6F4;
+    overflow-x: auto;
+  }
+  .terminal-line { display: block; white-space: pre; }
+  .terminal-prompt { color: var(--green); user-select: none; }
+  .terminal-cmd { color: #F5E0DC; }
+  .terminal-comment { color: rgba(255,255,255,.35); font-size: 12px; }
+  .terminal-copy-hint {
+    margin-top: 12px; font-size: 12px; color: var(--ink-lt);
+    font-family: 'DM Sans', sans-serif;
+  }
+
   /* ── RESPONSIVE ──────────────────────────── */
   @media (max-width: 860px) {
     .git-preso section { padding: 90px 24px 60px; }
@@ -601,6 +636,7 @@
       <a href="#terms"       class="hero-pill"><span class="pill-icon">📖</span> Key Terms</a>
       <a href="#local-remote"class="hero-pill"><span class="pill-icon">🔁</span> Local vs Remote</a>
       <a href="#create-repo" class="hero-pill"><span class="pill-icon">📦</span> Create Repo</a>
+      <a href="#first-push-cli" class="hero-pill"><span class="pill-icon">⌨️</span> First Push (CLI)</a>
       <a href="#clone"       class="hero-pill"><span class="pill-icon">📋</span> Clone</a>
       <a href="#push"        class="hero-pill"><span class="pill-icon">⬆️</span> Push Changes</a>
       <a href="#pull"        class="hero-pill"><span class="pill-icon">⬇️</span> Pull Changes</a>
@@ -812,6 +848,101 @@
             <button class="dialog-cancel">Cancel</button>
             <button class="dialog-create">Create Repository</button>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SLIDE 5b: FIRST PUSH VIA CLI ──────────── -->
+<section id="first-push-cli" class="op-section">
+  <div class="section-inner">
+    <div class="section-tag bg-blue-lt text-blue">⌨️ Command Line</div>
+    <h2 class="sec-title">First Push to a New Repo</h2>
+    <p class="sec-sub">You have a local project folder and an empty repo on GitHub. Run these commands once to connect them and upload your code for the first time.</p>
+
+    <div class="card mb-32" style="background:var(--gold-lt);border-color:rgba(200,137,26,.25);padding:20px 28px">
+      <div style="font-size:13px;font-weight:600;color:var(--gold);margin-bottom:4px">📌 Before you start</div>
+      <div style="font-size:14px;color:var(--ink)">
+        1. Create an <strong>empty repository</strong> on GitHub (no README, no .gitignore).<br>
+        2. Open your terminal and <strong>cd into your project folder</strong>.<br>
+        3. Replace the remote URL below with your own repo URL if different.
+      </div>
+    </div>
+
+    <div class="split">
+      <div class="step-list">
+        <div class="step-row">
+          <div class="step-num num-blue">1</div>
+          <div class="step-emoji">🌱</div>
+          <div class="step-body">
+            <div class="step-title"><code>git init</code></div>
+            <div class="step-detail">Turns your folder into a Git repository. Creates a hidden <code>.git</code> folder that tracks all changes.</div>
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-num num-blue">2</div>
+          <div class="step-emoji">📁</div>
+          <div class="step-body">
+            <div class="step-title"><code>git add .</code></div>
+            <div class="step-detail">Stages every file in the folder for the first commit. The dot means "all files here".</div>
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-num num-blue">3</div>
+          <div class="step-emoji">💾</div>
+          <div class="step-body">
+            <div class="step-title"><code>git commit -m "first commit"</code></div>
+            <div class="step-detail">Saves your first snapshot locally with a message. Your history starts here.</div>
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-num num-blue">4</div>
+          <div class="step-emoji">🔗</div>
+          <div class="step-body">
+            <div class="step-title"><code>git remote add origin …</code></div>
+            <div class="step-detail">Links your local repo to the empty GitHub repo. <code>origin</code> is the nickname for that remote URL.</div>
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-num num-blue">5</div>
+          <div class="step-emoji">🌿</div>
+          <div class="step-body">
+            <div class="step-title"><code>git branch -M main</code></div>
+            <div class="step-detail">Renames your current branch to <code>main</code> so it matches GitHub's default branch name.</div>
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-num num-blue">6</div>
+          <div class="step-emoji">⬆️</div>
+          <div class="step-body">
+            <div class="step-title"><code>git push -u origin main</code></div>
+            <div class="step-detail">Uploads your commits to GitHub. The <code>-u</code> flag remembers this link — future pushes can be just <code>git push</code>.</div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="terminal-wrap">
+          <div class="terminal-tb">
+            <div class="traffic-lights"><div class="tl red"></div><div class="tl yellow"></div><div class="tl green"></div></div>
+            <div class="terminal-tb-title">Terminal — first push to new repo</div>
+          </div>
+          <div class="terminal-body">
+            <span class="terminal-line"><span class="terminal-comment"># cd into your project folder first</span></span>
+            <span class="terminal-line"><span class="terminal-prompt">$ </span><span class="terminal-cmd">git init</span></span>
+            <span class="terminal-line"><span class="terminal-prompt">$ </span><span class="terminal-cmd">git add .</span></span>
+            <span class="terminal-line"><span class="terminal-prompt">$ </span><span class="terminal-cmd">git commit -m "first commit"</span></span>
+            <span class="terminal-line"><span class="terminal-prompt">$ </span><span class="terminal-cmd">git remote add origin https://github.com/username/reponame.git</span></span>
+            <span class="terminal-line"><span class="terminal-prompt">$ </span><span class="terminal-cmd">git branch -M main</span></span>
+            <span class="terminal-line"><span class="terminal-prompt">$ </span><span class="terminal-cmd">git push -u origin main</span></span>
+          </div>
+        </div>
+        <div class="terminal-copy-hint">Copy and run these commands in order. GitHub may ask you to sign in the first time you push.</div>
+        <div class="after-strip">
+          <div class="after-item"><span class="after-check">✅</span> Repo live on GitHub</div>
+          <div class="after-item"><span class="after-check">✅</span> All files uploaded</div>
+          <div class="after-item"><span class="after-check">✅</span> Future pushes: just <code>git push</code></div>
         </div>
       </div>
     </div>
@@ -1101,7 +1232,7 @@
 @push('scripts')
 <script>
   // Intersection observer for section animations
-  const gitPresoSections = document.querySelectorAll('#hero, #what-is-git, #terms, #local-remote, #create-repo, #clone, #push, #pull, #golden-rule, #closing');
+  const gitPresoSections = document.querySelectorAll('#hero, #what-is-git, #terms, #local-remote, #create-repo, #first-push-cli, #clone, #push, #pull, #golden-rule, #closing');
   const gitPresoObs = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting) e.target.classList.add('visible');
