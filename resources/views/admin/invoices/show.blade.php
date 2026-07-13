@@ -60,7 +60,7 @@
                     <div class="flex items-center justify-between">
                         <div>
                             <p class="text-sm font-medium text-gray-600">Amount</p>
-                            <p class="text-lg font-semibold text-gray-900 mt-1">PKR {{ number_format($invoice->amount) }}</p>
+                            <p class="text-lg font-semibold text-gray-900 mt-1">{{ $invoice->currency_symbol }} {{ number_format($invoice->amount) }}</p>
                         </div>
                         <i class="fas fa-money-bill text-2xl text-gray-400"></i>
                     </div>
@@ -71,7 +71,7 @@
                     <div class="flex items-center justify-between">
                         <div>
                             <p class="text-sm font-medium text-gray-600">Tax</p>
-                            <p class="text-lg font-semibold text-gray-900 mt-1">PKR {{ number_format($invoice->tax_amount) }}</p>
+                            <p class="text-lg font-semibold text-gray-900 mt-1">{{ $invoice->currency_symbol }} {{ number_format($invoice->tax_amount) }}</p>
                         </div>
                         <i class="fas fa-percentage text-2xl text-gray-400"></i>
                     </div>
@@ -82,7 +82,7 @@
                     <div class="flex items-center justify-between">
                         <div>
                             <p class="text-sm font-medium text-primary">Total Amount</p>
-                            <p class="text-lg font-bold text-primary mt-1">PKR {{ number_format($invoice->total_amount) }}</p>
+                            <p class="text-lg font-bold text-primary mt-1">{{ $invoice->currency_symbol }} {{ number_format($invoice->total_amount) }}</p>
                         </div>
                         <i class="fas fa-calculator text-2xl text-primary/60"></i>
                     </div>
@@ -237,18 +237,18 @@
                         <div class="bg-gray-50 p-4 rounded-lg space-y-2">
                             <div class="flex justify-between text-sm">
                                 <span class="text-gray-600">Subtotal:</span>
-                                <span class="text-gray-900 font-medium">PKR {{ number_format($invoice->amount) }}</span>
+                                <span class="text-gray-900 font-medium">{{ $invoice->currency_symbol }} {{ number_format($invoice->amount) }}</span>
                             </div>
                             @if($invoice->tax_amount > 0)
                             <div class="flex justify-between text-sm">
                                 <span class="text-gray-600">Tax:</span>
-                                <span class="text-gray-900 font-medium">PKR {{ number_format($invoice->tax_amount) }}</span>
+                                <span class="text-gray-900 font-medium">{{ $invoice->currency_symbol }} {{ number_format($invoice->tax_amount) }}</span>
                             </div>
                             @endif
                             <hr class="border-gray-300">
                             <div class="flex justify-between text-base font-semibold">
                                 <span class="text-gray-900">Total:</span>
-                                <span class="text-primary">PKR {{ number_format($invoice->total_amount) }}</span>
+                                <span class="text-primary">{{ $invoice->currency_symbol }} {{ number_format($invoice->total_amount) }}</span>
                             </div>
                         </div>
                     </div>
@@ -271,6 +271,7 @@
                         <input type="hidden" name="project_id" value="{{ $invoice->project_id }}">
                         <input type="hidden" name="amount" value="{{ $invoice->amount }}">
                         <input type="hidden" name="tax_amount" value="{{ $invoice->tax_amount }}">
+                        <input type="hidden" name="currency" value="{{ $invoice->currency }}">
                         <input type="hidden" name="issue_date" value="{{ $invoice->issue_date->format('Y-m-d') }}">
                         <input type="hidden" name="due_date" value="{{ $invoice->due_date->format('Y-m-d') }}">
                         <input type="hidden" name="description" value="{{ $invoice->description }}">

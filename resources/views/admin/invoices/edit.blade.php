@@ -173,14 +173,33 @@
                     Financial Details
                 </h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Currency -->
+                    <div>
+                        <label for="currency" class="block text-sm font-medium text-gray-700 mb-2">
+                            Currency <span class="text-red-500">*</span>
+                        </label>
+                        <select id="currency"
+                                name="currency"
+                                required
+                                onchange="calculateTotal()"
+                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary @error('currency') border-red-500 @enderror">
+                            @foreach(\App\Models\Invoice::currencyOptions() as $code => $symbol)
+                                <option value="{{ $code }}" {{ old('currency', $invoice->currency) == $code ? 'selected' : '' }}>{{ $code }} ({{ $symbol }})</option>
+                            @endforeach
+                        </select>
+                        @error('currency')
+                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
+                    </div>
+
                     <!-- Amount -->
                     <div>
                         <label for="amount" class="block text-sm font-medium text-gray-700 mb-2">
-                            Amount (PKR) <span class="text-red-500">*</span>
+                            Amount <span class="text-red-500">*</span>
                         </label>
-                        <input type="number" 
-                               id="amount" 
-                               name="amount" 
+                        <input type="number"
+                               id="amount"
+                               name="amount"
                                min="0"
                                step="0.01"
                                value="{{ old('amount', $invoice->amount) }}"
@@ -195,11 +214,11 @@
                     <!-- Tax Amount -->
                     <div>
                         <label for="tax_amount" class="block text-sm font-medium text-gray-700 mb-2">
-                            Tax Amount (PKR)
+                            Tax Amount
                         </label>
-                        <input type="number" 
-                               id="tax_amount" 
-                               name="tax_amount" 
+                        <input type="number"
+                               id="tax_amount"
+                               name="tax_amount"
                                min="0"
                                step="0.01"
                                value="{{ old('tax_amount', $invoice->tax_amount) }}"
@@ -213,10 +232,10 @@
                     <!-- Total Amount (Read-only) -->
                     <div class="md:col-span-2">
                         <label for="total_display" class="block text-sm font-medium text-gray-700 mb-2">
-                            Total Amount (PKR)
+                            Total Amount
                         </label>
-                        <input type="text" 
-                               id="total_display" 
+                        <input type="text"
+                               id="total_display"
                                readonly
                                class="w-full px-3 py-2 border border-gray-300 bg-gray-100 rounded-lg text-gray-900 font-semibold">
                     </div>
@@ -358,12 +377,20 @@ function loadClientProjects(clientId) {
     }
 }
 
+const currencySymbols = {
+    PKR: 'PKR',
+    USD: '$',
+    AUD: 'A$',
+    EUR: '€'
+};
+
 function calculateTotal() {
     const amount = parseFloat(document.getElementById('amount').value) || 0;
     const taxAmount = parseFloat(document.getElementById('tax_amount').value) || 0;
     const total = amount + taxAmount;
-    
-    document.getElementById('total_display').value = 'PKR ' + total.toLocaleString('en-US', {
+    const symbol = currencySymbols[document.getElementById('currency').value] || '';
+
+    document.getElementById('total_display').value = symbol + ' ' + total.toLocaleString('en-US', {
         minimumFractionDigits: 2,
         maximumFractionDigits: 2
     });

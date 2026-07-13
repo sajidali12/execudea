@@ -158,10 +158,10 @@
                                         @endif
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="text-sm font-medium text-gray-900">PKR {{ number_format($invoice->total_amount) }}</div>
+                                        <div class="text-sm font-medium text-gray-900">{{ $invoice->currency_symbol }} {{ number_format($invoice->total_amount) }}</div>
                                         @if($invoice->tax_amount > 0)
                                             <div class="text-sm text-gray-500">
-                                                PKR {{ number_format($invoice->amount) }} + {{ number_format($invoice->tax_amount) }} tax
+                                                {{ $invoice->currency_symbol }} {{ number_format($invoice->amount) }} + {{ number_format($invoice->tax_amount) }} tax
                                             </div>
                                         @endif
                                     </td>

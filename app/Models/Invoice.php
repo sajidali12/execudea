@@ -15,6 +15,7 @@ class Invoice extends Model
         'project_id',
         'amount',
         'tax_amount',
+        'currency',
         'total_amount',
         'status',
         'subscription_based',
@@ -84,6 +85,21 @@ class Invoice extends Model
     }
 
     // Accessors
+    public static function currencyOptions()
+    {
+        return [
+            'PKR' => 'PKR',
+            'USD' => '$',
+            'AUD' => 'A$',
+            'EUR' => '€',
+        ];
+    }
+
+    public function getCurrencySymbolAttribute()
+    {
+        return self::currencyOptions()[$this->currency] ?? $this->currency;
+    }
+
     public function getStatusColorAttribute()
     {
         return [

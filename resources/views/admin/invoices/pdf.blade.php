@@ -478,17 +478,17 @@
                 <div class="summary-body">
                     <div class="summary-row">
                         <div class="summary-label">Subtotal:</div>
-                        <div class="summary-amount">PKR {{ number_format($invoice->amount, 2) }}</div>
+                        <div class="summary-amount">{{ $invoice->currency_symbol }} {{ number_format($invoice->amount, 2) }}</div>
                     </div>
                     @if($invoice->tax_amount > 0)
                     <div class="summary-row">
                         <div class="summary-label">Tax:</div>
-                        <div class="summary-amount">PKR {{ number_format($invoice->tax_amount, 2) }}</div>
+                        <div class="summary-amount">{{ $invoice->currency_symbol }} {{ number_format($invoice->tax_amount, 2) }}</div>
                     </div>
                     @endif
                     <div class="summary-row total">
                         <div class="summary-label">Total Amount:</div>
-                        <div class="summary-amount">PKR {{ number_format($invoice->total_amount, 2) }}</div>
+                        <div class="summary-amount">{{ $invoice->currency_symbol }} {{ number_format($invoice->total_amount, 2) }}</div>
                     </div>
                 </div>
             </div>

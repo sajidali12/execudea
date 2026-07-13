@@ -272,7 +272,7 @@
                                        ($invoice->status === 'pending' ? 'bg-yellow-100 text-yellow-800' : 'bg-red-100 text-red-800') }}">
                                     {{ ucfirst($invoice->status) }}
                                 </span>
-                                <p class="text-sm text-gray-600 mt-1">PKR {{ number_format($invoice->total_amount, 2) }}</p>
+                                <p class="text-sm text-gray-600 mt-1">{{ $invoice->currency_symbol }} {{ number_format($invoice->total_amount, 2) }}</p>
                             </div>
                         </div>
                     @endforeach

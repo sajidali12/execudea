@@ -325,7 +325,7 @@
                                     <div class="text-sm text-gray-500">{{ $invoice->issue_date->format('M d, Y') }}</div>
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
-                                    <div class="text-sm font-medium text-gray-900">PKR {{ number_format($invoice->total_amount) }}</div>
+                                    <div class="text-sm font-medium text-gray-900">{{ $invoice->currency_symbol }} {{ number_format($invoice->total_amount) }}</div>
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full 
