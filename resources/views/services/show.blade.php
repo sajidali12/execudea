@@ -109,8 +109,8 @@
 {
   "@context": "https://schema.org",
   "@type": "Service",
-  "name": "{{ $service->name }}",
-  "description": "{{ $service->description ?? 'Professional ' . $service->name . ' services by Execudea. Expert solutions tailored to your business needs.' }}",
+  "name": {!! json_encode($service->name, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_HEX_TAG) !!},
+  "description": {!! json_encode($service->description ?: 'Professional ' . $service->name . ' services by Execudea. Expert solutions tailored to your business needs.', JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_HEX_TAG) !!},
   "provider": {
     "@type": "Organization",
     "name": "Execudea",
@@ -123,7 +123,7 @@
       "availableLanguage": ["English", "Urdu"]
     }
   },
-  "serviceType": "{{ $service->name }}",
+  "serviceType": {!! json_encode($service->name, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_HEX_TAG) !!},
   "areaServed": {
     "@type": "Country",
     "name": "Pakistan"
@@ -152,7 +152,7 @@
     {
       "@type": "ListItem",
       "position": 3,
-      "name": "{{ $service->name }}",
+      "name": {!! json_encode($service->name, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_HEX_TAG) !!},
       "item": "{{ url('/services/' . $service->slug) }}"
     }
   ]

@@ -144,9 +144,9 @@ public function store(Request $request)
         'slug' => $validatedData['slug'],
         'excerpt' => $validatedData['excerpt'],
         'status' => $validatedData['status'] ?? 'published',
-        'faqs' => $request->has('faqs') ? array_filter($validatedData['faqs'], function($faq) {
+        'faqs' => $request->has('faqs') ? array_values(array_filter($validatedData['faqs'], function($faq) {
             return !empty($faq['question']) && !empty($faq['answer']);
-        }) : null,
+        })) : null,
         'image' => null,  
     ];
 

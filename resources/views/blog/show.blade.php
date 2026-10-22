@@ -250,54 +250,47 @@
 @endpush
 
 @push('scripts')
+@php
+    // Build schema as arrays and let json_encode handle escaping (quotes, apostrophes, newlines, unicode).
+    // JSON_HEX_TAG stops "</script>" inside content from closing the tag early.
+    $jsonFlags = JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_HEX_TAG | JSON_PRETTY_PRINT;
+
+    $blogSchema = [
+        '@context' => 'https://schema.org',
+        '@type' => 'BlogPosting',
+        'headline' => $post->title,
+        'description' => $post->getSeoDescription(),
+        'image' => $post->image ? asset('storage/product/image/' . $post->image) : null,
+        'author' => ['@type' => 'Person', 'name' => $post->author_name],
+        'publisher' => [
+            '@type' => 'Organization',
+            'name' => \App\Models\SiteSetting::get('company_name', 'Execudea'),
+            'logo' => ['@type' => 'ImageObject', 'url' => asset('img/execudea.png')],
+        ],
+        'datePublished' => $post->created_at->toIso8601String(),
+        'dateModified' => $post->updated_at->toIso8601String(),
+        'mainEntityOfPage' => ['@type' => 'WebPage', '@id' => url()->current()],
+    ];
+
+    $faqItems = collect($post->faqs ?? [])
+        ->filter(fn ($faq) => !empty($faq['question']) && !empty($faq['answer']))
+        ->map(fn ($faq) => [
+            '@type' => 'Question',
+            'name' => strip_tags($faq['question']),
+            'acceptedAnswer' => ['@type' => 'Answer', 'text' => strip_tags($faq['answer'])],
+        ])
+        ->values()
+        ->all();
+@endphp
 <!-- BlogPosting Schema -->
 <script type="application/ld+json">
-{
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    "headline": "{{ addslashes($post->title) }}",
-    "description": "{{ addslashes($post->getSeoDescription()) }}",
-    "image": @if($post->image)"{{ asset('storage/product/image/' . $post->image) }}"@else null @endif,
-    "author": {
-        "@type": "Person",
-        "name": "{{ addslashes($post->author_name) }}"
-    },
-    "publisher": {
-        "@type": "Organization",
-        "name": "{{ config('app.name') }}",
-        "logo": {
-            "@type": "ImageObject",
-            "url": "{{ asset('images/logo.png') }}"
-        }
-    },
-    "datePublished": "{{ $post->created_at->toISOString() }}",
-    "dateModified": "{{ $post->updated_at->toISOString() }}",
-    "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "{{ request()->fullUrl() }}"
-    }
-}
+{!! json_encode($blogSchema, $jsonFlags) !!}
 </script>
 
-@if($post->faqs && count($post->faqs) > 0)
+@if(count($faqItems) > 0)
 <!-- FAQPage Schema (Separate from BlogPosting) -->
 <script type="application/ld+json">
-{
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-        @foreach($post->faqs as $index => $faq)
-        {
-            "@type": "Question",
-            "name": "{{ addslashes($faq['question']) }}",
-            "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "{{ addslashes($faq['answer']) }}"
-            }
-        }@if($index < count($post->faqs) - 1),@endif
-        @endforeach
-    ]
-}
+{!! json_encode(['@context' => 'https://schema.org', '@type' => 'FAQPage', 'mainEntity' => $faqItems], $jsonFlags) !!}
 </script>
 @endif
 @endpush
