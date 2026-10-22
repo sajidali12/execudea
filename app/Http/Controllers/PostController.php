@@ -127,6 +127,7 @@ public function store(Request $request)
         'meta_keywords' => 'nullable|string',
         'slug' => 'nullable|string|unique:posts,slug',
         'excerpt' => 'nullable|string',
+        'status' => 'nullable|in:draft,published',
         'faqs' => 'nullable|array',
         'faqs.*.question' => 'required_with:faqs|string',
         'faqs.*.answer' => 'required_with:faqs|string',
@@ -142,6 +143,7 @@ public function store(Request $request)
         'meta_keywords' => $validatedData['meta_keywords'],
         'slug' => $validatedData['slug'],
         'excerpt' => $validatedData['excerpt'],
+        'status' => $validatedData['status'] ?? 'published',
         'faqs' => $request->has('faqs') ? array_filter($validatedData['faqs'], function($faq) {
             return !empty($faq['question']) && !empty($faq['answer']);
         }) : null,
@@ -237,6 +239,7 @@ public function update(Request $request, Post $post)
         'meta_keywords' => 'nullable|string',
         'slug' => 'nullable|string|unique:posts,slug,' . $post->id,
         'excerpt' => 'nullable|string',
+        'status' => 'nullable|in:draft,published',
         'faqs' => 'nullable|array',
         'faqs.*.question' => 'required_with:faqs|string',
         'faqs.*.answer' => 'required_with:faqs|string',

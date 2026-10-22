@@ -17,8 +17,10 @@ class Post extends Model
      */
     protected $fillable = [
         'title', 'body', 'image', 'author_name', 'meta_title', 'meta_description', 
-        'meta_keywords', 'slug', 'excerpt', 'faqs'
+        'meta_keywords', 'slug', 'excerpt', 'faqs', 'status'
     ];
+
+    public const STATUSES = ['draft', 'published'];
 
     protected $casts = [
         'faqs' => 'array'
@@ -89,6 +91,16 @@ class Post extends Model
     /**
      * Get the post's SEO title
      */
+    public function scopePublished($query)
+    {
+        return $query->where('status', 'published');
+    }
+
+    public function isPublished(): bool
+    {
+        return $this->status === 'published';
+    }
+
     public function getSeoTitle()
     {
         return $this->meta_title ?: $this->title;

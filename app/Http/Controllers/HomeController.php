@@ -10,7 +10,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $latestPosts = Post::orderBy('created_at', 'desc')->take(6)->get();
+        $latestPosts = Post::published()->orderBy('created_at', 'desc')->take(6)->get();
         $featuredProjects = Project::showOnWebsite()
             ->with('client')
             ->orderBy('created_at', 'desc')

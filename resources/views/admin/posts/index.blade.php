@@ -57,7 +57,12 @@
                                         </div>
                                     @endif
                                     <div>
-                                        <h4 class="text-sm font-medium text-gray-900">{{ $post->title }}</h4>
+                                        <h4 class="text-sm font-medium text-gray-900">
+                                            {{ $post->title }}
+                                            @if(($post->status ?? 'published') === 'draft')
+                                                <span class="ml-2 inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-yellow-100 text-yellow-800">Draft</span>
+                                            @endif
+                                        </h4>
                                         <p class="text-sm text-gray-500">{{ Str::limit(strip_tags($post->body), 60) }}</p>
                                     </div>
                                 </div>
