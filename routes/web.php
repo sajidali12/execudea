@@ -25,6 +25,10 @@ use App\Http\Controllers\Admin\ProjectTaskController;
 use App\Http\Controllers\User\DailyTaskController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\McpController;
+
+// Claude connector (MCP) for managing website content. Disabled unless MCP_TOKEN is set.
+Route::any('/mcp/{token?}', McpController::class)->middleware('throttle:60,1')->name('mcp');
 
 // Main website routes
 Route::get('/', [HomeController::class, 'index'])->name('home');
