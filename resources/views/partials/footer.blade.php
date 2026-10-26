@@ -65,7 +65,7 @@
         <div class="border-b my-5"></div>
         <div class="text-center">
             <p class="text-gray-500 text-sm">
-                {{ App\Models\SiteSetting::get('footer_copyright', '© ' . date('Y') . ' Execudea. All rights reserved.') }}
+                {{ preg_replace('/©\s*\d{4}/u', '© ' . date('Y'), App\Models\SiteSetting::get('footer_copyright', '© ' . date('Y') . ' Execudea. All rights reserved.')) }}
             </p>
         </div>
     </div>

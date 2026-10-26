@@ -103,7 +103,7 @@
                                    class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary" 
                                    id="footer_copyright" 
                                    name="settings[footer][footer_copyright]" 
-                                   value="{{ $settings['footer']['footer_copyright'] ?? '© 2025 Execudea. All rights reserved.' }}">
+                                   value="{{ $settings['footer']['footer_copyright'] ?? '© ' . date('Y') . ' Execudea. All rights reserved.' }}">
                         </div>
                     </div>
                 </div>
