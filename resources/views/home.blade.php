@@ -491,122 +491,97 @@
 <!-- services Section End -->
 
 <!-- portfolio Section Start -->
-<section class="py-20" id="work">
+<style>
+    .xp-section { position: relative; padding: 6rem 0; overflow: hidden; background: linear-gradient(180deg, #ffffff 0%, #f4fbfb 100%); }
+    .xp-section::before, .xp-section::after { content: ""; position: absolute; border-radius: 9999px; filter: blur(90px); opacity: .35; pointer-events: none; }
+    .xp-section::before { width: 420px; height: 420px; background: #4db8b3; top: -120px; left: -140px; }
+    .xp-section::after { width: 360px; height: 360px; background: #fc4258; bottom: -140px; right: -120px; opacity: .18; }
+    .xp-head { position: relative; display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 1.5rem; }
+    .xp-eyebrow { display: inline-flex; align-items: center; gap: .5rem; font-size: .8rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: #4db8b3; }
+    .xp-eyebrow::before { content: ""; width: 28px; height: 2px; background: #4db8b3; border-radius: 2px; }
+    .xp-title { font-size: clamp(1.75rem, 3.6vw, 3rem); line-height: 1.1; margin-top: .75rem; color: #0f172a; max-width: 640px; }
+    .xp-title span { background: linear-gradient(90deg, #4db8b3, #fc4258); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .xp-sub { color: #64748b; max-width: 420px; font-size: 1rem; line-height: 1.6; }
+    .xp-grid { position: relative; display: grid; grid-template-columns: 1fr; gap: 1.25rem; margin-top: 3rem; }
+    @media (min-width: 768px) {
+        .xp-grid { grid-template-columns: repeat(12, 1fr); gap: 1.5rem; }
+        .xp-card:nth-child(4n+1), .xp-card:nth-child(4n+4) { grid-column: span 7; }
+        .xp-card:nth-child(4n+2), .xp-card:nth-child(4n+3) { grid-column: span 5; }
+        .xp-card:only-child { grid-column: span 12; }
+    }
+    .xp-card { position: relative; display: block; height: 400px; border-radius: 1.5rem; overflow: hidden; background: #0f172a; box-shadow: 0 10px 30px -12px rgba(15, 23, 42, .25); transition: transform .5s cubic-bezier(.2,.8,.2,1), box-shadow .5s; isolation: isolate; }
+    .xp-card:hover { transform: translateY(-6px); box-shadow: 0 30px 60px -20px rgba(77, 184, 179, .45); }
+    .xp-card img, .xp-card .xp-ph { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 1s cubic-bezier(.2,.8,.2,1); }
+    .xp-card:hover img { transform: scale(1.07); }
+    .xp-ph { display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #4db8b3 0%, #2b7f7b 55%, #fc4258 130%); color: rgba(255,255,255,.35); font-size: 4rem; }
+    .xp-shade { position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, rgba(15,23,42,0) 30%, rgba(15,23,42,.55) 60%, rgba(15,23,42,.92) 100%); }
+    .xp-top { position: absolute; top: 1.25rem; left: 1.25rem; right: 1.25rem; z-index: 2; display: flex; justify-content: space-between; align-items: center; }
+    .xp-chip { padding: .35rem .8rem; border-radius: 9999px; font-size: .72rem; font-weight: 600; letter-spacing: .04em; color: #fff; background: rgba(255,255,255,.16); border: 1px solid rgba(255,255,255,.28); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+    .xp-num { font-size: .8rem; font-weight: 600; color: rgba(255,255,255,.75); }
+    .xp-body { position: absolute; left: 0; right: 0; bottom: 0; z-index: 2; padding: 1.75rem; display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem; }
+    .xp-meta { font-size: .78rem; color: #8fdcd8; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; }
+    .xp-name { color: #fff; font-size: 1.5rem; font-weight: 700; line-height: 1.2; margin-top: .35rem; }
+    .xp-desc { color: rgba(255,255,255,.75); font-size: .92rem; line-height: 1.55; margin-top: .5rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; max-height: 0; opacity: 0; transition: max-height .5s ease, opacity .5s ease; }
+    .xp-card:hover .xp-desc, .xp-card:focus-visible .xp-desc { max-height: 4.5em; opacity: 1; }
+    @media (hover: none) { .xp-desc { max-height: 4.5em; opacity: 1; } }
+    .xp-arrow { flex-shrink: 0; width: 52px; height: 52px; border-radius: 9999px; display: flex; align-items: center; justify-content: center; background: #fff; color: #0f172a; transition: background .4s, color .4s, transform .4s; }
+    .xp-card:hover .xp-arrow { background: #4db8b3; color: #fff; transform: rotate(-45deg); }
+    .xp-cta-wrap { position: relative; display: flex; justify-content: center; margin-top: 3rem; }
+    .xp-cta { display: inline-flex; align-items: center; gap: .75rem; padding: .95rem 1.75rem; border-radius: 9999px; background: #0f172a; color: #fff; font-weight: 600; transition: background .3s, gap .3s; }
+    .xp-cta:hover { background: #4db8b3; gap: 1rem; }
+    .xp-empty { position: relative; text-align: center; padding: 4rem 1rem; margin-top: 3rem; border: 1px dashed #cbd5e1; border-radius: 1.5rem; background: rgba(255,255,255,.6); }
+    @media (max-width: 767px) { .xp-section { padding: 4rem 0; } .xp-card { height: 340px; } .xp-body { padding: 1.25rem; } .xp-name { font-size: 1.25rem; } .xp-arrow { width: 44px; height: 44px; } }
+</style>
+
+<section class="xp-section" id="work">
     <div class="container m-auto md:px-10 px-4">
-        <div class="text-center">
-            <span class="text-sm font-medium py-1 px-3 rounded-full text-primary bg-primary/10">
-                Latest
-            </span>
-            <h1 class="text-2xl md:text-4xl font-medium my-3 font-futura-bold">
-                Explore some of our latest projects!
-            </h1>
-            <p class="text-lg md:text-2xl font-medium text-slate-400 mt-5 mb-4 font-futura-light px-4 md:px-0">
-            </p>
+        <div class="xp-head">
+            <div>
+                <span class="xp-eyebrow">Our Work</span>
+                <h2 class="xp-title font-futura-bold">Explore some of our <span>latest projects</span></h2>
+            </div>
+            <p class="xp-sub">A selection of websites, platforms and apps we've designed and built for businesses that wanted to grow online.</p>
         </div>
 
         @if(isset($featuredProjects) && $featuredProjects->count() > 0)
-            <div class="grid lg:grid-cols-2 xl:grid-cols-2 grid-cols-1 gap-4 md:gap-8 mt-8 md:mt-12">
+            <div class="xp-grid">
                 @foreach($featuredProjects as $index => $project)
-                    <div class="group relative bg-white/70 backdrop-blur-sm border border-gray-100/50 rounded-2xl overflow-hidden card-hover transition-all duration-500 shadow-lg hover:shadow-2xl"
-                         data-aos="fade-up"
-                         data-aos-duration="{{ 600 + ($index * 200) }}"
-                         data-aos-delay="{{ $index * 100 }}">
-                        
-                        <!-- Project Image -->
-                        <div class="relative h-64 overflow-hidden">
-                            @if($project->project_image)
-                                <img src="{{ asset('storage/' . $project->project_image) }}" 
-                                     alt="{{ $project->name }}" 
-                                     class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                            @else
-                                <div class="w-full h-full bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
-                                    <div class="text-center">
-                                        <i class="fas fa-project-diagram text-4xl text-primary/50 mb-2"></i>
-                                        <p class="text-primary/70 font-medium">{{ $project->name }}</p>
-                                    </div>
-                                </div>
-                            @endif
-                            
-                            <!-- Status Badge -->
-                            <div class="absolute top-4 left-4">
-                                <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary text-white shadow-lg">
-                                    {{ ucfirst(str_replace('_', ' ', $project->status)) }}
-                                </span>
-                            </div>
-                            
-                            <!-- Progress Bar -->
-                            @if($project->progress > 0)
-                                <div class="absolute bottom-0 left-0 right-0 bg-black/20 p-2">
-                                    <div class="flex items-center justify-between text-white text-xs mb-1">
-                                        <span>Progress</span>
-                                        <span>{{ $project->progress }}%</span>
-                                    </div>
-                                    <div class="w-full bg-white/20 rounded-full h-1">
-                                        <div class="bg-white rounded-full h-1 transition-all duration-500" 
-                                             style="width: {{ $project->progress }}%"></div>
-                                    </div>
-                                </div>
-                            @endif
+                    <a href="{{ route('contact') }}" class="xp-card"
+                       aria-label="{{ $project->name }} – discuss a similar project"
+                       data-aos="fade-up" data-aos-duration="700" data-aos-delay="{{ $index * 120 }}">
+                        @if($project->project_image)
+                            <img src="{{ asset('storage/' . $project->project_image) }}" alt="{{ $project->name }}" loading="lazy">
+                        @else
+                            <div class="xp-ph"><i class="fas fa-layer-group"></i></div>
+                        @endif
+
+                        <div class="xp-shade"></div>
+
+                        <div class="xp-top">
+                            <span class="xp-chip">{{ ucfirst(str_replace('_', ' ', $project->type)) }}</span>
+                            <span class="xp-num">{{ str_pad($index + 1, 2, '0', STR_PAD_LEFT) }}</span>
                         </div>
-                        
-                        <!-- Project Content -->
-                        <div class="p-6">
-                            <div class="flex items-center justify-between mb-4">
-                                <div class="flex items-center space-x-2">
-                                    <div class="flex items-center space-x-1">
-                                        <i class="fas fa-star text-yellow-500 text-sm"></i>
-                                        <i class="fas fa-star text-yellow-500 text-sm"></i>
-                                        <i class="fas fa-star text-yellow-500 text-sm"></i>
-                                        <i class="fas fa-star text-yellow-500 text-sm"></i>
-                                        <i class="fas fa-star text-yellow-500 text-sm"></i>
-                                    </div>
-                                    <span class="text-xs font-medium text-gray-600 uppercase tracking-wider">
-                                        Trusted Project
-                                    </span>
-                                </div>
-                                <span class="text-xs text-gray-500">
-                                    {{ $project->created_at->format('M Y') }}
-                                </span>
+
+                        <div class="xp-body">
+                            <div>
+                                <div class="xp-meta">{{ $project->created_at->format('M Y') }}</div>
+                                <h3 class="xp-name">{{ $project->name }}</h3>
+                                <p class="xp-desc">{{ $project->description ?? 'An innovative project built with modern technology to deliver exceptional results.' }}</p>
                             </div>
-                            
-                            <h3 class="text-xl font-bold text-gray-800 mb-3 group-hover:text-primary transition-colors duration-300">
-                                {{ $project->name }}
-                            </h3>
-                            
-                            <p class="text-gray-600 text-sm leading-relaxed mb-4 line-clamp-2">
-                                {{ $project->description ?? 'A innovative project developed with cutting-edge technology to deliver exceptional results.' }}
-                            </p>
-                            
-                            <div class="flex items-center justify-between">
-                                <div class="flex items-center space-x-2">
-                                    <span class="inline-block w-2 h-2 bg-gradient-to-r from-primary to-secondary rounded-full"></span>
-                                    <span class="text-sm font-medium text-gray-700">
-                                        {{ ucfirst(str_replace('_', ' ', $project->type)) }}
-                                    </span>
-                                </div>
-                                
-                                <a href="{{ route('contact') }}" class="flex items-center text-primary hover:text-secondary transition-colors duration-300">
-                                    <span class="text-sm font-medium mr-1">Contact Us</span>
-                                    <i class="fas fa-arrow-right text-xs group-hover:translate-x-1 transition-transform duration-300"></i>
-                                </a>
-                            </div>
+                            <span class="xp-arrow" aria-hidden="true"><i class="fas fa-arrow-right"></i></span>
                         </div>
-                        
-                        <!-- Hover Overlay -->
-                        <div class="absolute inset-0 bg-gradient-to-tr from-primary/5 to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
-                    </div>
+                    </a>
                 @endforeach
             </div>
+
+            <div class="xp-cta-wrap">
+                <a href="{{ route('contact') }}" class="xp-cta">Start your project <i class="fas fa-arrow-right"></i></a>
+            </div>
         @else
-            <!-- Fallback when no projects are available -->
-            <div class="text-center py-16">
-                <div class="max-w-md mx-auto">
-                    <div class="mb-6">
-                        <i class="fas fa-project-diagram text-6xl text-gray-300"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-600 mb-2">No Featured Projects Yet</h3>
-                    <p class="text-gray-500">We're working on exciting projects that will be showcased here soon!</p>
-                </div>
+            <div class="xp-empty">
+                <i class="fas fa-layer-group" style="font-size:3rem;color:#cbd5e1"></i>
+                <h3 class="text-xl font-semibold text-gray-600 mt-4 mb-2">New projects coming soon</h3>
+                <p class="text-gray-500">We're working on exciting projects that will be showcased here soon!</p>
             </div>
         @endif
     </div>
