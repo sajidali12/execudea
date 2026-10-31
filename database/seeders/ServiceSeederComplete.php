@@ -336,7 +336,84 @@ class ServiceSeederComplete extends Seeder
                 'name' => 'Payload CMS Development',
                 'slug' => 'payload-cms-development',
                 'description' => 'Professional Payload CMS development services in Pakistan. Build modern headless CMS applications with TypeScript, React admin panels, and scalable content management solutions.',
-                'content' => null,
+                'content' => '
+                <section class="py-20 bg-gray-50/30">
+                    <div class="container mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
+                        <div class="text-center mb-16">
+                            <span class="text-sm font-medium py-1 px-3 rounded-full text-primary bg-primary/10">Our Services</span>
+                            <h2 class="text-3xl font-medium mt-5 mb-4 font-futura-bold">Payload CMS Development Services</h2>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                            <div class="border-2 border-transparent rounded-lg p-6 hover:bg-white hover:border-gray-300 hover:shadow-lg transition-all duration-300">
+                                <div class="h-12 w-12 rounded-md bg-blue-500/10 flex items-center justify-center mb-4">
+                                    <img class="h-8 w-8" src="/img/tech/payload.png" alt="Headless CMS Development" />
+                                </div>
+                                <h3 class="mb-3 mt-4 text-lg font-semibold">Headless CMS Development</h3>
+                                <p class="text-gray-600">Building API-first content management systems with Payload CMS that deliver content to any frontend technology.</p>
+                            </div>
+                            <div class="border-2 border-transparent rounded-lg p-6 hover:bg-white hover:border-gray-300 hover:shadow-lg transition-all duration-300">
+                                <div class="h-12 w-12 rounded-md bg-blue-500/10 flex items-center justify-center mb-4">
+                                    <img class="h-8 w-8" src="/img/tech/react.png" alt="Custom Admin Panels" />
+                                </div>
+                                <h3 class="mb-3 mt-4 text-lg font-semibold">Custom Admin Panels</h3>
+                                <p class="text-gray-600">Creating intuitive React-based admin interfaces with TypeScript for efficient content management and user experience.</p>
+                            </div>
+                            <div class="border-2 border-transparent rounded-lg p-6 hover:bg-white hover:border-gray-300 hover:shadow-lg transition-all duration-300">
+                                <div class="h-12 w-12 rounded-md bg-blue-500/10 flex items-center justify-center mb-4">
+                                    <img class="h-8 w-8" src="/img/tech/node.png" alt="API Integration &amp; Development" />
+                                </div>
+                                <h3 class="mb-3 mt-4 text-lg font-semibold">API Integration &amp; Development</h3>
+                                <p class="text-gray-600">Developing robust REST and GraphQL APIs with Payload CMS for seamless data exchange and third-party integrations.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="py-20 bg-gray-50/30">
+                    <div class="container mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
+                        <div class="text-center mb-16">
+                            <h2 class="text-3xl md:text-4xl font-medium font-futura-bold mb-4">Frequently Asked Questions</h2>
+                            <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                                Get answers to common questions about our Payload CMS development services
+                            </p>
+                        </div>
+                        <div class="max-w-4xl mx-auto">
+                            <div class="space-y-4">
+                                <div class="bg-white rounded-lg border border-gray-200 shadow-sm">
+                                    <div class="px-6 py-4">
+                                        <h3 class="text-lg font-semibold text-gray-900">What is Payload CMS and why should I choose it?</h3>
+                                        <p class="text-gray-600 leading-relaxed mt-2">Payload CMS is a modern, TypeScript-based headless CMS that offers exceptional developer experience with React admin panels, automatic API generation, and type safety. It\'s perfect for developers who want full control over their content management system.</p>
+                                    </div>
+                                </div>
+                                <div class="bg-white rounded-lg border border-gray-200 shadow-sm">
+                                    <div class="px-6 py-4">
+                                        <h3 class="text-lg font-semibold text-gray-900">How long does it take to develop a Payload CMS application?</h3>
+                                        <p class="text-gray-600 leading-relaxed mt-2">Development time varies based on complexity. A basic Payload CMS setup takes 1-2 weeks, while complex applications with custom collections, authentication, and integrations can take 4-8 weeks. We provide detailed timelines during project planning.</p>
+                                    </div>
+                                </div>
+                                <div class="bg-white rounded-lg border border-gray-200 shadow-sm">
+                                    <div class="px-6 py-4">
+                                        <h3 class="text-lg font-semibold text-gray-900">Can you migrate my existing CMS to Payload CMS?</h3>
+                                        <p class="text-gray-600 leading-relaxed mt-2">Yes, we provide migration services from various CMS platforms to Payload CMS. We handle data migration, content restructuring, and ensure smooth transition while maintaining SEO rankings and functionality.</p>
+                                    </div>
+                                </div>
+                                <div class="bg-white rounded-lg border border-gray-200 shadow-sm">
+                                    <div class="px-6 py-4">
+                                        <h3 class="text-lg font-semibold text-gray-900">Does Payload CMS support e-commerce functionality?</h3>
+                                        <p class="text-gray-600 leading-relaxed mt-2">Yes, Payload CMS can be configured for e-commerce applications with custom collections for products, orders, and payments. We integrate it with payment gateways and build custom e-commerce solutions tailored to your needs.</p>
+                                    </div>
+                                </div>
+                                <div class="bg-white rounded-lg border border-gray-200 shadow-sm">
+                                    <div class="px-6 py-4">
+                                        <h3 class="text-lg font-semibold text-gray-900">Do you provide ongoing maintenance for Payload CMS applications?</h3>
+                                        <p class="text-gray-600 leading-relaxed mt-2">Absolutely! We offer comprehensive maintenance packages including updates, security monitoring, performance optimization, feature enhancements, and technical support to ensure your Payload CMS application runs smoothly.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                ',
                 'icon' => 'img/tech/payload-top-banner-image.jpg',
                 'is_active' => true,
             ],

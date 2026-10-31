@@ -12,6 +12,8 @@ use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\SiteSettingController;
+use App\Http\Controllers\Admin\ServiceController as AdminServiceController;
+use App\Http\Controllers\Admin\FaqController as AdminFaqController;
 use App\Http\Controllers\Admin\CourseController as AdminCourseController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\Admin\ClientController as AdminClientController;
@@ -123,6 +125,18 @@ Route::middleware(['auth', 'role:admin,editor'])->group(function () {
     Route::put('/admin/site-settings', [SiteSettingController::class, 'update'])->name('admin.settings.update');
     
     
+    // Service Pages (accessible to admin and editor)
+    Route::resource('/admin/services', AdminServiceController::class)
+        ->except(['show', 'destroy'])
+        ->names('admin.services');
+    Route::patch('/admin/services/{service}/toggle', [AdminServiceController::class, 'toggle'])->name('admin.services.toggle');
+
+    // FAQs (accessible to admin and editor)
+    Route::resource('/admin/faqs', AdminFaqController::class)
+        ->except(['show'])
+        ->names('admin.faqs');
+    Route::patch('/admin/faqs/{faq}/toggle', [AdminFaqController::class, 'toggle'])->name('admin.faqs.toggle');
+
     // Courses Management Routes (accessible to admin and editor)
     Route::resource('/admin/courses', AdminCourseController::class)->names([
         'index' => 'admin.courses.index',

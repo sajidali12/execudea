@@ -46,7 +46,7 @@ class FaqController extends Controller
             'sort_order' => 'nullable|integer'
         ]);
 
-        Faq::create($request->all());
+        Faq::create(array_merge($request->only(['question', 'answer', 'category', 'sort_order']), ['is_active' => $request->boolean('is_active')]));
 
         return redirect()->route('admin.faqs.index')->with('success', 'FAQ created successfully!');
     }
@@ -80,7 +80,7 @@ class FaqController extends Controller
             'sort_order' => 'nullable|integer'
         ]);
 
-        $faq->update($request->all());
+        $faq->update(array_merge($request->only(['question', 'answer', 'category', 'sort_order']), ['is_active' => $request->boolean('is_active')]));
 
         return redirect()->route('admin.faqs.index')->with('success', 'FAQ updated successfully!');
     }

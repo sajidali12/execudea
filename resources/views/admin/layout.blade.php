@@ -87,12 +87,20 @@
                     @endif
                 </a>
                 
-                <!-- Content Management -->
+                <!-- CMS -->
                 <div class="mt-4">
-                    <p class="text-gray-400 text-xs uppercase tracking-wider px-4 mb-2">Content</p>
+                    <p class="text-gray-400 text-xs uppercase tracking-wider px-4 mb-2">CMS</p>
                     <a href="{{ route('posts.index') }}" class="flex items-center space-x-2 py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700 {{ request()->routeIs('posts.*') ? 'sidebar-active' : '' }}">
                         <i class="fas fa-blog"></i>
                         <span>Blog Posts</span>
+                    </a>
+                    <a href="{{ route('admin.services.index') }}" class="flex items-center space-x-2 py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700 {{ request()->routeIs('admin.services.*') ? 'sidebar-active' : '' }}">
+                        <i class="fas fa-briefcase"></i>
+                        <span>Service Pages</span>
+                    </a>
+                    <a href="{{ route('admin.faqs.index') }}" class="flex items-center space-x-2 py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700 {{ request()->routeIs('admin.faqs.*') ? 'sidebar-active' : '' }}">
+                        <i class="fas fa-question-circle"></i>
+                        <span>FAQs</span>
                     </a>
                     <a href="{{ route('admin.courses.index') }}" class="flex items-center space-x-2 py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700 {{ request()->routeIs('admin.courses.*') ? 'sidebar-active' : '' }}">
                         <i class="fas fa-graduation-cap"></i>
@@ -101,6 +109,10 @@
                     <a href="{{ route('admin.course-registrations.index') }}" class="flex items-center space-x-2 py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700 {{ request()->routeIs('admin.course-registrations.*') ? 'sidebar-active' : '' }}">
                         <i class="fas fa-user-graduate"></i>
                         <span>Course Registrations</span>
+                    </a>
+                    <a href="{{ route('admin.settings.index') }}" class="flex items-center space-x-2 py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700 {{ request()->routeIs('admin.settings.*') ? 'sidebar-active' : '' }}">
+                        <i class="fas fa-globe"></i>
+                        <span>Site Settings</span>
                     </a>
                 </div>
 
@@ -185,10 +197,6 @@
                 <!-- Settings -->
                 <div class="mt-4">
                     <p class="text-gray-400 text-xs uppercase tracking-wider px-4 mb-2">Settings</p>
-                    <a href="{{ route('admin.settings.index') }}" class="flex items-center space-x-2 py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700 {{ request()->routeIs('admin.settings.*') ? 'sidebar-active' : '' }}">
-                        <i class="fas fa-globe"></i>
-                        <span>Site Settings</span>
-                    </a>
                     <a href="{{ route('admin-settings') }}" class="flex items-center space-x-2 py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700 {{ request()->routeIs('admin-settings') ? 'sidebar-active' : '' }}">
                         <i class="fas fa-cog"></i>
                         <span>Admin Settings</span>
