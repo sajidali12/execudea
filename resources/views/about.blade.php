@@ -51,6 +51,12 @@
             <div class="flex flex-col items-center lg:items-start">
                 <div class="border-t-2 border-gray-300 w-1/5 mb-7"></div>
                 <h1 class="text-3xl font-futura-bold">About Us</h1>
+
+                <div class="mt-6">
+                    <a href="https://techbehemoths.com/company/execudea" target="_blank" rel="noopener" data-techbehemoths-verification>
+                        <img src="https://cdn.techbehemoths.com/public/static/validation/tb-verified-logo.svg" alt="TechBehemoths Verification" />
+                    </a>
+                </div>
             </div>
 
             <div>
