@@ -12,7 +12,7 @@
     <meta property="og:title" content="Best Website Development Company In Pakistan | Execudea">
     <meta property="og:description" content="Professional web design & development services in Pakistan. Expert team delivering cutting-edge websites, SEO, and digital solutions since 2016.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:url" content="{{ url('/') }}">
     <meta property="og:image" content="{{ asset('img/execudea-og-image.jpg') }}">
     <meta property="og:site_name" content="Execudea">
     <meta property="og:locale" content="en_PK">
@@ -24,7 +24,7 @@
     <meta name="twitter:image" content="{{ asset('img/execudea-og-image.jpg') }}">
     
     <!-- Canonical URL -->
-    <link rel="canonical" href="{{ url()->current() }}">
+    <link rel="canonical" href="{{ url('/') }}">
     
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">

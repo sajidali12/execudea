@@ -11,6 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
+        // Some databases already have this table (e.g. imported from a dump)
+        if (Schema::hasTable('services')) {
+            return;
+        }
+
         Schema::create('services', function (Blueprint $table) {
             $table->id();
             $table->string('name');

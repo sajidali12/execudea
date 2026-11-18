@@ -6,13 +6,13 @@
 <!-- SEO Meta Tags -->
 <meta name="description" content="{{ $post->getSeoDescription() }}">
 <meta name="keywords" content="{{ $post->meta_keywords }}">
-<link rel="canonical" href="{{ request()->fullUrl() }}">
+<link rel="canonical" href="{{ url('/blog/' . $post->slug) }}">
 
 <!-- Open Graph Meta Tags -->
 <meta property="og:title" content="{{ $post->getSeoTitle() }}">
 <meta property="og:description" content="{{ $post->getSeoDescription() }}">
 <meta property="og:type" content="article">
-<meta property="og:url" content="{{ request()->fullUrl() }}">
+<meta property="og:url" content="{{ url('/blog/' . $post->slug) }}">
 @if($post->image)
 <meta property="og:image" content="{{ asset('storage/product/image/' . $post->image) }}">
 <meta property="og:image:width" content="1200">
@@ -139,7 +139,7 @@
                         <div class="flex items-center space-x-4">
                             <span class="text-gray-600">Share:</span>
                             <a
-                                href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(request()->fullUrl()) }}"
+                                href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(url('/blog/' . $post->slug)) }}"
                                 target="_blank"
                                 class="text-blue-600 hover:text-blue-800 transition-colors"
                                 aria-label="Share on Facebook"
@@ -147,7 +147,7 @@
                                 <i class="fab fa-facebook-f"></i>
                             </a>
                             <a
-                                href="https://twitter.com/intent/tweet?url={{ urlencode(request()->fullUrl()) }}&text={{ urlencode($post->title) }}"
+                                href="https://twitter.com/intent/tweet?url={{ urlencode(url('/blog/' . $post->slug)) }}&text={{ urlencode($post->title) }}"
                                 target="_blank"
                                 class="text-blue-400 hover:text-blue-600 transition-colors"
                                 aria-label="Share on Twitter"
@@ -155,7 +155,7 @@
                                 <i class="fab fa-twitter"></i>
                             </a>
                             <a
-                                href="https://www.linkedin.com/sharing/share-offsite/?url={{ urlencode(request()->fullUrl()) }}"
+                                href="https://www.linkedin.com/sharing/share-offsite/?url={{ urlencode(url('/blog/' . $post->slug)) }}"
                                 target="_blank"
                                 class="text-blue-700 hover:text-blue-900 transition-colors"
                                 aria-label="Share on LinkedIn"
@@ -269,7 +269,7 @@
         ],
         'datePublished' => $post->created_at->toIso8601String(),
         'dateModified' => $post->updated_at->toIso8601String(),
-        'mainEntityOfPage' => ['@type' => 'WebPage', '@id' => url()->current()],
+        'mainEntityOfPage' => ['@type' => 'WebPage', '@id' => url('/blog/' . $post->slug)],
     ];
 
     $faqItems = collect($post->faqs ?? [])

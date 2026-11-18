@@ -28,9 +28,12 @@ use App\Http\Controllers\User\DailyTaskController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\McpController;
+use App\Http\Controllers\SitemapController;
 
 // Claude connector (MCP) for managing website content. Disabled unless MCP_TOKEN is set.
 Route::any('/mcp/{token?}', McpController::class)->middleware('throttle:60,1')->name('mcp');
+
+Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap');
 
 // Main website routes
 Route::get('/', [HomeController::class, 'index'])->name('home');

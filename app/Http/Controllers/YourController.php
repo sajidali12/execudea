@@ -8,6 +8,6 @@ class YourController extends Controller
 {
     public function showNotFound()
     {
-        return Inertia::render('notFound');
+        return Inertia::render('notFound')->toResponse(request())->setStatusCode(404);
     }
 }

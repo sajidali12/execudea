@@ -7,6 +7,13 @@
 
     <title>@yield('title', 'Best Website Development Company In Pakistan')</title>
 
+    @hasSection('meta_description')
+    <meta name="description" content="@yield('meta_description')">
+    @endif
+    @hasSection('canonical')
+    <link rel="canonical" href="@yield('canonical')">
+    @endif
+
     @stack('meta')
 
     <!-- Favicon -->
